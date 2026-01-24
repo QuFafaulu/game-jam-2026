@@ -44,5 +44,5 @@ position = Vector2(514, 215)
 [node name="Fridge" parent="Interactable_objects" instance=ExtResource("5_16g40")]
 position = Vector2(443, 125)
 
+[connection signal="drop" from="Chef" to="." method="_on_chef_drop"]
 [connection signal="is_interacting" from="Chef" to="." method="_on_chef_is_interacting"]
-[connection signal="give_item" from="Interactable_objects/Fridge" to="." method="_on_fridge_give_item"]

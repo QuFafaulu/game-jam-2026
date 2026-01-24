@@ -2,19 +2,17 @@ extends InteractableObject
 
 @onready var sprite := $Sprite
 @onready var fridge_interact := $FridgeInteract
+@onready var inventory := $Inventory
 
-@onready var apple := $Apple
-
-signal give_item
-
-
-func _ready():
-	fridge_interact.connect("interacted_with", _on_interaction)
-
-func _on_interaction():
+func interact():
+	var contents: Array[Node]
 	sprite.frame = 1
-	remove_child(apple)
-	give_item.emit(apple)
+	contents = inventory.get_children()
+	if not contents.is_empty():
+		inventory.remove_child(contents[0])
+		return [contents[0]]
+	else:
+		return []
 
 func _on_fridge_interact_body_exited(body: Node2D) -> void:
 	# If all interactive entities have left the interaction zone, close the fridge

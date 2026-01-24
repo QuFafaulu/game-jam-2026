@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://djfj45rumfdue"]
+[gd_scene load_steps=11 format=3 uid="uid://djfj45rumfdue"]
 
 [ext_resource type="Script" uid="uid://b0kh67nali4jj" path="res://fridge.gd" id="1_e6sfw"]
 [ext_resource type="Texture2D" uid="uid://e5l41pca0c0e" path="res://Fridge.png" id="2_e6sfw"]
 [ext_resource type="Script" uid="uid://eqgvtfybgufp" path="res://interaction_zone.gd" id="3_e6sfw"]
 [ext_resource type="Texture2D" uid="uid://dc3ulotf8bbdv" path="res://Apple.png" id="4_gk71u"]
+[ext_resource type="Texture2D" uid="uid://2ve2yg5nvafs" path="res://Borgir.png" id="5_6ofhc"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gk71u"]
 atlas = ExtResource("2_e6sfw")
@@ -46,15 +47,21 @@ sprite_frames = SubResource("SpriteFrames_x7sr2")
 position = Vector2(3, -3)
 shape = SubResource("RectangleShape2D_2t0b2")
 
-[node name="FridgeInteract" type="Area2D" parent="."]
+[node name="FridgeInteract" type="Area2D" parent="." node_paths=PackedStringArray("connected_object")]
 position = Vector2(5, 14)
 script = ExtResource("3_e6sfw")
+connected_object = NodePath("..")
 metadata/_custom_type_script = "uid://eqgvtfybgufp"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FridgeInteract"]
 shape = SubResource("RectangleShape2D_gk71u")
 
-[node name="Apple" type="Sprite2D" parent="."]
+[node name="Inventory" type="Node2D" parent="."]
+
+[node name="Apple" type="Sprite2D" parent="Inventory"]
 texture = ExtResource("4_gk71u")
+
+[node name="Borgir" type="Sprite2D" parent="Inventory"]
+texture = ExtResource("5_6ofhc")
 
 [connection signal="body_exited" from="FridgeInteract" to="." method="_on_fridge_interact_body_exited"]

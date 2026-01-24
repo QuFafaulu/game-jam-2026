@@ -6,6 +6,7 @@ extends CharacterBody2D
 var carried_item: Sprite2D
 
 signal is_interacting
+signal drop
 
 func get_input():
 	var input_dir: Vector2
@@ -24,4 +25,9 @@ func _input(event):
 func pick_up_item(item: Sprite2D):
 	add_child(item)
 	item.move_local_y(-20)
+	if not carried_item == null:
+		var position = carried_item.global_position
+		print("Threw away something")
+		remove_child(carried_item)
+		drop.emit(carried_item, position)
 	carried_item = item
