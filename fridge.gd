@@ -4,18 +4,17 @@ extends InteractableObject
 @onready var fridge_interact := $FridgeInteract
 @onready var inventory := $Inventory
 
-func interact(... args: Array):
+func interact(... _args: Array) -> InteractableObject:
 	var contents: Array[Node]
 	# Open the fridge
 	sprite.frame = 1
 	contents = inventory.get_children()
 	if not contents.is_empty():
-		inventory.remove_child(contents[0])
-		return [contents[0]]
+		return contents[0]
 	else:
-		return []
+		return null
 
-func _on_fridge_interact_body_exited(body) -> void:
+func _on_fridge_interact_body_exited(_body) -> void:
 	print("body exited")
 	# If all interactive entities have left the interaction zone, close the fridge
 	if fridge_interact.get_overlapping_areas().is_empty():

@@ -1,5 +1,6 @@
 class_name InteractableObject
 extends Node2D
 
-func interact(... args: Array):
+func interact(... _args: Array) -> InteractableObject:
 	print("NOOOOOO")
+	return null
