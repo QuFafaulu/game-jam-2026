@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://e5l41pca0c0e" path="res://Fridge.png" id="2_e6sfw"]
 [ext_resource type="Script" uid="uid://eqgvtfybgufp" path="res://interaction_zone.gd" id="3_e6sfw"]
 [ext_resource type="Texture2D" uid="uid://dc3ulotf8bbdv" path="res://Apple.png" id="4_gk71u"]
-[ext_resource type="Texture2D" uid="uid://2ve2yg5nvafs" path="res://Borgir.png" id="5_6ofhc"]
+[ext_resource type="Texture2D" uid="uid://1og58v1s2l6p" path="res://burger.jpg" id="5_6ofhc"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gk71u"]
 atlas = ExtResource("2_e6sfw")
@@ -62,6 +62,7 @@ shape = SubResource("RectangleShape2D_gk71u")
 texture = ExtResource("4_gk71u")
 
 [node name="Borgir" type="Sprite2D" parent="Inventory"]
+scale = Vector2(0.01, 0.01)
 texture = ExtResource("5_6ofhc")
 
 [connection signal="body_exited" from="FridgeInteract" to="." method="_on_fridge_interact_body_exited"]
