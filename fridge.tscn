@@ -1,0 +1,60 @@
+[gd_scene load_steps=10 format=3 uid="uid://djfj45rumfdue"]
+
+[ext_resource type="Script" uid="uid://b0kh67nali4jj" path="res://fridge.gd" id="1_e6sfw"]
+[ext_resource type="Texture2D" uid="uid://e5l41pca0c0e" path="res://Fridge.png" id="2_e6sfw"]
+[ext_resource type="Script" uid="uid://eqgvtfybgufp" path="res://interaction_zone.gd" id="3_e6sfw"]
+[ext_resource type="Texture2D" uid="uid://dc3ulotf8bbdv" path="res://Apple.png" id="4_gk71u"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gk71u"]
+atlas = ExtResource("2_e6sfw")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6ofhc"]
+atlas = ExtResource("2_e6sfw")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_x7sr2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gk71u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6ofhc")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2t0b2"]
+size = Vector2(24, 26)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gk71u"]
+size = Vector2(20, 8)
+
+[node name="Fridge" type="Node2D"]
+script = ExtResource("1_e6sfw")
+metadata/_custom_type_script = "uid://csdb2i55f762q"
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_x7sr2")
+
+[node name="Body" type="StaticBody2D" parent="."]
+
+[node name="Collision" type="CollisionShape2D" parent="Body"]
+position = Vector2(3, -3)
+shape = SubResource("RectangleShape2D_2t0b2")
+
+[node name="FridgeInteract" type="Area2D" parent="."]
+position = Vector2(5, 14)
+script = ExtResource("3_e6sfw")
+metadata/_custom_type_script = "uid://eqgvtfybgufp"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FridgeInteract"]
+shape = SubResource("RectangleShape2D_gk71u")
+
+[node name="Apple" type="Sprite2D" parent="."]
+texture = ExtResource("4_gk71u")
+
+[connection signal="body_exited" from="FridgeInteract" to="." method="_on_fridge_interact_body_exited"]

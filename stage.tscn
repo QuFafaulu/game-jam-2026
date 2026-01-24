@@ -1,0 +1,48 @@
+[gd_scene load_steps=7 format=4 uid="uid://gukl0umto2eh"]
+
+[ext_resource type="Texture2D" uid="uid://dqesjof38maio" path="res://Cart_tileset.png" id="1_6eo5e"]
+[ext_resource type="Script" uid="uid://dumm052r31p6y" path="res://stage.gd" id="1_aees8"]
+[ext_resource type="PackedScene" uid="uid://bprm4p1rglv4h" path="res://chef.tscn" id="3_rnkuw"]
+[ext_resource type="PackedScene" uid="uid://djfj45rumfdue" path="res://fridge.tscn" id="5_16g40"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_aees8"]
+texture = ExtResource("1_6eo5e")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(7, -16, 16, -16, 16, 16, 7, 16)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(1, -16, 16, -16, 16, 16, 1, 16)
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(1, -16, 16, -16, 16, 16, 1, 16)
+3:0/0 = 0
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(1, -16, 16, -16, 16, 16, 1, 16)
+4:0/0 = 0
+4:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(1, -16, 16, -16, 16, 16, 1, 16)
+5:0/0 = 0
+5:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(1, -16, 16, -16, 16, 16, 1, 16)
+6:0/0 = 0
+6:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(1, -16, 16, -16, 16, 16, 1, 16)
+
+[sub_resource type="TileSet" id="TileSet_x1kum"]
+tile_size = Vector2i(32, 32)
+physics_layer_0/collision_layer = 1
+sources/1 = SubResource("TileSetAtlasSource_aees8")
+
+[node name="stage" type="StaticBody2D"]
+script = ExtResource("1_aees8")
+
+[node name="Cart_tile_map" type="TileMapLayer" parent="."]
+position = Vector2(0, 1)
+tile_map_data = PackedByteArray("AAALAAMAAQAAAAAAAAALAAQAAQAAAAAAAAALAAUAAQAAAAAAAAALAAYAAQAAAAAAAAALAAcAAQAAAAAAAAALAAgAAQAAAAAAAAALAAkAAQAAAAAAAAALAAoAAQAAAAAAAAALAAsAAQAAAAAAAAALAAwAAQAAAAAAAAALAA0AAQAAAAAAAAAMAAIAAQAAAAAAAFANAAIAAQAAAAAAAFAOAAIAAQAAAAAAAFAPAAIAAQAAAAAAAFAQAAIAAQAAAAAAAFARAAIAAQAAAAAAAFASAAIAAQAAAAAAAFATAAIAAQAAAAAAAFAUAAIAAQAAAAAAAFAVAAMAAQAAAAAAADAVAAQAAQAAAAAAADAVAAUAAQAAAAAAADAVAAYAAQAAAAAAADAVAAcAAQAAAAAAADAVAAgAAQAAAAAAADAVAAkAAQAAAAAAADAVAAoAAQAAAAAAADAVAAsAAQAAAAAAADAVAAwAAQAAAAAAADAVAA0AAQAAAAAAADAMAA4AAQAAAAAAAGANAA4AAQAAAAAAAGAOAA4AAQAAAAAAAGAPAA4AAQAAAAAAAGAQAA4AAQAAAAAAAGARAA4AAQAAAAAAAGASAA4AAQAAAAAAAGATAA4AAQAAAAAAAGAUAA4AAQAAAAAAAGA=")
+tile_set = SubResource("TileSet_x1kum")
+
+[node name="Chef" parent="." instance=ExtResource("3_rnkuw")]
+position = Vector2(514, 215)
+
+[node name="Interactable_objects" type="Node2D" parent="."]
+
+[node name="Fridge" parent="Interactable_objects" instance=ExtResource("5_16g40")]
+position = Vector2(443, 125)
+
+[connection signal="is_interacting" from="Chef" to="." method="_on_chef_is_interacting"]
+[connection signal="give_item" from="Interactable_objects/Fridge" to="." method="_on_fridge_give_item"]
