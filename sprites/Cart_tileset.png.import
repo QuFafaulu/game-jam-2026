@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://e5l41pca0c0e"
-path="res://.godot/imported/Fridge.png-9212c74f8b8ca74b84b0f425d88f0982.ctex"
+uid="uid://dqesjof38maio"
+path="res://.godot/imported/Cart_tileset.png-fc65fedf0afe9411534050b6bb6079db.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Fridge.png"
-dest_files=["res://.godot/imported/Fridge.png-9212c74f8b8ca74b84b0f425d88f0982.ctex"]
+source_file="res://sprites/Cart_tileset.png"
+dest_files=["res://.godot/imported/Cart_tileset.png-fc65fedf0afe9411534050b6bb6079db.ctex"]
 
 [params]
 

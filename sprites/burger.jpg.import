@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://oqi5b0mrw35j"
-path="res://.godot/imported/Cheff.png-38cd5013822dd6d83e112382eb9564e5.ctex"
+uid="uid://1og58v1s2l6p"
+path="res://.godot/imported/burger.jpg-55c8731cccd80632ecab75b708c86853.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Cheff.png"
-dest_files=["res://.godot/imported/Cheff.png-38cd5013822dd6d83e112382eb9564e5.ctex"]
+source_file="res://sprites/burger.jpg"
+dest_files=["res://.godot/imported/burger.jpg-55c8731cccd80632ecab75b708c86853.ctex"]
 
 [params]
 

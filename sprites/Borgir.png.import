@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dc3ulotf8bbdv"
-path="res://.godot/imported/Apple.png-6cd13b76053e3795414d24077e6ea26f.ctex"
+uid="uid://2ve2yg5nvafs"
+path="res://.godot/imported/Borgir.png-0b7044ed2265d237aa5ea80e8bd74738.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Apple.png"
-dest_files=["res://.godot/imported/Apple.png-6cd13b76053e3795414d24077e6ea26f.ctex"]
+source_file="res://sprites/Borgir.png"
+dest_files=["res://.godot/imported/Borgir.png-0b7044ed2265d237aa5ea80e8bd74738.ctex"]
 
 [params]
 

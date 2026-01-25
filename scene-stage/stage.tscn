@@ -1,12 +1,12 @@
 [gd_scene load_steps=7 format=4 uid="uid://gukl0umto2eh"]
 
-[ext_resource type="Texture2D" uid="uid://dqesjof38maio" path="res://Cart_tileset.png" id="1_6eo5e"]
-[ext_resource type="Script" uid="uid://dumm052r31p6y" path="res://stage.gd" id="1_aees8"]
-[ext_resource type="PackedScene" uid="uid://bprm4p1rglv4h" path="res://chef.tscn" id="3_rnkuw"]
-[ext_resource type="PackedScene" uid="uid://djfj45rumfdue" path="res://fridge.tscn" id="5_16g40"]
+[ext_resource type="Script" uid="uid://dumm052r31p6y" path="res://scene-stage/stage.gd" id="1_wy2hx"]
+[ext_resource type="Texture2D" uid="uid://dqesjof38maio" path="res://sprites/Cart_tileset.png" id="2_qnvwe"]
+[ext_resource type="PackedScene" uid="uid://bprm4p1rglv4h" path="res://scene-chef/chef.tscn" id="3_1llen"]
+[ext_resource type="PackedScene" uid="uid://djfj45rumfdue" path="res://scene-fridge/fridge.tscn" id="4_l5bn0"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_aees8"]
-texture = ExtResource("1_6eo5e")
+texture = ExtResource("2_qnvwe")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(7, -16, 16, -16, 16, 16, 7, 16)
@@ -29,19 +29,19 @@ physics_layer_0/collision_layer = 1
 sources/1 = SubResource("TileSetAtlasSource_aees8")
 
 [node name="stage" type="Node2D"]
-script = ExtResource("1_aees8")
+script = ExtResource("1_wy2hx")
 
 [node name="Cart_tile_map" type="TileMapLayer" parent="."]
 position = Vector2(0, 1)
 tile_map_data = PackedByteArray("AAALAAMAAQAAAAAAAAALAAQAAQAAAAAAAAALAAUAAQAAAAAAAAALAAYAAQAAAAAAAAALAAcAAQAAAAAAAAALAAgAAQAAAAAAAAALAAkAAQAAAAAAAAALAAoAAQAAAAAAAAALAAsAAQAAAAAAAAALAAwAAQAAAAAAAAALAA0AAQAAAAAAAAAMAAIAAQAAAAAAAFANAAIAAQAAAAAAAFAOAAIAAQAAAAAAAFAPAAIAAQAAAAAAAFAQAAIAAQAAAAAAAFARAAIAAQAAAAAAAFASAAIAAQAAAAAAAFATAAIAAQAAAAAAAFAUAAIAAQAAAAAAAFAVAAMAAQAAAAAAADAVAAQAAQAAAAAAADAVAAUAAQAAAAAAADAVAAYAAQAAAAAAADAVAAcAAQAAAAAAADAVAAgAAQAAAAAAADAVAAkAAQAAAAAAADAVAAoAAQAAAAAAADAVAAsAAQAAAAAAADAVAAwAAQAAAAAAADAVAA0AAQAAAAAAADAMAA4AAQAAAAAAAGANAA4AAQAAAAAAAGAOAA4AAQAAAAAAAGAPAA4AAQAAAAAAAGAQAA4AAQAAAAAAAGARAA4AAQAAAAAAAGASAA4AAQAAAAAAAGATAA4AAQAAAAAAAGAUAA4AAQAAAAAAAGA=")
 tile_set = SubResource("TileSet_x1kum")
 
-[node name="Chef" parent="." instance=ExtResource("3_rnkuw")]
+[node name="Chef" parent="." instance=ExtResource("3_1llen")]
 position = Vector2(514, 215)
 
 [node name="Interactable_objects" type="Node2D" parent="."]
 
-[node name="Fridge" parent="Interactable_objects" instance=ExtResource("5_16g40")]
+[node name="Fridge" parent="Interactable_objects" instance=ExtResource("4_l5bn0")]
 position = Vector2(443, 125)
 
 [node name="DroppedItems" type="Node2D" parent="."]

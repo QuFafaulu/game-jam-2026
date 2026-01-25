@@ -1,18 +1,18 @@
 [gd_scene load_steps=4 format=3 uid="uid://cesub6r60e3a"]
 
-[ext_resource type="Script" uid="uid://diwyaltxlyv5t" path="res://item.gd" id="1_tnite"]
-[ext_resource type="Script" uid="uid://bvdomfybymn34" path="res://interactable_zone.gd" id="2_ttk8k"]
+[ext_resource type="Script" uid="uid://diwyaltxlyv5t" path="res://scene-item/item.gd" id="1_f1eh7"]
+[ext_resource type="Script" uid="uid://bvdomfybymn34" path="res://scripts/classes/interactable_zone.gd" id="2_wvnv3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tnite"]
 
 [node name="Item" type="Node2D"]
-script = ExtResource("1_tnite")
+script = ExtResource("1_f1eh7")
 metadata/_custom_type_script = "uid://csdb2i55f762q"
 
 [node name="Sprite" type="Sprite2D" parent="."]
 
 [node name="Interaction_zone" type="Area2D" parent="." node_paths=PackedStringArray("linked_object")]
-script = ExtResource("2_ttk8k")
+script = ExtResource("2_wvnv3")
 linked_object = NodePath("..")
 metadata/_custom_type_script = "uid://bvdomfybymn34"
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://1og58v1s2l6p"
-path="res://.godot/imported/burger.jpg-fe74ddb114743829c495bfedc9067b1d.ctex"
+uid="uid://e5l41pca0c0e"
+path="res://.godot/imported/Fridge.png-ef62890234d40db27c626b347434d732.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://burger.jpg"
-dest_files=["res://.godot/imported/burger.jpg-fe74ddb114743829c495bfedc9067b1d.ctex"]
+source_file="res://sprites/Fridge.png"
+dest_files=["res://.godot/imported/Fridge.png-ef62890234d40db27c626b347434d732.ctex"]
 
 [params]
 

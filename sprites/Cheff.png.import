@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dqesjof38maio"
-path="res://.godot/imported/Cart_tileset.png-27c7932fc9da05debc8b670e58e14033.ctex"
+uid="uid://oqi5b0mrw35j"
+path="res://.godot/imported/Cheff.png-899ed3f43c9b305e427027b50970cda1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Cart_tileset.png"
-dest_files=["res://.godot/imported/Cart_tileset.png-27c7932fc9da05debc8b670e58e14033.ctex"]
+source_file="res://sprites/Cheff.png"
+dest_files=["res://.godot/imported/Cheff.png-899ed3f43c9b305e427027b50970cda1.ctex"]
 
 [params]
 

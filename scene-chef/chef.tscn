@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://bprm4p1rglv4h"]
 
-[ext_resource type="Script" uid="uid://dw1krbor7reou" path="res://chef.gd" id="1_mivr5"]
-[ext_resource type="Texture2D" uid="uid://oqi5b0mrw35j" path="res://Cheff.png" id="2_mivr5"]
+[ext_resource type="Script" uid="uid://dw1krbor7reou" path="res://scene-chef/chef.gd" id="1_mivr5"]
+[ext_resource type="Texture2D" uid="uid://oqi5b0mrw35j" path="res://sprites/Cheff.png" id="2_mivr5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5cx38"]
 size = Vector2(32, 32)
