@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://cesub6r60e3a"]
 
-[ext_resource type="Script" uid="uid://diwyaltxlyv5t" path="res://scene-item/item.gd" id="1_f1eh7"]
+[ext_resource type="Script" uid="uid://diwyaltxlyv5t" path="res://scenes/item/item.gd" id="1_f1eh7"]
 [ext_resource type="Script" uid="uid://bvdomfybymn34" path="res://scripts/classes/interactable_zone.gd" id="2_wvnv3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tnite"]

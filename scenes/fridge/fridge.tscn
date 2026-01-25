@@ -1,9 +1,9 @@
 [gd_scene load_steps=11 format=3 uid="uid://djfj45rumfdue"]
 
-[ext_resource type="Script" uid="uid://b0kh67nali4jj" path="res://scene-fridge/fridge.gd" id="1_e6sfw"]
+[ext_resource type="Script" uid="uid://b0kh67nali4jj" path="res://scenes/fridge/fridge.gd" id="1_e6sfw"]
 [ext_resource type="Texture2D" uid="uid://e5l41pca0c0e" path="res://sprites/Fridge.png" id="2_e6sfw"]
 [ext_resource type="Script" uid="uid://bvdomfybymn34" path="res://scripts/classes/interactable_zone.gd" id="3_6ofhc"]
-[ext_resource type="PackedScene" uid="uid://cesub6r60e3a" path="res://scene-item/item.tscn" id="3_gk71u"]
+[ext_resource type="PackedScene" uid="uid://cesub6r60e3a" path="res://scenes/item/item.tscn" id="3_gk71u"]
 [ext_resource type="Texture2D" uid="uid://dc3ulotf8bbdv" path="res://sprites/Apple.png" id="4_gk71u"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gk71u"]
