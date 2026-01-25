@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://pn5618ft84ov"]
 
 [ext_resource type="PackedScene" uid="uid://bwo7qpkc4hliq" path="res://scenes/station.tscn" id="1_nd33l"]
-[ext_resource type="Script" uid="uid://xcxbrfp0361k" path="res://oven.gd" id="2_pgb8s"]
+[ext_resource type="Script" uid="uid://xcxbrfp0361k" path="res://scripts/scene_scripts/oven.gd" id="2_pgb8s"]
 
 [node name="Oven" instance=ExtResource("1_nd33l")]
 script = ExtResource("2_pgb8s")
