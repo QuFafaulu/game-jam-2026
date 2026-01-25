@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://bprm4p1rglv4h"]
+[gd_scene load_steps=6 format=3 uid="uid://bprm4p1rglv4h"]
 
-[ext_resource type="Script" uid="uid://dw1krbor7reou" path="res://scenes/chef/chef.gd" id="1_mivr5"]
+[ext_resource type="Script" uid="uid://dw1krbor7reou" path="res://scripts/scene_scripts/chef.gd" id="1_mivr5"]
 [ext_resource type="Texture2D" uid="uid://oqi5b0mrw35j" path="res://sprites/Cheff.png" id="2_mivr5"]
+[ext_resource type="Script" uid="uid://2x4akdgk6d0a" path="res://scripts/scene_scripts/area_2d.gd" id="3_jqokb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5cx38"]
 size = Vector2(32, 32)
@@ -27,7 +28,8 @@ shape = SubResource("RectangleShape2D_5cx38")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_v0wnx")
 
-[node name="Interaction_zone" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="."]
+script = ExtResource("3_jqokb")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Interaction_zone"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_5cx38")

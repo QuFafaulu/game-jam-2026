@@ -1,0 +1,51 @@
+[gd_scene load_steps=8 format=3 uid="uid://bwo7qpkc4hliq"]
+
+[ext_resource type="Script" uid="uid://bo2oxn75tbl7i" path="res://scripts/classes/station.gd" id="1_0r0hh"]
+[ext_resource type="Texture2D" uid="uid://u0wfnxd8fyhh" path="res://sprites/Oven.png" id="2_rvx7u"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dawyj"]
+size = Vector2(26, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6u3yf"]
+atlas = ExtResource("2_rvx7u")
+region = Rect2(0, 0, 35, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gv0pl"]
+atlas = ExtResource("2_rvx7u")
+region = Rect2(35, 0, 35, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_skjd0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6u3yf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gv0pl")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6u3yf"]
+size = Vector2(18, 26)
+
+[node name="InteractableObj" type="Area2D"]
+script = ExtResource("1_0r0hh")
+metadata/_custom_type_script = "uid://c672w24kn7bpt"
+
+[node name="InteractArea" type="CollisionShape2D" parent="."]
+position = Vector2(6.9999995, -3)
+shape = SubResource("RectangleShape2D_dawyj")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_skjd0")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(3, -3)
+shape = SubResource("RectangleShape2D_6u3yf")
+
+[node name="Inventory" type="Node2D" parent="."]

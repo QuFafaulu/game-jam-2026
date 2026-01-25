@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=4 uid="uid://gukl0umto2eh"]
+[gd_scene load_steps=8 format=4 uid="uid://gukl0umto2eh"]
 
-[ext_resource type="Script" uid="uid://dumm052r31p6y" path="res://scenes/stage/stage.gd" id="1_wy2hx"]
+[ext_resource type="Script" uid="uid://dumm052r31p6y" path="res://scripts/scene_scripts/stage.gd" id="1_wy2hx"]
 [ext_resource type="Texture2D" uid="uid://dqesjof38maio" path="res://sprites/Cart_tileset.png" id="2_qnvwe"]
-[ext_resource type="PackedScene" uid="uid://bprm4p1rglv4h" path="res://scenes/chef/chef.tscn" id="3_1llen"]
-[ext_resource type="PackedScene" uid="uid://djfj45rumfdue" path="res://scenes/fridge/fridge.tscn" id="4_l5bn0"]
+[ext_resource type="PackedScene" uid="uid://bprm4p1rglv4h" path="res://scenes/chef.tscn" id="3_1llen"]
+[ext_resource type="PackedScene" uid="uid://djfj45rumfdue" path="res://scenes/fridge.tscn" id="4_l5bn0"]
+[ext_resource type="PackedScene" uid="uid://pn5618ft84ov" path="res://scenes/oven.tscn" id="5_vcsse"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_aees8"]
 texture = ExtResource("2_qnvwe")
@@ -43,6 +44,11 @@ position = Vector2(514, 215)
 
 [node name="Fridge" parent="Interactable_objects" instance=ExtResource("4_l5bn0")]
 position = Vector2(443, 125)
+
+[node name="oven" parent="Interactable_objects" instance=ExtResource("5_vcsse")]
+position = Vector2(391, 268)
+tint = Color(0, 0, 0, 1)
+cookable = false
 
 [node name="DroppedItems" type="Node2D" parent="."]
 

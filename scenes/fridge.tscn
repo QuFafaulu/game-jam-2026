@@ -1,10 +1,12 @@
-[gd_scene load_steps=11 format=3 uid="uid://djfj45rumfdue"]
+[gd_scene load_steps=10 format=3 uid="uid://djfj45rumfdue"]
 
-[ext_resource type="Script" uid="uid://b0kh67nali4jj" path="res://scenes/fridge/fridge.gd" id="1_e6sfw"]
+[ext_resource type="Script" uid="uid://b0kh67nali4jj" path="res://scripts/scene_scripts/fridge.gd" id="1_e6sfw"]
 [ext_resource type="Texture2D" uid="uid://e5l41pca0c0e" path="res://sprites/Fridge.png" id="2_e6sfw"]
-[ext_resource type="Script" uid="uid://bvdomfybymn34" path="res://scripts/classes/interactable_zone.gd" id="3_6ofhc"]
-[ext_resource type="PackedScene" uid="uid://cesub6r60e3a" path="res://scenes/item/item.tscn" id="3_gk71u"]
+[ext_resource type="PackedScene" uid="uid://cesub6r60e3a" path="res://scenes/item.tscn" id="3_gk71u"]
 [ext_resource type="Texture2D" uid="uid://dc3ulotf8bbdv" path="res://sprites/Apple.png" id="4_gk71u"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gk71u"]
+size = Vector2(20, 8)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gk71u"]
 atlas = ExtResource("2_e6sfw")
@@ -31,12 +33,13 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2t0b2"]
 size = Vector2(24, 26)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_gk71u"]
-size = Vector2(20, 8)
-
-[node name="Fridge" type="Node2D"]
+[node name="Station" type="Area2D"]
 script = ExtResource("1_e6sfw")
-metadata/_custom_type_script = "uid://csdb2i55f762q"
+metadata/_custom_type_script = "uid://bo2oxn75tbl7i"
+
+[node name="InteractArea" type="CollisionShape2D" parent="."]
+position = Vector2(5, 14)
+shape = SubResource("RectangleShape2D_gk71u")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_x7sr2")
@@ -47,18 +50,14 @@ sprite_frames = SubResource("SpriteFrames_x7sr2")
 position = Vector2(3, -3)
 shape = SubResource("RectangleShape2D_2t0b2")
 
-[node name="FridgeInteract" type="Area2D" parent="." node_paths=PackedStringArray("linked_object")]
-position = Vector2(5, 14)
-script = ExtResource("3_6ofhc")
-linked_object = NodePath("..")
-metadata/_custom_type_script = "uid://bvdomfybymn34"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="FridgeInteract"]
-shape = SubResource("RectangleShape2D_gk71u")
-
 [node name="Inventory" type="Node2D" parent="."]
 
 [node name="Apple" parent="Inventory" instance=ExtResource("3_gk71u")]
 texture = ExtResource("4_gk71u")
 
-[connection signal="body_exited" from="FridgeInteract" to="." method="_on_fridge_interact_body_exited"]
+[node name="Orange" parent="Inventory" instance=ExtResource("3_gk71u")]
+texture = ExtResource("4_gk71u")
+tint = Color(0.91764706, 0.2784314, 0.043137256, 1)
+cookable = true
+
+[connection signal="body_exited" from="." to="." method="_on_fridge_interact_body_exited"]

@@ -1,10 +1,12 @@
 extends CharacterBody2D
 
-@export var max_speed := 500
-@onready var interaction_zone = $Interaction_zone
+@export var max_speed := 300
+@onready var interaction_zone: Area2D = $Area2D
+var cookable := false #Needed for all area 2Ds or else
 
 var carried_item: Item
 
+signal im_interacting_with_you #unimplemented 
 signal is_interacting
 signal drop
 
@@ -25,7 +27,7 @@ func get_top_priority_interaction_zone(zones: Array[Area2D]) -> Area2D:
 			prio_zone = zone
 	return prio_zone
 
-func _physics_process(_delta):
+func _physics_process(_delta): #Handles player movement
 	var input_dir: Vector2
 	# Use Input's get_vector function, which can convert either analog or digital inputs
 	# into a vector scaled to a max amplitude of 1
@@ -43,13 +45,14 @@ func _input(_event):
 	# When the interact input is received, emit the is_interacting
 	# signal, along with the zone being interacted with
 	if Input.is_action_just_pressed("interact"):
+		
 		# Get all zones overlapping with the player interaction box
 		zones = interaction_zone.get_overlapping_areas()
+		drop_carried_item()
 		if not zones.is_empty():
 			prio_zone  = get_top_priority_interaction_zone(zones)
 			is_interacting.emit(prio_zone)
-		else:
-			drop_carried_item()
+			
 
 func pick_up_item(item: Item):
 	# Shift the item up above the chef
