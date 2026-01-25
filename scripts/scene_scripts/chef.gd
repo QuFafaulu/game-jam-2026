@@ -1,31 +1,18 @@
 extends CharacterBody2D
 
 @export var max_speed := 300
+@export var inventory_slot_y_offset := -20
 @onready var interaction_zone: Area2D = $Area2D
-var cookable := false #Needed for all area 2Ds or else
+@onready var inventory: Node2D = $Inventory
 
-var carried_item: Item
-
-signal im_interacting_with_you #unimplemented 
-signal is_interacting
-signal drop
+signal drop #Emitted when the chef drops an inventory item, to be intercepted by the stage
 
 func _ready():
 	# Set the chef's interaction zone to scan all layers that can be
 	# interacted with
-	interaction_zone.set_collision_mask_value(Global.UTILITY_LAYER, true)
-	interaction_zone.set_collision_mask_value(Global.DROPPED_ITEM_LAYER, true)
-
-func get_top_priority_interaction_zone(zones: Array[Area2D]) -> Area2D:
-	var prio_zone: Area2D
-	# Start with the 0 index zone
-	prio_zone = zones[0]
-	# Loop through all the zones,
-	# floating the highest collision layer zone to the top
-	for zone in zones:
-		if zone.collision_layer > prio_zone.collision_layer:
-			prio_zone = zone
-	return prio_zone
+	interaction_zone.set_collision_mask_value(Global.STATION_INTERACTION_LAYER, true)
+	interaction_zone.set_collision_mask_value(Global.DROPPED_ITEM_INTERACTION_LAYER, true)
+	self.set_collision_layer_value(Global.PHYSICS_LAYER, true)
 
 func _physics_process(_delta): #Handles player movement
 	var input_dir: Vector2
@@ -41,28 +28,58 @@ func _physics_process(_delta): #Handles player movement
 
 func _input(_event):
 	var zones: Array[Area2D]
-	var prio_zone: Area2D
+	var prio_obj: InteractrableObj
 	# When the interact input is received, emit the is_interacting
 	# signal, along with the zone being interacted with
 	if Input.is_action_just_pressed("interact"):
 		
-		# Get all zones overlapping with the player interaction box
+		# Get all Area2Ds overlapping with the player interaction box
 		zones = interaction_zone.get_overlapping_areas()
-		drop_carried_item()
 		if not zones.is_empty():
-			prio_zone  = get_top_priority_interaction_zone(zones)
-			is_interacting.emit(prio_zone)
-			
+			prio_obj  = get_top_priority_interactable_obj(zones)
+			if not prio_obj == null: # It's possible for none of the zone to be InteractableObj
+				print("Chef offered ", inventory.get_child(0))
+				var aquired_item = prio_obj.interact(inventory.get_child(0))
+				if not aquired_item == null:
+					pick_up_item(aquired_item)
+				# Exit the _input function now if an interactable object was found,
+				# skip the dropped_carried_item below
+				return
+		# If an interaction with an InteractableObj did not occur, 
+		# instread drop the carried item
+		drop_carried_item()
 
+# Takes an array of Area2Ds (which may or may not include InteractableObj instances)
+# and returns the InteractableObj on the highest collision layer (if it exists)
+# Otherwise returns null
+func get_top_priority_interactable_obj(zones: Array[Area2D]) -> InteractrableObj:
+	var prio_zone: InteractrableObj = null
+	# Loop through all the zones,
+	# floating the highest collision layer zone to the top
+	for zone in zones:
+		# Find the first InteractableObj within the zones, and set prio zone to that
+		if prio_zone == null and zone is InteractrableObj:
+			prio_zone = zone
+		# If any InteractableObj has a higher collision_layer, replace as prio_zone
+		if zone is InteractrableObj and zone.collision_layer > prio_zone.collision_layer:
+			prio_zone = zone
+	return prio_zone
+
+# 
 func pick_up_item(item: Item):
-	# Shift the item up above the chef
-	item.global_position = self.global_position + Vector2(0,-20)
+	# Drop the carried item if any
 	drop_carried_item()
-	carried_item = item
+	# Claim ownership of the item
+	item.reparent(inventory)
+	item.disable_interaction()
+	item.disable_collision()
+	# Shift the new item up above the chef
+	item.position = Vector2(0, inventory_slot_y_offset)
 
 func drop_carried_item():
-	if carried_item == null:
+	# If the chef is not carrying an item, do nothing
+	if inventory.get_child(0) == null:
 		return
+	# Emit to drop signal so the stage can take control of the item
 	else:
-		drop.emit(carried_item)
-		carried_item = null
+		drop.emit(inventory.get_child(0))

@@ -1,7 +1,7 @@
 extends Station
 
 
-func interact(... _args: Array) -> Item:
+func interact(offered_item: Item) -> Item:
 	var contents: Array[Node]
 	# Open the fridge
 	sprite.frame = 1

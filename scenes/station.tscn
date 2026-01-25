@@ -31,7 +31,7 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6u3yf"]
 size = Vector2(18, 26)
 
-[node name="InteractableObj" type="Area2D"]
+[node name="Station" type="Area2D"]
 script = ExtResource("1_0r0hh")
 metadata/_custom_type_script = "uid://c672w24kn7bpt"
 
@@ -49,3 +49,11 @@ position = Vector2(3, -3)
 shape = SubResource("RectangleShape2D_6u3yf")
 
 [node name="Inventory" type="Node2D" parent="."]
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+process_mode = 3
+offset_left = -26.0
+offset_top = -25.0
+offset_right = 40.0
+offset_bottom = -16.0
+show_percentage = false

@@ -45,13 +45,9 @@ position = Vector2(514, 215)
 [node name="Fridge" parent="Interactable_objects" instance=ExtResource("4_l5bn0")]
 position = Vector2(443, 125)
 
-[node name="oven" parent="Interactable_objects" instance=ExtResource("5_vcsse")]
-position = Vector2(391, 268)
-tint = Color(0, 0, 0, 1)
-cookable = false
+[node name="Oven" parent="Interactable_objects" instance=ExtResource("5_vcsse")]
+position = Vector2(391, 244)
 
 [node name="DroppedItems" type="Node2D" parent="."]
 
 [connection signal="drop" from="Chef" to="." method="_on_chef_drop"]
-[connection signal="is_interacting" from="Chef" to="." method="_on_chef_is_interacting"]
-[connection signal="request_reparent" from="Interactable_objects/oven" to="." method="_on_request_reparent"]

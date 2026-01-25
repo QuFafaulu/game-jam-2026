@@ -33,3 +33,5 @@ script = ExtResource("3_jqokb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_5cx38")
+
+[node name="Inventory" type="Node2D" parent="."]
