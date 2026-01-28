@@ -2,7 +2,7 @@
 	"Orders": 
 	[
 		{
-			"order_num": 10,
+			"order number": 10,
 			"items": ["burger"],
 			"text": "gimme borgir",
 			"patience": 45,
@@ -10,7 +10,7 @@
 			"max tip": 5
 		},
 		{
-			"order_num": 20,
+			"order number": 20,
 			"items": [],
 			"text": "",
 			"patience": 0,
@@ -18,14 +18,14 @@
 			"max tip": 0
 		},
 		{
-			"order_num": 30,
+			"order number": 30,
 			"items": [],
 			"text": "",
 			"patience": 0,
 			"start time": 0,
 			"max tip": 0
 		},{
-			"order_num": 40,
+			"order number": 40,
 			"items": [],
 			"text": "",
 			"patience": 0,

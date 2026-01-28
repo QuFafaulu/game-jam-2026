@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://bqeoeeglw5ms1"]
+
+[node name="OrderStartTimer" type="Timer"]

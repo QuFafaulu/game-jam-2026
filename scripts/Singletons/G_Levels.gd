@@ -10,7 +10,7 @@ var Levels: Array	# Global access variable -> Array of Arrays.
 					#region : Game Level JSON format
 """
 					{
-						"order_num": int,
+						"order_number": int,
 						"items": [Strings],
 						"text": String,
 						"patience": int,  
@@ -20,7 +20,7 @@ var Levels: Array	# Global access variable -> Array of Arrays.
 """
 					#endregion --------------------
 #NOTE Namespace for order look up
-const ORDER_NUM = "order num"
+const ORDER_NUM = "order number"
 const ORDER_ITEMS = "items"
 const ORDER_TEXT = "text"
 const ORDER_PATIENCE = "patience"

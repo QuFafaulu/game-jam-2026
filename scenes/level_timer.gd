@@ -1,8 +1,5 @@
 extends Timer
 
-var order_times: Array
-
-
 
 
 
