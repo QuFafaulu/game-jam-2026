@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://28wqirw5nryp"]
+
+[ext_resource type="Script" uid="uid://drpggfg0bhr84" path="res://scenes/order_manager.gd" id="1_v500a"]
+[ext_resource type="Script" uid="uid://d22ou5c0lo7e2" path="res://scenes/timer_display.gd" id="2_ghy7m"]
+[ext_resource type="Script" uid="uid://dgqeblfkbbeg1" path="res://scenes/level_timer.gd" id="2_hrvr2"]
+[ext_resource type="Script" uid="uid://cwa5i6bw6x4ca" path="res://scenes/order_window.gd" id="2_s7obs"]
+
+[node name="OrderManager" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_v500a")
+
+[node name="OrderWindow" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -239.0
+grow_horizontal = 0
+grow_vertical = 2
+script = ExtResource("2_s7obs")
+
+[node name="TimerDisplay" type="Label" parent="OrderWindow"]
+layout_mode = 2
+horizontal_alignment = 1
+script = ExtResource("2_ghy7m")
+
+[node name="LevelTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 300.0
+autostart = true
+script = ExtResource("2_hrvr2")

@@ -5,3 +5,6 @@ const PHYSICS_LAYER = 0 # Used by physics bodies, not used for overlaps or inter
 const STATION_INTERACTION_LAYER = 1 # Highest priority, used by interactable stage "stations"
 const DROPPED_ITEM_INTERACTION_LAYER = 2 # Used by dropped items
 const COMBAT_INTERACTION_LAYER = 3 # Used by combat entities (i.e. rats)
+
+# Level/Order Trackers
+var current_level = 1
