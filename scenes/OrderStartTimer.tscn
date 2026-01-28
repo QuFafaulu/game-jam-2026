@@ -1,3 +1,3 @@
-[gd_scene format=3 uid="uid://bqeoeeglw5ms1"]
+[gd_scene load_steps=0 format=3 uid="uid://bqeoeeglw5ms1"]
 
 [node name="OrderStartTimer" type="Timer"]

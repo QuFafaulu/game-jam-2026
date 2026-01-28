@@ -10,18 +10,18 @@
 script = ExtResource("1_wy2hx")
 
 [node name="Chef" parent="." instance=ExtResource("3_1llen")]
-position = Vector2(1284, 990)
-scale = Vector2(4, 4)
+position = Vector2(664, 500)
+scale = Vector2(2, 2)
 
 [node name="Interactable_objects" type="Node2D" parent="."]
 
 [node name="Fridge" parent="Interactable_objects" instance=ExtResource("4_l5bn0")]
-position = Vector2(1904, 637)
-scale = Vector2(8, 8)
+position = Vector2(950, 325)
+scale = Vector2(4, 4)
 
 [node name="Oven" parent="Interactable_objects" instance=ExtResource("5_vcsse")]
-position = Vector2(717, 1007)
-scale = Vector2(8, 8)
+position = Vector2(356, 564)
+scale = Vector2(4, 4)
 cook_speed = 10
 
 [node name="DroppedItems" type="Node2D" parent="."]
@@ -30,8 +30,7 @@ cook_speed = 10
 
 [node name="ConceptsV0Truck" type="Sprite2D" parent="StaticBody2D"]
 z_index = -1
-position = Vector2(1200, 800)
-scale = Vector2(2, 2)
+position = Vector2(600, 400)
 texture = ExtResource("5_2so7o")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
