@@ -20,6 +20,13 @@ config/icon="res://sprites/icon.svg"
 Global="*res://scripts/global.gd"
 G_Level="*res://scripts/Singletons/G_Levels.gd"
 
+[display]
+
+window/size/viewport_width=2400
+window/size/viewport_height=1600
+window/stretch/mode="viewport"
+window/stretch/aspect="ignore"
+
 [input]
 
 move_left={

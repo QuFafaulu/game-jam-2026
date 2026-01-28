@@ -13,5 +13,3 @@ func _on_chef_drop(item: Item) -> void:
 	# Set the item's position back to it's position before reparenting
 	# (this should leave the item unmoved)
 	item.position = chef.position
-	# Allow the item to collide with physics bodies
-	item.collision_body.apply_impulse(Vector2(10,0))

@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 @export var max_speed := 300
 @export var inventory_slot_y_offset := -20
-@onready var interaction_zone: Area2D = $Area2D
+@onready var interaction_zone: Area2D = $InteractionArea
 @onready var inventory: Node2D = $Inventory
 
 signal drop #Emitted when the chef drops an inventory item, to be intercepted by the stage
@@ -65,14 +65,14 @@ func get_top_priority_interactable_obj(zones: Array[Area2D]) -> InteractrableObj
 			prio_zone = zone
 	return prio_zone
 
-# 
 func pick_up_item(item: Item):
 	# Drop the carried item if any
 	drop_carried_item()
 	# Claim ownership of the item
 	item.reparent(inventory)
 	item.disable_interaction()
-	item.disable_collision()
+	if item is Food:
+		item.stop_cooking()
 	# Shift the new item up above the chef
 	item.position = Vector2(0, inventory_slot_y_offset)
 

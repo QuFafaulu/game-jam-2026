@@ -1,53 +1,42 @@
-[gd_scene load_steps=8 format=4 uid="uid://gukl0umto2eh"]
+[gd_scene load_steps=6 format=3 uid="uid://gukl0umto2eh"]
 
 [ext_resource type="Script" uid="uid://dumm052r31p6y" path="res://scripts/scene_scripts/stage.gd" id="1_wy2hx"]
-[ext_resource type="Texture2D" uid="uid://dqesjof38maio" path="res://sprites/Cart_tileset.png" id="2_qnvwe"]
 [ext_resource type="PackedScene" uid="uid://bprm4p1rglv4h" path="res://scenes/chef.tscn" id="3_1llen"]
 [ext_resource type="PackedScene" uid="uid://djfj45rumfdue" path="res://scenes/fridge.tscn" id="4_l5bn0"]
+[ext_resource type="Texture2D" uid="uid://svfkxetaemvp" path="res://sprites/concepts_v0_truck.png" id="5_2so7o"]
 [ext_resource type="PackedScene" uid="uid://pn5618ft84ov" path="res://scenes/oven.tscn" id="5_vcsse"]
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_aees8"]
-texture = ExtResource("2_qnvwe")
-texture_region_size = Vector2i(32, 32)
-0:0/0 = 0
-0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(7, -16, 16, -16, 16, 16, 7, 16)
-1:0/0 = 0
-1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(1, -16, 16, -16, 16, 16, 1, 16)
-2:0/0 = 0
-2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(1, -16, 16, -16, 16, 16, 1, 16)
-3:0/0 = 0
-3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(1, -16, 16, -16, 16, 16, 1, 16)
-4:0/0 = 0
-4:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(1, -16, 16, -16, 16, 16, 1, 16)
-5:0/0 = 0
-5:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(1, -16, 16, -16, 16, 16, 1, 16)
-6:0/0 = 0
-6:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(1, -16, 16, -16, 16, 16, 1, 16)
-
-[sub_resource type="TileSet" id="TileSet_x1kum"]
-tile_size = Vector2i(32, 32)
-physics_layer_0/collision_layer = 1
-sources/1 = SubResource("TileSetAtlasSource_aees8")
 
 [node name="stage" type="Node2D"]
 script = ExtResource("1_wy2hx")
 
-[node name="Cart_tile_map" type="TileMapLayer" parent="."]
-position = Vector2(0, 1)
-tile_map_data = PackedByteArray("AAALAAMAAQAAAAAAAAALAAQAAQAAAAAAAAALAAUAAQAAAAAAAAALAAYAAQAAAAAAAAALAAcAAQAAAAAAAAALAAgAAQAAAAAAAAALAAkAAQAAAAAAAAALAAoAAQAAAAAAAAALAAsAAQAAAAAAAAALAAwAAQAAAAAAAAALAA0AAQAAAAAAAAAMAAIAAQAAAAAAAFANAAIAAQAAAAAAAFAOAAIAAQAAAAAAAFAPAAIAAQAAAAAAAFAQAAIAAQAAAAAAAFARAAIAAQAAAAAAAFASAAIAAQAAAAAAAFATAAIAAQAAAAAAAFAUAAIAAQAAAAAAAFAVAAMAAQAAAAAAADAVAAQAAQAAAAAAADAVAAUAAQAAAAAAADAVAAYAAQAAAAAAADAVAAcAAQAAAAAAADAVAAgAAQAAAAAAADAVAAkAAQAAAAAAADAVAAoAAQAAAAAAADAVAAsAAQAAAAAAADAVAAwAAQAAAAAAADAVAA0AAQAAAAAAADAMAA4AAQAAAAAAAGANAA4AAQAAAAAAAGAOAA4AAQAAAAAAAGAPAA4AAQAAAAAAAGAQAA4AAQAAAAAAAGARAA4AAQAAAAAAAGASAA4AAQAAAAAAAGATAA4AAQAAAAAAAGAUAA4AAQAAAAAAAGA=")
-tile_set = SubResource("TileSet_x1kum")
-
 [node name="Chef" parent="." instance=ExtResource("3_1llen")]
-position = Vector2(514, 215)
+position = Vector2(1284, 990)
+scale = Vector2(4, 4)
 
 [node name="Interactable_objects" type="Node2D" parent="."]
 
 [node name="Fridge" parent="Interactable_objects" instance=ExtResource("4_l5bn0")]
-position = Vector2(443, 125)
+position = Vector2(1904, 637)
+scale = Vector2(8, 8)
 
 [node name="Oven" parent="Interactable_objects" instance=ExtResource("5_vcsse")]
-position = Vector2(391, 244)
+position = Vector2(717, 1007)
+scale = Vector2(8, 8)
+cook_speed = 10
 
 [node name="DroppedItems" type="Node2D" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="ConceptsV0Truck" type="Sprite2D" parent="StaticBody2D"]
+z_index = -1
+position = Vector2(1200, 800)
+scale = Vector2(2, 2)
+texture = ExtResource("5_2so7o")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+position = Vector2(-2, 0)
+build_mode = 1
+polygon = PackedVector2Array(0, 0, 0, 0)
 
 [connection signal="drop" from="Chef" to="." method="_on_chef_drop"]

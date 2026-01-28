@@ -1,9 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://djfj45rumfdue"]
+[gd_scene load_steps=12 format=3 uid="uid://djfj45rumfdue"]
 
 [ext_resource type="Script" uid="uid://b0kh67nali4jj" path="res://scripts/scene_scripts/fridge.gd" id="1_e6sfw"]
 [ext_resource type="Texture2D" uid="uid://e5l41pca0c0e" path="res://sprites/Fridge.png" id="2_e6sfw"]
-[ext_resource type="PackedScene" uid="uid://cesub6r60e3a" path="res://scenes/item.tscn" id="3_gk71u"]
+[ext_resource type="PackedScene" uid="uid://clc8xiu8o8ns8" path="res://scenes/ingredient.tscn" id="3_buvrw"]
 [ext_resource type="Texture2D" uid="uid://dc3ulotf8bbdv" path="res://sprites/Apple.png" id="4_gk71u"]
+[ext_resource type="PackedScene" uid="uid://cm50jawt586sk" path="res://scenes/sus_ingredient.tscn" id="5_i0i1l"]
+[ext_resource type="Texture2D" uid="uid://dnho6hfc14o5h" path="res://sprites/DeadRat.png" id="6_npr5r"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gk71u"]
 size = Vector2(20, 8)
@@ -33,11 +35,8 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2t0b2"]
 size = Vector2(24, 26)
 
-[node name="Station" type="Area2D"]
+[node name="Fridge" type="Area2D"]
 script = ExtResource("1_e6sfw")
-cook_time = null
-cookable = null
-metadata/_custom_type_script = "uid://bo2oxn75tbl7i"
 
 [node name="InteractArea" type="CollisionShape2D" parent="."]
 position = Vector2(5, 14)
@@ -54,12 +53,17 @@ shape = SubResource("RectangleShape2D_2t0b2")
 
 [node name="Inventory" type="Node2D" parent="."]
 
-[node name="Apple" parent="Inventory" instance=ExtResource("3_gk71u")]
+[node name="Beef" parent="Inventory" instance=ExtResource("3_buvrw")]
+type = 0
 texture = ExtResource("4_gk71u")
-cookable = true
 
-[node name="Orange" parent="Inventory" instance=ExtResource("3_gk71u")]
+[node name="Beef2" parent="Inventory" instance=ExtResource("3_buvrw")]
+type = 0
 texture = ExtResource("4_gk71u")
-cookable = true
+
+[node name="Rat" parent="Inventory" instance=ExtResource("5_i0i1l")]
+rot_speed = 2.0
+type = 1
+texture = ExtResource("6_npr5r")
 
 [connection signal="body_exited" from="." to="." method="_on_fridge_interact_body_exited"]

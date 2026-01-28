@@ -1,7 +1,8 @@
-extends Station
+extends InteractrableObj
 
+@onready var inventory: Node = $Inventory
 
-func interact(offered_item: Item) -> Item:
+func interact(_offered_item: Item) -> Item:
 	var contents: Array[Node]
 	# Open the fridge
 	sprite.frame = 1

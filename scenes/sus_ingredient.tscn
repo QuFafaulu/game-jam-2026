@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://cm50jawt586sk"]
+
+[ext_resource type="PackedScene" uid="uid://clc8xiu8o8ns8" path="res://scenes/ingredient.tscn" id="1_r4453"]
+[ext_resource type="Script" uid="uid://dxbdd24jawci2" path="res://scripts/scene_scripts/sus_ingredient.gd" id="2_bowfv"]
+
+[node name="SusIngredient" instance=ExtResource("1_r4453")]
+script = ExtResource("2_bowfv")
+rot_speed = 2.0
+type = 0
+
+[node name="RotProgress" type="ProgressBar" parent="." index="2"]
+offset_left = -50.0
+offset_top = -30.0
+offset_right = 50.0
+offset_bottom = -20.0
+show_percentage = false
