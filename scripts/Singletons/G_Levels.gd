@@ -7,19 +7,22 @@ var _lvl_dir = "res://Data/Levels/"
 var Levels: Array	# Global access variable -> Array of Arrays. 
 					# each element is a Game Level 
 					# each Game Level is an array of orders(type:Dict) 
-					#region : Game Level JSON format
+					#region : NEW Game Level JSON format - EVENTS
 """
 					{
-						"order_number": int,
-						"items": [Strings],
-						"text": String,
-						"patience": int,  
-						"start time": int,
-						"max tip": int
-						"items_delivered": int
+						"event type": String ("order", "restock", "rat")
+						"index": int (1,2,3,...)  (seperate tallies for each event type)
+						"start time": int (seconds from level start)
+						"amount": int (number of raw meat restocked in fridge, or rats spawned)
+						"order items": [Strings] ("burger", "rat")
+						"order text": String ("I want a burger!")
+						"order patience": int (seconds)  
+						"order score": int (points for successful order)
 					}
 """
 					#endregion --------------------
+
+
 #NOTE Namespace for order look up
 const ORDER_NUM = "order number"
 const ORDER_ITEMS = "items"
@@ -98,3 +101,18 @@ func _ready() -> void:
 # var Levels = PackedDataContainer.new() #NOTE Tried using PackedDataContainer but it is obnoxious for debugging and inspecting
 #Levels.pack(get_data_from_paths()) # The pack() function is for populating PackedDataContainer's. Not using that data sturcture currently
 #endregion ----------------------------------------------------------------
+
+#DEPRECATED
+					#region : OLD  JSON format
+"""
+					{
+						"order_number": int,
+						"items": [Strings],
+						"text": String,
+						"patience": int,  
+						"start time": int,
+						"max tip": int
+						"items_delivered": int
+					}
+"""
+					#endregion --------------------
