@@ -45,8 +45,3 @@ anchor_bottom = 0.119
 offset_left = -200.0
 offset_bottom = 431.31198
 grow_horizontal = 0
-
-[node name="TextureRect" type="TextureRect" parent="."]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
