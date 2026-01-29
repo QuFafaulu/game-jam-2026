@@ -26,8 +26,8 @@ const INGREDIENT_SPRITES: Dictionary = {
 const MEAL_SPRITES: Dictionary = {
 	Meals.BURGER:     "res://Assets/Borgir.png",
 	Meals.CORN_DOG:   "res://Assets/Corn dog(1).png",
-	Meals.RAT_BURGER: "res://sprites/Rorgir.png",
-	#Meals.RAT_BURGER: "res://Assets/Rat Borgir.png",
+	#Meals.RAT_BURGER: "res://sprites/Rorgir.png",
+	Meals.RAT_BURGER: "res://Assets/Rat Borgir.png",
 	Meals.RAT_DOG:    "res://Assets/Rat dog.png",
 }
 
