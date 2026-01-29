@@ -26,7 +26,7 @@ func start_next_order(_id): # _id counts as such: "Timer", "Timer2", etc.
 	var new_pateince_timer = Timer.new()
 	self.add_child(new_pateince_timer)
 	new_pateince_timer.name = "PatienceTimer" + str(current_order_num)
-	new_pateince_timer.wait_time = this_order["patience"]
+	new_pateince_timer.wait_time = this_order[G_Level.ORDER_PATIENCE]
 	new_pateince_timer.timeout.connect(_on_patience_timer_timeout.bind(new_pateince_timer.name,current_order_num))
 	new_pateince_timer.one_shot = true
 	new_pateince_timer.start()
@@ -69,7 +69,7 @@ func _on_patience_timer_timeout(timer_name, order_number):
 		if typeof(order_slips[i]) != TYPE_INT:
 			print("poping #" + str(i))
 			order_slips[i].set_position(order_slips[i].position + Vector2(0,-85)) 
-	order_failed.emit(orders[order_number-1]["max tip"])
+	order_failed.emit(orders[order_number-1][G_Level.ORDER_MAX_TIP])
 
 func display_order(order):
 	var new_order_slip = TextureRect.new()
@@ -107,25 +107,25 @@ func deliver_item(item_type): #item_type means burger or corndog, either beef or
 		var filled_order_num = 0
 		if not filled:
 			if typeof(ticket) != TYPE_INT:
-				for i in range(0,ticket["items"].size()-1):
+				for i in range(0,ticket[G_Level.ORDER_ITEMS].size()-1):
 					if not filled:
-						if ticket["items"][i] == item_type:
-							ticket["items"][i] = "*(" + ticket["items"][i] + ")*"
-							ticket["items_delivered"] += 1
-							if ticket["items_delivered"] >= ticket["items"].size():
-								order_filled.emit(ticket["max tip"])
-								patience_timers[int(ticket["order number"])-1].queue_free() #complete order cean-up
+						if ticket[G_Level.ORDER_ITEMS][i] == item_type:
+							ticket[G_Level.ORDER_ITEMS][i] = "*(" + ticket[G_Level.ORDER_ITEMS][i] + ")*"
+							ticket[G_Level.ORDER_ITEM_DELIVERED] += 1
+							if ticket[G_Level.ORDER_ITEM_DELIVERED] >= ticket[G_Level.ORDER_ITEMS].size():
+								order_filled.emit(ticket[G_Level.ORDER_MAX_TIP])
+								patience_timers[int(ticket[G_Level.ORDER_NUM])-1].queue_free() #complete order cean-up
 							filled = true
 							var items_list = ""
-							for item in ticket["items"]:
+							for item in ticket[G_Level.ORDER_ITEMS]:
 								if items_list != "":
 									items_list += ", " + item
 								else:
 									items_list = item #first item in list requires no leading comma
 							var leading_zero: String = ""
-							if ticket["order number"] < 10:
+							if ticket[G_Level.ORDER_NUM] < 10:
 								leading_zero = "0"
-							order_slips[ii].get_child(0).set_text("# " + leading_zero + str(int(ticket["order number"])) + "\n" + items_list)
+							order_slips[ii].get_child(0).set_text("# " + leading_zero + str(int(ticket[G_Level.ORDER_NUM])) + "\n" + items_list)
 							
 	
 	
