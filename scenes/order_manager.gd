@@ -15,7 +15,7 @@ var start_timers: Array
 var patience_timers: Array
 var order_labels: Array
 
-func start_next_order(_id): # _id counts as such: "Timer", "Timer2", etc. 
+func start_next_order(_id): # _id counts as such: "Timer", "Timer2", etc.
 	current_order_num += 1
 	var this_order = orders[current_order_num-1]
 	var new_pateince_timer = Timer.new()

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://2ve2yg5nvafs"
-path="res://.godot/imported/Borgir.png-0b7044ed2265d237aa5ea80e8bd74738.ctex"
+uid="uid://btsi3cj8jgiud"
+path="res://.godot/imported/Raw beef2.png-51dc3e3849f936dd06fbc46a5bc6d06d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/Borgir.png"
-dest_files=["res://.godot/imported/Borgir.png-0b7044ed2265d237aa5ea80e8bd74738.ctex"]
+source_file="res://Assets/Raw beef2.png"
+dest_files=["res://.godot/imported/Raw beef2.png-51dc3e3849f936dd06fbc46a5bc6d06d.ctex"]
 
 [params]
 

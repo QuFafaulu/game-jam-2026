@@ -19,15 +19,16 @@ const MEAL_TYPES: Dictionary = {
 }
 
 const INGREDIENT_SPRITES: Dictionary = {
-	Ingredients.BEEF: "res://sprites/Apple.png",
-	Ingredients.RAT:  "res://sprites/DeadRat.png"
+	Ingredients.BEEF: "res://Assets/Raw beef.png",
+	Ingredients.RAT:  "res://Assets/Dead rat3.png"
 }
 
 const MEAL_SPRITES: Dictionary = {
-	Meals.BURGER:     "res://sprites/Borgir.png",
-	Meals.CORN_DOG:   "res://sprites/Borgir.png",
+	Meals.BURGER:     "res://Assets/Borgir.png",
+	Meals.CORN_DOG:   "res://Assets/Corn dog(1).png",
 	Meals.RAT_BURGER: "res://sprites/Rorgir.png",
-	Meals.RAT_DOG:    "res://sprites/Borgir.png",
+	#Meals.RAT_BURGER: "res://Assets/Rat Borgir.png",
+	Meals.RAT_DOG:    "res://Assets/Rat dog.png",
 }
 
 # Level/Order Trackers
