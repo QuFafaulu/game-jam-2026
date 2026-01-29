@@ -16,6 +16,7 @@ var Levels: Array	# Global access variable -> Array of Arrays.
 						"patience": int,  
 						"start time": int,
 						"max tip": int
+						"items_delivered": int
 					}
 """
 					#endregion --------------------
@@ -26,6 +27,7 @@ const ORDER_TEXT = "text"
 const ORDER_PATIENCE = "patience"
 const ORDER_START_TIME = "start time"
 const ORDER_MAX_TIP = "max tip"
+const ORDER_ITEM_DELIVERED = "items_delivered"
 
 
 # Reutrns string array of all level filepaths
@@ -54,10 +56,10 @@ func get_data_from_paths(filepaths) -> Array:
 			
 			all_lvls.append(result_array) #NOTE Populates all_lvls such that Levels[i] => array of orders of Game Level i
 		
-	return all_lvls #REturn container full of level data
+	return all_lvls #Return container full of level data
 
 
-# DEBUGGING function for iterating over PackedDataContainers, whose connects acnnot be printed to console wholesale
+# DEBUGGING function for iterating over PackedDataContainers, whose contents cannot be printed to console wholesale
 func iter_print_recursive(iterable):
 		for item in iterable:
 			if typeof(item) == TYPE_OBJECT:

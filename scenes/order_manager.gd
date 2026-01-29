@@ -1,6 +1,10 @@
 extends Control
 
-var orders: Array
+signal order_filled
+signal order_failed
+var orders: Array #Will always contains full order list for the level. 
+var open_orders: Array = []
+var active_order_count = 0
 var level_num = Global.current_level
 var current_order_num: int = 0 #In practice, indexes from 1 to match meal order indexing
 @onready var level_timer: Timer = %LevelTimer
@@ -17,6 +21,7 @@ var order_labels: Array
 
 func start_next_order(_id): # _id counts as such: "Timer", "Timer2", etc.
 	current_order_num += 1
+	active_order_count += 1
 	var this_order = orders[current_order_num-1]
 	var new_pateince_timer = Timer.new()
 	self.add_child(new_pateince_timer)
@@ -28,6 +33,8 @@ func start_next_order(_id): # _id counts as such: "Timer", "Timer2", etc.
 	patience_timers.append(new_pateince_timer)
 	self.display_order(this_order)
 	print(this_order[G_Level.ORDER_TEXT])
+	open_orders.append(this_order)
+
 	
 func create_order_timeline(orders) -> Array:
 	var timer_array: Array
@@ -50,12 +57,19 @@ func start_order_timers():
 func _on_start_timer_timeout(id):
 	start_next_order(id)
 
-func _on_patience_timer_timeout(timer_name, id):
-	print("Customer " + str(id) + " ran out of patience! >:{")
-	order_slips[id-1].set_texture(cross_out_image)
-	order_slips[id-1].set_modulate(Color(0.553, 0.102, 0.043, 0.706))
-
-
+func _on_patience_timer_timeout(timer_name, order_number):
+	active_order_count -= 1
+	open_orders[order_number-1] = 0 # When checking open orders, first check if typeof(open_orders[i]) == TYPE_INT: skip
+	order_slips[order_number-1].set_texture(cross_out_image)
+	#order_slips[order_number-1].set_modulate(Color(0.553, 0.102, 0.043, 1.0))
+	var tween = get_tree().create_tween()
+	tween.tween_property(order_slips[order_number-1], "modulate",Color(0.553, 0.102, 0.043, 1.0), 0.5)
+	tween.tween_property(order_slips[order_number-1], "scale", Vector2(), 2)
+	for i in range(order_number,order_slips.size()):
+		if typeof(order_slips[i]) != TYPE_INT:
+			print("poping #" + str(i))
+			order_slips[i].set_position(order_slips[i].position + Vector2(0,-85)) 
+	order_failed.emit(orders[order_number-1]["max tip"])
 
 func display_order(order):
 	var new_order_slip = TextureRect.new()
@@ -64,7 +78,7 @@ func display_order(order):
 	new_order_slip.set_expand_mode(3)
 	new_order_slip.set_texture(order_slip_image)
 	order_panel.add_child(new_order_slip)
-	new_order_slip.set_position(new_order_slip.position + Vector2(0,(85*(current_order_num-1))))
+	new_order_slip.set_position(new_order_slip.position + Vector2(0,(85*(active_order_count-1))))
 	var new_order = Label.new()
 	order_labels.append(new_order)
 	var order_num = int(order[G_Level.ORDER_NUM])
@@ -80,14 +94,39 @@ func display_order(order):
 		leading_zero = "0"
 	new_order.set_text("# " + leading_zero + str(order_num) + "\n" + items_list)
 	new_order.set("theme_override_colors/font_color",Color.BLACK)
-	new_order_slip.add_child(new_order)
+	new_order_slip.add_child(new_order, true)
 	new_order.set_anchors_preset(PRESET_TOP_LEFT)
 	new_order.set_offset(SIDE_TOP, 14)
 	new_order.set_offset(SIDE_LEFT, 25)
 	order_slips.append(new_order_slip)
 	
-	
-	
+func deliver_item(item_type): #item_type means burger or corndog, either beef or rat
+	var filled = false
+	for ii in range(0,open_orders.size()- 1):
+		var ticket = open_orders[ii]
+		var filled_order_num = 0
+		if not filled:
+			if typeof(ticket) != TYPE_INT:
+				for i in range(0,ticket["items"].size()-1):
+					if not filled:
+						if ticket["items"][i] == item_type:
+							ticket["items"][i] = "*(" + ticket["items"][i] + ")*"
+							ticket["items_delivered"] += 1
+							if ticket["items_delivered"] >= ticket["items"].size():
+								order_filled.emit(ticket["max tip"])
+								patience_timers[int(ticket["order number"])-1].queue_free() #complete order cean-up
+							filled = true
+							var items_list = ""
+							for item in ticket["items"]:
+								if items_list != "":
+									items_list += ", " + item
+								else:
+									items_list = item #first item in list requires no leading comma
+							var leading_zero: String = ""
+							if ticket["order number"] < 10:
+								leading_zero = "0"
+							order_slips[ii].get_child(0).set_text("# " + leading_zero + str(int(ticket["order number"])) + "\n" + items_list)
+							
 	
 	
 func _ready() -> void:

@@ -5,32 +5,36 @@
 			"order number": 1,
 			"items": ["burger", "fries ", "corndog"],
 			"text": "gimme borgir",
-			"patience": 1,
+			"patience": 10,
 			"start time": 1,
-			"max tip": 5
+			"max tip": 5,
+			"items_delivered": 0
 		},
 		{
 			"order number": 2,
 			"items": [],
 			"text": "",
-			"patience": 1,
+			"patience": 7,
 			"start time": 2,
-			"max tip": 0
+			"max tip": 0,
+			"items_delivered": 0
 		},
 		{
 			"order number": 3,
 			"items": [],
 			"text": "",
-			"patience": 1,
+			"patience": 2,
 			"start time": 3,
-			"max tip": 0
+			"max tip": 0,
+			"items_delivered": 0
 		},{
 			"order number": 4,
 			"items": [],
 			"text": "",
-			"patience": 1,
+			"patience": 10,
 			"start time": 4,
-			"max tip": 0
+			"max tip": 0,
+			"items_delivered": 0
 		}
 	]
 }

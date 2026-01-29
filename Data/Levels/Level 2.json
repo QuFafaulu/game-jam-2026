@@ -7,7 +7,8 @@
 			"text": "gimme borgir",
 			"patience": 45,
 			"start time": 3,
-			"max tip": 5
+			"max tip": 5,
+			"items_delivered": 0
 		},
 		{
 			"order number": 20,
@@ -15,7 +16,8 @@
 			"text": "",
 			"patience": 0,
 			"start time": 0,
-			"max tip": 0
+			"max tip": 0,
+			"items_delivered": 0
 		},
 		{
 			"order number": 30,
@@ -23,14 +25,16 @@
 			"text": "",
 			"patience": 0,
 			"start time": 0,
-			"max tip": 0
+			"max tip": 0,
+			"items_delivered": 0
 		},{
 			"order number": 40,
 			"items": [],
 			"text": "",
 			"patience": 0,
 			"start time": 0,
-			"max tip": 0
+			"max tip": 0,
+			"items_delivered": 0
 		}
 	]
 }
