@@ -11,6 +11,8 @@ func _ready():
 	disable_interaction()
 	# Set the Sprite to use the texture set by parent scene
 	sprite.texture = texture
+	
+func set_interact_area():
 	# Set the interaction zone to match the sprite size
 	interact_area.shape.size = sprite.get_rect().size
 

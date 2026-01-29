@@ -2,6 +2,11 @@ extends Node2D
 
 @onready var chef = $Chef
 @onready var dropped_items = $DroppedItems
+@onready var rat = $DroppedItems/Rat
+
+func _ready():
+	rat.enable_interaction()
+	rat.start_rotting()
 
 # When the chef drops an item, reparent that item to self (the stage)
 # and enable its interaction so the chef or others can pick it up again

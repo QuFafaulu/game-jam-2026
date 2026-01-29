@@ -1,11 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://djfj45rumfdue"]
+[gd_scene load_steps=9 format=3 uid="uid://djfj45rumfdue"]
 
 [ext_resource type="Script" uid="uid://b0kh67nali4jj" path="res://scripts/scene_scripts/fridge.gd" id="1_e6sfw"]
 [ext_resource type="Texture2D" uid="uid://e5l41pca0c0e" path="res://sprites/Fridge.png" id="2_e6sfw"]
-[ext_resource type="PackedScene" uid="uid://clc8xiu8o8ns8" path="res://scenes/ingredient.tscn" id="3_buvrw"]
-[ext_resource type="Texture2D" uid="uid://dc3ulotf8bbdv" path="res://sprites/Apple.png" id="4_gk71u"]
-[ext_resource type="PackedScene" uid="uid://cm50jawt586sk" path="res://scenes/sus_ingredient.tscn" id="5_i0i1l"]
-[ext_resource type="Texture2D" uid="uid://dnho6hfc14o5h" path="res://sprites/DeadRat.png" id="6_npr5r"]
+[ext_resource type="Script" uid="uid://jce4xhs2kv5e" path="res://scenes/fridge_inventory.gd" id="3_npr5r"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gk71u"]
 size = Vector2(20, 8)
@@ -52,18 +49,18 @@ position = Vector2(3, -3)
 shape = SubResource("RectangleShape2D_2t0b2")
 
 [node name="Inventory" type="Node2D" parent="."]
+script = ExtResource("3_npr5r")
 
-[node name="Beef" parent="Inventory" instance=ExtResource("3_buvrw")]
-type = 0
-texture = ExtResource("4_gk71u")
+[node name="InventorySlot0" type="Node2D" parent="Inventory"]
+position = Vector2(11, 3)
 
-[node name="Beef2" parent="Inventory" instance=ExtResource("3_buvrw")]
-type = 0
-texture = ExtResource("4_gk71u")
+[node name="InventorySlot1" type="Node2D" parent="Inventory"]
+position = Vector2(-6, 3)
 
-[node name="Rat" parent="Inventory" instance=ExtResource("5_i0i1l")]
-rot_speed = 2.0
-type = 1
-texture = ExtResource("6_npr5r")
+[node name="InventorySlot2" type="Node2D" parent="Inventory"]
+position = Vector2(-6, -12)
+
+[node name="InventorySlot3" type="Node2D" parent="Inventory"]
+position = Vector2(10, -12)
 
 [connection signal="body_exited" from="." to="." method="_on_fridge_interact_body_exited"]

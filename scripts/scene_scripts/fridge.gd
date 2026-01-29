@@ -2,13 +2,37 @@ extends InteractrableObj
 
 @onready var inventory: Node = $Inventory
 
-func interact(_offered_item: Item) -> Item:
-	var contents: Array[Node]
+const INGREDIENT_SCENE: PackedScene = preload("res://scenes/ingredient.tscn")
+
+func _ready():
+	var beef1: Ingredient = INGREDIENT_SCENE.instantiate()
+	add_child(beef1)
+	beef1.type = Global.Ingredients.BEEF
+	beef1.sprite.texture = load(Global.INGREDIENT_SPRITES[beef1.type])
+	beef1.set_interact_area()
+	inventory.give_item(beef1)
+	
+	var beef2: Ingredient = INGREDIENT_SCENE.instantiate()
+	add_child(beef2)
+	beef2.type = Global.Ingredients.BEEF
+	beef2.sprite.texture = load(Global.INGREDIENT_SPRITES[beef2.type])
+	beef2.set_interact_area()
+	inventory.give_item(beef2)
+
+func interact(offered_item: Item) -> Item:
+	var offering_item: Item
 	# Open the fridge
 	sprite.frame = 1
-	contents = inventory.get_children()
-	if not contents.is_empty():
-		return contents[0]
+
+	if inventory.inventory_items.size() <= inventory.inventory_size:
+		offering_item = inventory.take_item()
+		if offering_item is SusIngredient:
+			offering_item.start_rotting()
+		if offered_item is SusIngredient:
+			offered_item.stop_rotting()
+		if not offered_item == null:
+			inventory.give_item(offered_item)
+		return offering_item
 	else:
 		return null
 

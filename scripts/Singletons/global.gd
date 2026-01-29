@@ -18,6 +18,11 @@ const MEAL_TYPES: Dictionary = {
 	Vector2(Ingredients.RAT,  Stations.FRIER): Meals.RAT_DOG
 }
 
+const INGREDIENT_SPRITES: Dictionary = {
+	Ingredients.BEEF: "res://sprites/Apple.png",
+	Ingredients.RAT:  "res://sprites/DeadRat.png"
+}
+
 const MEAL_SPRITES: Dictionary = {
 	Meals.BURGER:     "res://sprites/Borgir.png",
 	Meals.CORN_DOG:   "res://sprites/Borgir.png",

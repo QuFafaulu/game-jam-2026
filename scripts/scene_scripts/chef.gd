@@ -32,13 +32,11 @@ func _input(_event):
 	# When the interact input is received, emit the is_interacting
 	# signal, along with the zone being interacted with
 	if Input.is_action_just_pressed("interact"):
-		
 		# Get all Area2Ds overlapping with the player interaction box
 		zones = interaction_zone.get_overlapping_areas()
 		if not zones.is_empty():
 			prio_obj  = get_top_priority_interactable_obj(zones)
 			if not prio_obj == null: # It's possible for none of the zone to be InteractableObj
-				print("Chef offered ", inventory.get_child(0))
 				var aquired_item = prio_obj.interact(inventory.get_child(0))
 				if not aquired_item == null:
 					pick_up_item(aquired_item)
