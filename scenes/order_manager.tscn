@@ -60,4 +60,4 @@ layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[connection signal="timeout" from="order_delivery_debug_timer" to="." method="deliver_item" binds= ["corn dogs", false]]
+[connection signal="timeout" from="order_delivery_debug_timer" to="." method="deliver_item" binds= ["burgers", false]]

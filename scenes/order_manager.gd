@@ -142,16 +142,20 @@ func generate_items_list(burger_count, corn_dog_count)-> String:
 	var burger_pre_text = ""
 	var burger_post_text = ""
 	var burger_full_text = ""
-	var corn_dog_pre_text = ", "
+	var corn_dog_pre_text = ""
 	var corn_dog_post_text = ""
 	var corn_dog_full_text = ""
 	if burger_count >= 1:
 		burger_pre_text = str(int(burger_count))+"x "
-		burger_post_text = "s"
-	burger_full_text = burger_pre_text + "burger" + burger_post_text
+		corn_dog_pre_text = ", "
+		if burger_count > 1:
+			burger_post_text = "s"
+		
+		burger_full_text = burger_pre_text + "burger" + burger_post_text
 	if corn_dog_count >= 1:
 		corn_dog_pre_text += str(int(corn_dog_count))+"x "
-		corn_dog_post_text = "s"
+		if corn_dog_count > 1:
+			corn_dog_post_text = "s"
 		corn_dog_full_text = corn_dog_pre_text + "corn dog" + corn_dog_post_text
 	return burger_full_text + corn_dog_full_text
 	
