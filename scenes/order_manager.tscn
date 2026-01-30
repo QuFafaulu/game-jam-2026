@@ -55,9 +55,14 @@ offset_bottom = 40.0
 wait_time = 4.0
 autostart = true
 
+[node name="order_delivery_debug_timer2" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
 [connection signal="timeout" from="order_delivery_debug_timer" to="." method="deliver_item" binds= ["burgers", false]]
+[connection signal="timeout" from="order_delivery_debug_timer2" to="." method="deliver_item" binds= ["corn dogs", false]]

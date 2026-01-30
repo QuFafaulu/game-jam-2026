@@ -2,8 +2,8 @@ extends Control
 
 #NOTE SEND SIGNALS TO func deliver_items(item_type: String,is_rat: bool): #item_type means "burger" or "corndog" is_rat is bool
 
-signal order_success
-signal order_fail
+signal order_success # passes the order object -> Array[Dict]
+signal order_fail # passes the order object -> Array[Dict]
 var orders: Array #Will always contains full order list for the level. 
 var open_orders: Array = []
 var active_order_count = 0
@@ -58,6 +58,20 @@ func start_order_timers():
 func _on_start_timer_timeout(id):
 	start_next_order(id)
 
+func on_order_success(order):
+	var order_number = order[G_Level.ORDER_NUM]
+	active_order_count -= 1
+	open_orders[order_number-1] = 0 # When checking open orders, first check if typeof(open_orders[i]) == TYPE_INT: skip
+	order_slips[order_number-1].set_texture(cross_out_image)
+	var tween = get_tree().create_tween()
+	tween.tween_property(order_slips[order_number-1], "modulate",Color(0.145, 0.592, 0.0, 1.0), 0.5)
+	tween.tween_property(order_slips[order_number-1], "scale", Vector2(), 2)
+	for i in range(order_number,order_slips.size()):
+		if typeof(order_slips[i]) != TYPE_INT:
+			print("poping #" + str(i))
+			order_slips[i].set_position(order_slips[i].position + Vector2(0,-85)) 
+			
+			
 func _on_patience_timer_timeout(timer_name, order_number):
 	active_order_count -= 1
 	open_orders[order_number-1] = 0 # When checking open orders, first check if typeof(open_orders[i]) == TYPE_INT: skip
@@ -69,7 +83,7 @@ func _on_patience_timer_timeout(timer_name, order_number):
 		if typeof(order_slips[i]) != TYPE_INT:
 			print("poping #" + str(i))
 			order_slips[i].set_position(order_slips[i].position + Vector2(0,-85)) 
-	order_fail.emit(orders[order_number-1][G_Level.ORDER_SCORE])
+	order_fail.emit(orders[order_number-1])
 
 func display_order(order):
 	#region Create and display order slip
@@ -108,25 +122,34 @@ func deliver_item(item_type: String,is_rat: bool): #item_type means "burger" or 
 			break
 		else:
 			var ticket = open_orders[i]
-			var filled_order_num = 0
+			#var filled_order_num = 0
 			if typeof(ticket) != TYPE_INT: # type int tickets are done tickets
-				var want_more_burgers = ticket[G_Level.BURGERS_DONE] < ticket[G_Level.BURGERS]
-				var want_more_corn_dogs = ticket[G_Level.CORN_DOGS_DONE] < ticket[G_Level.CORN_DOGS]
+				var want_more_burgers = ticket[G_Level.BURGERS_DONE]+ticket[G_Level.RAT_BURGERS_DONE] < ticket[G_Level.BURGERS]
+				var want_more_corn_dogs = ticket[G_Level.CORN_DOGS_DONE]+ticket[G_Level.RAT_CORN_DOGS_DONE] < ticket[G_Level.CORN_DOGS]
 				if item_type == G_Level.BURGERS:
 					if want_more_burgers:
-						ticket[G_Level.BURGERS_DONE] += 1
+						if is_rat:
+							ticket[G_Level.RAT_BURGERS_DONE] += 1
+						else:
+							ticket[G_Level.BURGERS_DONE] += 1
 						filled = true
 				elif item_type == G_Level.CORN_DOGS:
 					if want_more_corn_dogs:
-						ticket[G_Level.CORN_DOGS_DONE] += 1
+						if is_rat:
+							ticket[G_Level.RAT_CORN_DOGS_DONE] += 1
+						else:
+							ticket[G_Level.CORN_DOGS_DONE] += 1
 						filled = true
 				else:
 					print("ORDER SUBMITTED WITH NO BURGER OR CORN DOG OF TYPE: " + item_type)
 				order_text = generate_order_text(ticket)
-				if not(want_more_burgers or want_more_corn_dogs):
-					order_success.emit(ticket[G_Level.ORDER_SCORE])
+				want_more_burgers = ticket[G_Level.BURGERS_DONE]+ticket[G_Level.RAT_BURGERS_DONE] < ticket[G_Level.BURGERS]
+				want_more_corn_dogs = ticket[G_Level.CORN_DOGS_DONE]+ticket[G_Level.RAT_CORN_DOGS_DONE] < ticket[G_Level.CORN_DOGS]
+				var full = (not(want_more_burgers) and  not(want_more_corn_dogs))
+				if full:
+					order_success.emit(ticket)
 					patience_timers[int(ticket[G_Level.ORDER_NUM])-1].queue_free() #complete order cean-up
-		order_slips[i].get_child(0).set_text("[color=black]" + order_text + "[/color]")
+				order_slips[i].get_child(0).set_text("[color=black]" + order_text + "[/color]")
 	
 func get_orders() -> Array:
 	var order_array: Array
@@ -165,13 +188,6 @@ func generate_order_text(order):
 	var burger_count = order[G_Level.BURGERS] - order[G_Level.BURGERS_DONE]
 	var corn_dog_count = order[G_Level.CORN_DOGS] - order[G_Level.CORN_DOGS_DONE]
 	var items_list = generate_items_list(burger_count,corn_dog_count)
-	
-	#for item in order_items:
-		#if items_list != "":
-			#items_list += ", " + item
-		#else:
-			#items_list = item #first item in list requires no leading comma
-
 	var leading_zero: String = ""
 	if order_num < 10:
 		leading_zero = "0"
@@ -181,7 +197,7 @@ func generate_order_text(order):
 	
 func _ready() -> void:
 	orders = get_orders()
-	print(":")
+	order_success.connect(on_order_success)
 	start_timers = create_order_timeline(orders)
 	start_order_timers()
 

@@ -45,7 +45,9 @@ const ORDER_NUM = INDEX
 #scoring consts
 const BURGERS_DONE = "burgers done"
 const CORN_DOGS_DONE = "corn dogs done"
-const SCORE_APPENDIX = {BURGERS_DONE:0, CORN_DOGS_DONE:0}
+const RAT_BURGERS_DONE = "rat burgers done"
+const RAT_CORN_DOGS_DONE = "rat_corn dogs done"
+const SCORE_APPENDIX = {BURGERS_DONE:0, CORN_DOGS_DONE:0, RAT_BURGERS_DONE:0, RAT_CORN_DOGS_DONE:0}
 
 
 
