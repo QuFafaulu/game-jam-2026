@@ -10,11 +10,12 @@ var Levels: Array	# Global access variable -> Array of Arrays.
 					#region : NEW Game Level JSON format - EVENTS
 """
 					{
-						"event type": String ("order", "restock", "rat")
-						"index": int (1,2,3,...)  (seperate tallies for each event type)
+						"event type": String ("order", "restock", "critter spawn") 
 						"start time": int (seconds from level start)
-						"amount": int (number of raw meat restocked in fridge, or rats spawned)
-						"order items": [Strings] ("burger", "rat")
+						"restock": int,
+						"rats": int,
+						"burgers": int,
+						"corn dogs": int,
 						"order text": String ("I want a burger!")
 						"order patience": int (seconds)  
 						"order score": int (points for successful order)
@@ -25,29 +26,46 @@ var Levels: Array	# Global access variable -> Array of Arrays.
 
 #NOTE Namespace for event look up
 const ARRAY_KEY = "Events"
-const TYPE_RAT = "rat"
+const TYPE_CRITTER_SPAWN = "critter spawn"
 const TYPE_RESTOCK = "restock"
-const EVENT_TYPE = "event type"
-const INDEX = "index"
-const AMOUNT = "amount"
-const START_TIME = "start time"
-
-
-#NOTE Namespace for order look up
 const TYPE_ORDER = "order"
-const ORDER_NUM = "index"
-const ORDER_START_TIME = "start time"
-const ORDER_AMOUNT = "amount"
-const ORDER_ITEMS = "order items"
+const EVENT_TYPE = "event type"
+const START_TIME = "start time"
+const ORDER_START_TIME = START_TIME
+const RESTOCK = "restock"
+const RATS = "rats"
+const BURGERS = "burgers"
+const CORN_DOGS = "corn dogs"
 const ORDER_TEXT = "order text"
 const ORDER_PATIENCE = "order patience"
 const ORDER_SCORE = "order score"
+const INDEX = "index"
+const ORDER_NUM = INDEX
+
+
+#DEPRECATED
+const ORDER_ITEMS = "order items"
 const ORDER_ITEM_DELIVERED = "items_delivered"
 
 
 #TODO
-# add item delivered field: myDict.get_or_add(G_Level.ORDER_ITEM_DELIVERED, 0)
 
+# change order display to: 2x burgers, 1x corndog ##NOTE check ln 87 in order handler
+	# 1) change display
+	# 2) change delivery: counting, redisplay, crossout
+# Fix order fail anim being hidden behind bumped up orders
+	# move failed/passed orders left?
+		# Widen panel to allow this movement?
+# Consolodate time and order panels to have just one panel the scales with itself
+# Watch YT video about UI Scaling
+	# Esp. for scaling text and/or ticket image so they dont clip off screen
+# Make Event Handler object
+	# Chance to code a handler object corretly
+# make spreadsheet template for populating levels
+	# learn how to save spreadsheets as Templates
+	
+	#TODO trash
+	# add item delivered field: myDict.get_or_add(G_Level.ORDER_ITEM_DELIVERED, 0)
 
 # Reutrns string array of all level filepaths
 func get_filepaths (dir) -> PackedStringArray:  
@@ -77,6 +95,16 @@ func get_data_from_paths(filepaths) -> Array:
 		
 	return all_lvls #Return container full of level data
 
+# Sort function to be called in event/order handlers 
+func sort_events_accending(this_order,that_order):
+	if this_order[G_Level.START_TIME] < that_order[G_Level.START_TIME]:
+		return true
+	else:
+		return false
+		
+func add_indexes_to_event_array(event_array):
+	for i in range(event_array.size()):
+		event_array[i].merge({"index":i+1})
 
 # DEBUGGING function for iterating over PackedDataContainers, whose contents cannot be printed to console wholesale
 func iter_print_recursive(iterable):

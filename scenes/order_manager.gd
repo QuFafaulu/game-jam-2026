@@ -1,11 +1,10 @@
 extends Control
 
-signal order_filled
-signal order_failed
+signal order_success
+signal order_fail
 var orders: Array #Will always contains full order list for the level. 
 var open_orders: Array = []
 var active_order_count = 0
-var level_num = Global.current_level
 var current_order_num: int = 0 #In practice, indexes from 1 to match meal order indexing
 @onready var level_timer: Timer = %LevelTimer
 @onready var order_panel: Panel = %OrderPanel
@@ -69,9 +68,10 @@ func _on_patience_timer_timeout(timer_name, order_number):
 		if typeof(order_slips[i]) != TYPE_INT:
 			print("poping #" + str(i))
 			order_slips[i].set_position(order_slips[i].position + Vector2(0,-85)) 
-	order_failed.emit(orders[order_number-1][G_Level.ORDER_SCORE])
+	order_fail.emit(orders[order_number-1][G_Level.ORDER_SCORE])
 
 func display_order(order):
+	#region Create and display order slip
 	var new_order_slip = TextureRect.new()
 	new_order_slip.set_size(Vector2(200,80))
 	new_order_slip.set_stretch_mode(5)
@@ -79,26 +79,42 @@ func display_order(order):
 	new_order_slip.set_texture(order_slip_image)
 	order_panel.add_child(new_order_slip)
 	new_order_slip.set_position(new_order_slip.position + Vector2(0,(85*(active_order_count-1))))
-	var new_order = Label.new()
-	order_labels.append(new_order)
+	#endregion --------------------------
+	#region Order slip text formatting-----------------------------------------
 	var order_num = int(order[G_Level.ORDER_NUM])
 	var order_items = order[G_Level.ORDER_ITEMS]
 	var items_list = ""
+	#var burger_count = order[""]
+	#var corn_dog_count = order
 	for item in order_items:
 		if items_list != "":
 			items_list += ", " + item
 		else:
 			items_list = item #first item in list requires no leading comma
+			
+			
 	var leading_zero: String = ""
 	if order_num < 10:
 		leading_zero = "0"
-	new_order.set_text("# " + leading_zero + str(order_num) + "\n" + items_list)
-	new_order.set("theme_override_colors/font_color",Color.BLACK)
+	var order_text = "# " + leading_zero + str(order_num) + "\n" + items_list
+	#endregion ----------------------------------------------------------------
+	#region Order slip text Object creation / formatting
+	var new_order = RichTextLabel.new()
+	new_order.size = Vector2(190+25,50+14)
+	#new_order.scroll_active = false #NOTE scroll bar toggle here
+	new_order.bbcode_enabled = true # allow rich text tag formatting using BBCode tags
+	new_order.set_text("[color=black]" + order_text + "[/color]")
+	#new_order.set("theme_override_colors/font_color",Color.BLACK) # Color change for text in a Label node
 	new_order_slip.add_child(new_order, true)
 	new_order.set_anchors_preset(PRESET_TOP_LEFT)
-	new_order.set_offset(SIDE_TOP, 14)
+	new_order.set_offset(SIDE_TOP, 14) #Set text within bounds of the order slip image
 	new_order.set_offset(SIDE_LEFT, 25)
+	#endregion ----------------------------------------
+	order_labels.append(new_order)
 	order_slips.append(new_order_slip)
+	
+	
+	
 	
 func deliver_item(item_type): #item_type means burger or corndog, either beef or rat
 	var filled = false
@@ -113,7 +129,7 @@ func deliver_item(item_type): #item_type means burger or corndog, either beef or
 							ticket[G_Level.ORDER_ITEMS][i] = "*(" + ticket[G_Level.ORDER_ITEMS][i] + ")*"
 							ticket[G_Level.ORDER_ITEM_DELIVERED] += 1
 							if ticket[G_Level.ORDER_ITEM_DELIVERED] >= ticket[G_Level.ORDER_ITEMS].size():
-								order_filled.emit(ticket[G_Level.ORDER_SCORE])
+								order_success.emit(ticket[G_Level.ORDER_SCORE])
 								patience_timers[int(ticket[G_Level.ORDER_NUM])-1].queue_free() #complete order cean-up
 							filled = true
 							var items_list = ""
@@ -125,13 +141,25 @@ func deliver_item(item_type): #item_type means burger or corndog, either beef or
 							var leading_zero: String = ""
 							if ticket[G_Level.ORDER_NUM] < 10:
 								leading_zero = "0"
-							order_slips[ii].get_child(0).set_text("# " + leading_zero + str(int(ticket[G_Level.ORDER_NUM])) + "\n" + items_list)
+							var order_text = "#" + leading_zero + str(int(ticket[G_Level.ORDER_NUM])) + "\n" + items_list
+							#order_slips[ii].get_child(0).set_text("# " + leading_zero + str(int(ticket[G_Level.ORDER_NUM])) + "\n" + items_list)
+							order_slips[ii].get_child(0).set_text("[color=black]" + order_text + "[/color]")
 							
+	
+func get_orders() -> Array:
+	var order_array: Array
+	# Filter orders from events
+	for event in G_Level.Levels[Global.current_level]:
+		if event[G_Level.EVENT_TYPE] == G_Level.TYPE_ORDER:
+			order_array.append(event)
+	order_array.sort_custom(G_Level.sort_events_accending)
+	G_Level.add_indexes_to_event_array((order_array))
+	return order_array
 	
 	
 func _ready() -> void:
-
-	orders = G_Level.Levels[level_num]
+	orders = get_orders()
+	print(":")
 	start_timers = create_order_timeline(orders)
 	start_order_timers()
 
