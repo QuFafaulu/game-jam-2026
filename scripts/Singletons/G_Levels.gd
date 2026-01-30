@@ -23,14 +23,30 @@ var Levels: Array	# Global access variable -> Array of Arrays.
 					#endregion --------------------
 
 
+#NOTE Namespace for event look up
+const ARRAY_KEY = "Events"
+const TYPE_RAT = "rat"
+const TYPE_RESTOCK = "restock"
+const EVENT_TYPE = "event type"
+const INDEX = "index"
+const AMOUNT = "amount"
+const START_TIME = "start time"
+
+
 #NOTE Namespace for order look up
-const ORDER_NUM = "order number"
-const ORDER_ITEMS = "items"
-const ORDER_TEXT = "text"
-const ORDER_PATIENCE = "patience"
+const TYPE_ORDER = "order"
+const ORDER_NUM = "index"
 const ORDER_START_TIME = "start time"
-const ORDER_MAX_TIP = "max tip"
+const ORDER_AMOUNT = "amount"
+const ORDER_ITEMS = "order items"
+const ORDER_TEXT = "order text"
+const ORDER_PATIENCE = "order patience"
+const ORDER_SCORE = "order score"
 const ORDER_ITEM_DELIVERED = "items_delivered"
+
+
+#TODO
+# add item delivered field: myDict.get_or_add(G_Level.ORDER_ITEM_DELIVERED, 0)
 
 
 # Reutrns string array of all level filepaths
@@ -55,7 +71,7 @@ func get_data_from_paths(filepaths) -> Array:
 			#NOTE Due to our JSON formatting, parse_results is a one element Dict of the form:
 			#			`parse-results["Orders"] = [{order 1],...,{Order n}]`
 			# Let's unpack that to access the array of orders:
-			var result_array = parse_result["Orders"]
+			var result_array = parse_result[G_Level.ARRAY_KEY]
 			
 			all_lvls.append(result_array) #NOTE Populates all_lvls such that Levels[i] => array of orders of Game Level i
 		

@@ -69,7 +69,7 @@ func _on_patience_timer_timeout(timer_name, order_number):
 		if typeof(order_slips[i]) != TYPE_INT:
 			print("poping #" + str(i))
 			order_slips[i].set_position(order_slips[i].position + Vector2(0,-85)) 
-	order_failed.emit(orders[order_number-1][G_Level.ORDER_MAX_TIP])
+	order_failed.emit(orders[order_number-1][G_Level.ORDER_SCORE])
 
 func display_order(order):
 	var new_order_slip = TextureRect.new()
@@ -113,7 +113,7 @@ func deliver_item(item_type): #item_type means burger or corndog, either beef or
 							ticket[G_Level.ORDER_ITEMS][i] = "*(" + ticket[G_Level.ORDER_ITEMS][i] + ")*"
 							ticket[G_Level.ORDER_ITEM_DELIVERED] += 1
 							if ticket[G_Level.ORDER_ITEM_DELIVERED] >= ticket[G_Level.ORDER_ITEMS].size():
-								order_filled.emit(ticket[G_Level.ORDER_MAX_TIP])
+								order_filled.emit(ticket[G_Level.ORDER_SCORE])
 								patience_timers[int(ticket[G_Level.ORDER_NUM])-1].queue_free() #complete order cean-up
 							filled = true
 							var items_list = ""
