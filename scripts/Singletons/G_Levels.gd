@@ -42,6 +42,12 @@ const ORDER_SCORE = "order score"
 const INDEX = "index"
 const ORDER_NUM = INDEX
 
+#scoring consts
+const BURGERS_DONE = "burgers done"
+const CORN_DOGS_DONE = "corn dogs done"
+const SCORE_APPENDIX = {BURGERS_DONE:0, CORN_DOGS_DONE:0}
+
+
 
 #DEPRECATED
 const ORDER_ITEMS = "order items"
@@ -105,6 +111,9 @@ func sort_events_accending(this_order,that_order):
 func add_indexes_to_event_array(event_array):
 	for i in range(event_array.size()):
 		event_array[i].merge({"index":i+1})
+		if event_array[i][G_Level.EVENT_TYPE] == G_Level.TYPE_ORDER:
+			event_array[i].merge(SCORE_APPENDIX)
+	
 
 # DEBUGGING function for iterating over PackedDataContainers, whose contents cannot be printed to console wholesale
 func iter_print_recursive(iterable):
