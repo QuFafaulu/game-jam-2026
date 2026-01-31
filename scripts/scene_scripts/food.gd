@@ -20,12 +20,13 @@ func _ready():
 	super._ready()
 	cook_progress.set_value_no_signal(0)
 	cook_progress.visible = false
-	sprite.texture = load(Global.MEAL_SPRITES[type])
+	sprite.texture = load(Global.MEAL_SPRITES[type]["cooking"])
 
 func start_cooking(station_speed: float):
 	is_cooking = true
 	cooking_speed = station_speed
 	cook_progress.visible = true
+	sprite.modulate = Color("brown")
 
 func stop_cooking():
 	is_cooking = false
@@ -42,3 +43,5 @@ func _process(delta):
 		cook_progress.visible = false
 		is_cooking = false
 		cooked = true
+		sprite.texture = load(Global.MEAL_SPRITES[type]["done"])
+		sprite.modulate = Color(1,1,1,1)

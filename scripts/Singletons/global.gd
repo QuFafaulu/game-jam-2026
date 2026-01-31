@@ -5,6 +5,7 @@ const PHYSICS_LAYER = 0 # Used by physics bodies, not used for overlaps or inter
 const STATION_INTERACTION_LAYER = 1 # Highest priority, used by interactable stage "stations"
 const DROPPED_ITEM_INTERACTION_LAYER = 2 # Used by dropped items
 const COMBAT_INTERACTION_LAYER = 3 # Used by combat entities (i.e. rats)
+const RAT_LAYER = 4
 
 enum Ingredients {BEEF, RAT}
 enum Stations {GRILL, FRIER}
@@ -24,11 +25,22 @@ const INGREDIENT_SPRITES: Dictionary = {
 }
 
 const MEAL_SPRITES: Dictionary = {
-	Meals.BURGER:     "res://Assets/Borgir.png",
-	Meals.CORN_DOG:   "res://Assets/Corn dog(1).png",
-	#Meals.RAT_BURGER: "res://sprites/Rorgir.png",
-	Meals.RAT_BURGER: "res://Assets/Rat Borgir.png",
-	Meals.RAT_DOG:    "res://Assets/Rat dog.png",
+	Meals.BURGER: {
+		"cooking": "res://Assets/Raw beef.png",
+		"done":	   "res://Assets/Borgir.png"
+	},
+	Meals.CORN_DOG: {
+		"cooking": "res://Assets/Raw beef.png",
+		"done":	   "res://Assets/Corn dog(1).png"
+	},
+	Meals.RAT_BURGER: {
+		"cooking": "res://Assets/Dead rat3.png",
+		"done":	   "res://Assets/Rat Borgir.png"
+	},
+	Meals.RAT_DOG: {
+		"cooking": "res://Assets/Dead rat3.png",
+		"done":	   "res://Assets/Rat dog.png"
+	}
 }
 
 # Level/Order Trackers

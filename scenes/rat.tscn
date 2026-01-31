@@ -1,0 +1,51 @@
+[gd_scene load_steps=7 format=3 uid="uid://dcn3rt3o7hno3"]
+
+[ext_resource type="Script" uid="uid://dx83mtd4x3ms0" path="res://rat.gd" id="1_acf8p"]
+[ext_resource type="Texture2D" uid="uid://bq7rvojf2jx0q" path="res://Assets/Live rat.png" id="2_3csnj"]
+[ext_resource type="Texture2D" uid="uid://bn4qjpuc7hrcv" path="res://Assets/Live rat2.png" id="3_6s34g"]
+[ext_resource type="Script" uid="uid://gjcgxlrhmbov" path="res://scenes/rat_interaction_zone.gd" id="4_3csnj"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_acf8p"]
+radius = 17.013618
+height = 108.11235
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nnna8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_3csnj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_6s34g")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Rat" type="RigidBody2D"]
+collision_layer = 8
+collision_mask = 8
+gravity_scale = 0.0
+script = ExtResource("1_acf8p")
+
+[node name="Shape" type="CollisionShape2D" parent="."]
+position = Vector2(5.722046e-06, 1.1444092e-05)
+rotation = 1.5550884
+shape = SubResource("CapsuleShape2D_acf8p")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_nnna8")
+
+[node name="RatInteractionZone" type="Area2D" parent="."]
+collision_layer = 5
+collision_mask = 5
+script = ExtResource("4_3csnj")
+
+[node name="RatInteractionShape" type="CollisionShape2D" parent="RatInteractionZone"]
+position = Vector2(5.722046e-06, 1.1444092e-05)
+rotation = 1.5550884
+shape = SubResource("CapsuleShape2D_acf8p")
+
+[connection signal="die" from="RatInteractionZone" to="." method="_on_rat_interaction_zone_die"]

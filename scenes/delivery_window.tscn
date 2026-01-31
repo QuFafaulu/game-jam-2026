@@ -1,0 +1,42 @@
+[gd_scene load_steps=7 format=3 uid="uid://dpjarvjc0yuci"]
+
+[ext_resource type="Script" uid="uid://bi72f6sa26lgd" path="res://scenes/delivery_window.gd" id="1_2w84x"]
+[ext_resource type="Texture2D" uid="uid://e5l41pca0c0e" path="res://sprites/Fridge.png" id="2_2w84x"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2w84x"]
+size = Vector2(45.5, 7.75)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gk71u"]
+atlas = ExtResource("2_2w84x")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6ofhc"]
+atlas = ExtResource("2_2w84x")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bu3px"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gk71u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6ofhc")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="DeliveryWindow" type="Area2D"]
+script = ExtResource("1_2w84x")
+metadata/_custom_type_script = "uid://c672w24kn7bpt"
+
+[node name="InteractArea" type="CollisionShape2D" parent="."]
+position = Vector2(0, 23)
+shape = SubResource("RectangleShape2D_2w84x")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="InteractArea"]
+position = Vector2(-1, -24)
+scale = Vector2(1.34375, 1.3125)
+sprite_frames = SubResource("SpriteFrames_bu3px")

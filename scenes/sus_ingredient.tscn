@@ -6,7 +6,6 @@
 [node name="SusIngredient" instance=ExtResource("1_r4453")]
 script = ExtResource("2_bowfv")
 rot_speed = 2.0
-type = 0
 
 [node name="RotProgress" type="ProgressBar" parent="." index="2"]
 offset_left = -50.0

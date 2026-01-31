@@ -4,10 +4,10 @@
 [ext_resource type="PackedScene" uid="uid://bprm4p1rglv4h" path="res://scenes/chef.tscn" id="3_1llen"]
 [ext_resource type="PackedScene" uid="uid://djfj45rumfdue" path="res://scenes/fridge.tscn" id="4_l5bn0"]
 [ext_resource type="Texture2D" uid="uid://svfkxetaemvp" path="res://sprites/concepts_v0_truck.png" id="5_2so7o"]
-[ext_resource type="PackedScene" uid="uid://cm50jawt586sk" path="res://scenes/sus_ingredient.tscn" id="5_st0q7"]
 [ext_resource type="PackedScene" uid="uid://pn5618ft84ov" path="res://scenes/oven.tscn" id="5_vcsse"]
-[ext_resource type="Texture2D" uid="uid://dbox6hwt7rq8j" path="res://Assets/Dead rat3.png" id="6_1hwpr"]
-[ext_resource type="PackedScene" path="res://scenes/order_manager.tscn" id="8_1hwpr"]
+[ext_resource type="PackedScene" uid="uid://28wqirw5nryp" path="res://scenes/order_manager.tscn" id="8_1hwpr"]
+[ext_resource type="PackedScene" uid="uid://dpjarvjc0yuci" path="res://scenes/delivery_window.tscn" id="9_dexii"]
+[ext_resource type="PackedScene" uid="uid://bwo7qpkc4hliq" path="res://scenes/station.tscn" id="10_yd2gm"]
 
 [node name="stage" type="Node2D"]
 script = ExtResource("1_wy2hx")
@@ -29,13 +29,9 @@ cook_speed = 10
 
 [node name="DroppedItems" type="Node2D" parent="."]
 
-[node name="Rat" parent="DroppedItems" instance=ExtResource("5_st0q7")]
-position = Vector2(480, 600)
-scale = Vector2(2, 2)
-type = 1
-texture = ExtResource("6_1hwpr")
-
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 9
+collision_mask = 9
 
 [node name="ConceptsV0Truck" type="Sprite2D" parent="StaticBody2D"]
 z_index = -1
@@ -45,7 +41,7 @@ texture = ExtResource("5_2so7o")
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
 position = Vector2(-2, 0)
 build_mode = 1
-polygon = PackedVector2Array(0, 0, 0, 0)
+polygon = PackedVector2Array(409, 367, 409, 648, 999, 652, 992, 545, 1069, 545, 1060, 353)
 
 [node name="OrderManager" parent="." instance=ExtResource("8_1hwpr")]
 anchors_preset = 1
@@ -58,4 +54,19 @@ offset_bottom = 2.0
 grow_horizontal = 0
 grow_vertical = 1
 
+[node name="DeliveryWindow" parent="." instance=ExtResource("9_dexii")]
+position = Vector2(614, 291)
+scale = Vector2(4, 4)
+
+[node name="Frier" parent="." instance=ExtResource("10_yd2gm")]
+position = Vector2(358, 443)
+scale = Vector2(4, 4)
+type = 1
+cook_speed = 20
+
+[node name="RatHole" type="Node2D" parent="."]
+position = Vector2(800, 516)
+
 [connection signal="drop" from="Chef" to="." method="_on_chef_drop"]
+[connection signal="return_item" from="OrderManager" to="." method="_on_order_manager_return_item"]
+[connection signal="deliver_item" from="DeliveryWindow" to="." method="_on_delivery_window_deliver_item"]

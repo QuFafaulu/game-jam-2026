@@ -30,7 +30,7 @@ script = ExtResource("2_ghy7m")
 
 [node name="LevelTimer" type="Timer" parent="."]
 unique_name_in_owner = true
-wait_time = 15.866999999999999
+wait_time = 15.867
 autostart = true
 script = ExtResource("2_hrvr2")
 
@@ -51,18 +51,7 @@ layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="order_delivery_debug_timer" type="Timer" parent="."]
-wait_time = 4.0
-autostart = true
-
-[node name="order_delivery_debug_timer2" type="Timer" parent="."]
-wait_time = 5.0
-autostart = true
-
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
-
-[connection signal="timeout" from="order_delivery_debug_timer" to="." method="deliver_item" binds= ["burgers", false]]
-[connection signal="timeout" from="order_delivery_debug_timer2" to="." method="deliver_item" binds= ["corn dogs", false]]

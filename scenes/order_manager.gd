@@ -4,6 +4,7 @@ extends Control
 
 signal order_success # passes the order object -> Array[Dict]
 signal order_fail # passes the order object -> Array[Dict]
+signal return_item(item: Item)
 var orders: Array #Will always contains full order list for the level. 
 var open_orders: Array = []
 var active_order_count = 0
@@ -114,9 +115,29 @@ func display_order(order):
 	
 	
 	
-func deliver_item(item_type: String,is_rat: bool): #item_type means "burger" or "corndog" is_rat is bool
+func deliver_item(item: Food): #item_type means "burger" or "corndog" is_rat is bool
 	var filled = false
 	var order_text = ""
+	
+	var item_type: String = ""
+	var is_rat: bool = false
+	
+	# Parse the item's type field
+	match item.type:
+		Global.Meals.BURGER:
+			item_type = G_Level.BURGERS
+			is_rat = false
+		Global.Meals.CORN_DOG:
+			item_type = G_Level.CORN_DOGS
+			is_rat = false
+		Global.Meals.RAT_BURGER:
+			item_type = G_Level.BURGERS
+			is_rat = true
+		Global.Meals.RAT_DOG:
+			item_type = G_Level.CORN_DOGS
+			is_rat = true
+	
+
 	for i in range(open_orders.size()):
 		if filled:
 			break
@@ -150,6 +171,11 @@ func deliver_item(item_type: String,is_rat: bool): #item_type means "burger" or 
 					order_success.emit(ticket)
 					patience_timers[int(ticket[G_Level.ORDER_NUM])-1].queue_free() #complete order cean-up
 				order_slips[i].get_child(0).set_text("[color=black]" + order_text + "[/color]")
+				
+	if filled:
+		item.queue_free() # Destroy the item if it was delivered
+	else:
+		return_item.emit(item)
 	
 func get_orders() -> Array:
 	var order_array: Array
@@ -185,10 +211,10 @@ func generate_items_list(burger_count, corn_dog_count)-> String:
 func generate_order_text(order):
 	var order_num = int(order[G_Level.ORDER_NUM])
 	#var order_items = order[G_Level.ORDER_ITEMS]
-	var burger_count = order[G_Level.BURGERS] - order[G_Level.BURGERS_DONE]
-	var corn_dog_count = order[G_Level.CORN_DOGS] - order[G_Level.CORN_DOGS_DONE]
+	var burger_count = order[G_Level.BURGERS] - order[G_Level.BURGERS_DONE] - order[G_Level.RAT_BURGERS_DONE]
+	var corn_dog_count = order[G_Level.CORN_DOGS] - order[G_Level.CORN_DOGS_DONE] - order[G_Level.RAT_CORN_DOGS_DONE]
 	var items_list = generate_items_list(burger_count,corn_dog_count)
-	var leading_zero: String = ""
+	var leading_zero: String = "" 
 	if order_num < 10:
 		leading_zero = "0"
 	var order_text = "# " + leading_zero + str(order_num) + "\n" + items_list

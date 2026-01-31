@@ -43,6 +43,10 @@ func _input(_event):
 				# Exit the _input function now if an interactable object was found,
 				# skip the dropped_carried_item below
 				return
+			else:
+				for zone in zones:
+					if zone is RatZone:
+						zone.kill_rat()
 		# If an interaction with an InteractableObj did not occur, 
 		# instread drop the carried item
 		drop_carried_item()
