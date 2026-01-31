@@ -30,7 +30,7 @@ script = ExtResource("2_ghy7m")
 
 [node name="LevelTimer" type="Timer" parent="."]
 unique_name_in_owner = true
-wait_time = 300.0
+wait_time = 15.866999999999999
 autostart = true
 script = ExtResource("2_hrvr2")
 
