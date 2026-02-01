@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://tf84g6qwtyti"
+path="res://.godot/imported/group hiss.wav-3a085846f36f4cb800b747215b6d0336.sample"
+
+[deps]
+
+source_file="res://Assets/sounds/group hiss.wav"
+dest_files=["res://.godot/imported/group hiss.wav-3a085846f36f4cb800b747215b6d0336.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

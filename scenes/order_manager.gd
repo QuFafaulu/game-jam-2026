@@ -137,6 +137,7 @@ func display_order(order, patience_timer):
 	#endregion ----------------------------------------
 	order_labels.append(new_order)
 	order_slips.append(new_order_slip)
+	%Hiss.play() #Sound
 	
 	
 	

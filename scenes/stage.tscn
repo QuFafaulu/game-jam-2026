@@ -21,6 +21,7 @@
 [ext_resource type="Texture2D" uid="uid://cinlf2s5bjano" path="res://Assets/concepts_v0_speech.png" id="14_5sts7"]
 [ext_resource type="Script" uid="uid://btawwq8bxglte" path="res://scenes/order_failures.gd" id="17_t30jk"]
 [ext_resource type="Script" uid="uid://c7wl5s2p86rwb" path="res://scenes/fade_rect.gd" id="18_d4wp7"]
+[ext_resource type="AudioStream" uid="uid://tf84g6qwtyti" path="res://Assets/sounds/group hiss.wav" id="18_d4wp7"]
 
 [node name="stage" type="Node2D"]
 script = ExtResource("1_wy2hx")
@@ -180,6 +181,10 @@ script = ExtResource("18_d4wp7")
 
 [node name="FadeTimer" type="Timer" parent="FadeRect"]
 wait_time = 0.5
+
+[node name="Hiss" type="AudioStreamPlayer2D" parent="Sounds"]
+unique_name_in_owner = true
+stream = ExtResource("18_d4wp7")
 
 [connection signal="drop" from="Chef" to="." method="_on_chef_drop"]
 [connection signal="deliver_item" from="Interactable_objects/DeliveryWindow" to="." method="_on_delivery_window_deliver_item"]
