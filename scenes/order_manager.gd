@@ -135,10 +135,9 @@ func deliver_item(item: Food): #item_type means "burger" or "corndog" is_rat is 
 		Global.Meals.RAT_DOG:
 			item_type = G_Level.CORN_DOGS
 			is_rat = true
-			
-	var ever_full = false
+
 	for i in range(open_orders.size()):
-		if filled or ever_full:
+		if filled:
 			break
 		else:
 			var ticket = open_orders[i]
@@ -153,7 +152,6 @@ func deliver_item(item: Food): #item_type means "burger" or "corndog" is_rat is 
 						else:
 							ticket[G_Level.BURGERS_DONE] += 1
 						filled = true
-						ever_full = true
 				elif item_type == G_Level.CORN_DOGS:
 					if want_more_corn_dogs:
 						if is_rat:
@@ -161,40 +159,21 @@ func deliver_item(item: Food): #item_type means "burger" or "corndog" is_rat is 
 						else:
 							ticket[G_Level.CORN_DOGS_DONE] += 1
 						filled = true
-						ever_full = true
 				else:
 					print("ORDER SUBMITTED WITH NO BURGER OR CORN DOG OF TYPE: " + item_type)
 				order_text = generate_order_text(ticket)
 				want_more_burgers = ticket[G_Level.BURGERS_DONE]+ticket[G_Level.RAT_BURGERS_DONE] < ticket[G_Level.BURGERS]
 				want_more_corn_dogs = ticket[G_Level.CORN_DOGS_DONE]+ticket[G_Level.RAT_CORN_DOGS_DONE] < ticket[G_Level.CORN_DOGS]
 				var full = (not(want_more_burgers) and  not(want_more_corn_dogs))
-				
 				if full:
 					order_success.emit(ticket)
 					patience_timers[int(ticket[G_Level.ORDER_NUM])-1].queue_free() #complete order cean-up
-				if (not full) and filled:
-					var tween = get_tree().create_tween()
-					tween.tween_property(order_slips[i], "modulate",Color(0.145, 0.812, 0.0, 1.0), 0.1)
-					var modulate_timer = Timer.new()
-					add_child(modulate_timer)
-					modulate_timer.wait_time = 0.15
-					modulate_timer.timeout.connect(unmodulate_asset.bind(order_slips[i],ticket))
-					modulate_timer.start()
 				order_slips[i].get_child(0).set_text("[color=black]" + order_text + "[/color]")
-				
 				
 	if filled:
 		item.queue_free() # Destroy the item if it was delivered
 	else:
 		return_item.emit(item)
-
-func unmodulate_asset(slip,order):
-	var want_more_burgers = order[G_Level.BURGERS_DONE]+order[G_Level.RAT_BURGERS_DONE] < order[G_Level.BURGERS]
-	var want_more_corn_dogs = order[G_Level.CORN_DOGS_DONE]+order[G_Level.RAT_CORN_DOGS_DONE] < order[G_Level.CORN_DOGS]
-	var full = (not(want_more_burgers) and  not(want_more_corn_dogs))
-	if slip and typeof(slip) != 2 and not full:
-		var tween = get_tree().create_tween()
-		tween.tween_property(slip, "modulate",Color(1, 1,1, 1), 0.1)
 	
 func get_orders() -> Array:
 	var order_array: Array

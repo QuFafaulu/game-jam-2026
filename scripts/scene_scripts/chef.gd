@@ -4,6 +4,7 @@ extends CharacterBody2D
 @export var inventory_slot_y_offset := -20
 @onready var interaction_zone: Area2D = $InteractionArea
 @onready var inventory: Node2D = $Inventory
+@onready var sprite: AnimatedSprite2D = $Sprite
 
 signal drop #Emitted when the chef drops an inventory item, to be intercepted by the stage
 

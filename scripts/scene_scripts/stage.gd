@@ -54,7 +54,7 @@ func spawn_rat(wait_time: int):
 	var rat: Rat = RAT_SCENE.instantiate()
 	print("rat spawned")
 	self.add_child(rat)
-	rat.scale = Vector2(4.0,4.0)
+	#rat.scale = Vector2(4.0,4.0)
 	rat.position = rat_spawn.position
 	rat.die.connect(_on_rat_die)
 	if wait_time == 0:
