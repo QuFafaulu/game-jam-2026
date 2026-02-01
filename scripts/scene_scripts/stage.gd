@@ -4,7 +4,8 @@ extends Node2D
 @onready var dropped_items = $DroppedItems
 @onready var order_manager = $OrderManager
 @onready var delivery_window = $DeliveryWindow
-@onready var rat_hole = $RatHole
+@onready var rat_spawn = $RatSpawn
+@onready var rat_exit = $RatExit
 
 @export var num_starting_rats: int = 2
 
@@ -13,7 +14,7 @@ const RAT_SCENE: PackedScene = preload("res://scenes/rat.tscn")
 
 func _ready():
 	for i in range(num_starting_rats):
-		spawn_rat()
+		spawn_rat(0)
 
 # When the chef drops an item, reparent that item to self (the stage)
 # and enable its interaction so the chef or others can pick it up again
@@ -49,10 +50,16 @@ func _on_rat_die(rat: Rat) -> void:
 	dead_rat.enable_interaction()
 	rat.queue_free()
 
-func spawn_rat():
+func spawn_rat(wait_time: int):
 	var rat: Rat = RAT_SCENE.instantiate()
 	print("rat spawned")
 	self.add_child(rat)
 	rat.scale = Vector2(4.0,4.0)
-	rat.position = rat_hole.position
+	rat.position = rat_spawn.position
 	rat.die.connect(_on_rat_die)
+	if wait_time == 0:
+		rat.leave_timer.wait_time = randi_range(15,30);
+	else:
+		rat.leave_timer.wait_time = wait_time
+	rat.leave_timer.start()
+	rat.exit_node = rat_exit

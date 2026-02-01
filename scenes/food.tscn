@@ -8,6 +8,7 @@ script = ExtResource("2_370ap")
 cooking_decay_speed = 5.0
 
 [node name="CookProgress" type="ProgressBar" parent="." index="2"]
+z_index = 1
 offset_left = -50.0
 offset_top = -30.0
 offset_right = 50.0

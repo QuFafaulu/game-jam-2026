@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://dxbdd24jawci2" path="res://scripts/scene_scripts/sus_ingredient.gd" id="2_bowfv"]
 
 [node name="SusIngredient" instance=ExtResource("1_r4453")]
+z_index = 1
 script = ExtResource("2_bowfv")
 rot_speed = 2.0
 
