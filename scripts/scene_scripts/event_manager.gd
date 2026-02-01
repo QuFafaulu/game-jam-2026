@@ -6,7 +6,7 @@ var start_timers: Array
 var current_event_num: int
 
 signal request_restock # passes (amount_restocked: int)
-signal request_critter_spawn # (amount_spawned: int, critter_type: String) critter_type is just "rats" rn
+signal request_critter_spawn # (amount_spawned: int, critter_type: String, critter_time: int) critter_type is just "rats" rn
 
 
 func create_event_timeline(orders) -> Array:
@@ -59,9 +59,10 @@ func start_next_event(_timer_name):
 		var amount_requested = this_event[G_Level.RESTOCK]
 		request_restock.emit(amount_requested)
 	elif this_event[G_Level.EVENT_TYPE] == G_Level.TYPE_CRITTER_SPAWN:
-		var amount_requested = this_event[G_Level.G_Level.RATS]
+		var amount_requested = this_event[G_Level.RATS]
 		var critter_type = G_Level.RATS # EXPANDABLE TO ACCEPT OTHER CRITTER TYPES
-		request_critter_spawn.emit(amount_requested,critter_type)
+		var critter_time = this_event[G_Level.RAT_LEAVE]
+		request_critter_spawn.emit(amount_requested,critter_type,critter_time)
 
 	
 # Called when the node enters the scene tree for the first time.

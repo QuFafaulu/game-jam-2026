@@ -19,6 +19,7 @@ var Levels: Array	# Global access variable -> Array of Arrays.
 						"order text": String ("I want a burger!")
 						"order patience": int (seconds)  
 						"order score": int (points for successful order)
+						"rat leave": int (time before rat leaves)
 					}
 """
 					#endregion --------------------
@@ -39,6 +40,7 @@ const CORN_DOGS = "corn dogs"
 const ORDER_TEXT = "order text"
 const ORDER_PATIENCE = "order patience"
 const ORDER_SCORE = "order score"
+const RAT_LEAVE = "rat leave"
 const INDEX = "index"
 const ORDER_NUM = INDEX
 

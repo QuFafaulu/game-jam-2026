@@ -1,23 +1,17 @@
+class_name Fridge
 extends InteractrableObj
 
 @onready var inventory: Node = $Inventory
 
 const INGREDIENT_SCENE: PackedScene = preload("res://scenes/ingredient.tscn")
 
-func _ready():
+func spawn_beef():
 	var beef1: Ingredient = INGREDIENT_SCENE.instantiate()
 	add_child(beef1)
 	beef1.type = Global.Ingredients.BEEF
 	beef1.sprite.texture = load(Global.INGREDIENT_SPRITES[beef1.type])
 	beef1.set_interact_area()
 	inventory.give_item(beef1)
-	
-	var beef2: Ingredient = INGREDIENT_SCENE.instantiate()
-	add_child(beef2)
-	beef2.type = Global.Ingredients.BEEF
-	beef2.sprite.texture = load(Global.INGREDIENT_SPRITES[beef2.type])
-	beef2.set_interact_area()
-	inventory.give_item(beef2)
 
 func interact(offered_item: Item) -> Item:
 	var offering_item: Item

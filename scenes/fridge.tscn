@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://djfj45rumfdue"]
+[gd_scene load_steps=8 format=3 uid="uid://djfj45rumfdue"]
 
 [ext_resource type="Script" uid="uid://b0kh67nali4jj" path="res://scripts/scene_scripts/fridge.gd" id="1_e6sfw"]
 [ext_resource type="Texture2D" uid="uid://e5l41pca0c0e" path="res://sprites/Fridge.png" id="2_e6sfw"]
@@ -29,9 +29,6 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_2t0b2"]
-size = Vector2(24, 26)
-
 [node name="Fridge" type="Area2D"]
 script = ExtResource("1_e6sfw")
 
@@ -42,25 +39,7 @@ shape = SubResource("RectangleShape2D_gk71u")
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_x7sr2")
 
-[node name="Body" type="StaticBody2D" parent="."]
-
-[node name="Collision" type="CollisionShape2D" parent="Body"]
-position = Vector2(3, -3)
-shape = SubResource("RectangleShape2D_2t0b2")
-
 [node name="Inventory" type="Node2D" parent="."]
 script = ExtResource("3_npr5r")
-
-[node name="InventorySlot0" type="Node2D" parent="Inventory"]
-position = Vector2(11, 3)
-
-[node name="InventorySlot1" type="Node2D" parent="Inventory"]
-position = Vector2(-6, 3)
-
-[node name="InventorySlot2" type="Node2D" parent="Inventory"]
-position = Vector2(-6, -12)
-
-[node name="InventorySlot3" type="Node2D" parent="Inventory"]
-position = Vector2(10, -12)
 
 [connection signal="body_exited" from="." to="." method="_on_fridge_interact_body_exited"]

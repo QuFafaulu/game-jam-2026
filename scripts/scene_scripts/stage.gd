@@ -3,18 +3,13 @@ extends Node2D
 @onready var chef = $Chef
 @onready var dropped_items = $DroppedItems
 @onready var order_manager = $OrderManager
-@onready var delivery_window = $DeliveryWindow
+@onready var delivery_window = $Interactable_objects/DeliveryWindow
 @onready var rat_spawn = $RatSpawn
 @onready var rat_exit = $RatExit
-
-@export var num_starting_rats: int = 2
+@onready var fridge: Fridge = $Interactable_objects/Fridge
 
 const SUS_INGREDIENT_SCENE: PackedScene = preload("res://scenes/sus_ingredient.tscn")
 const RAT_SCENE: PackedScene = preload("res://scenes/rat.tscn")
-
-func _ready():
-	for i in range(num_starting_rats):
-		spawn_rat(0)
 
 # When the chef drops an item, reparent that item to self (the stage)
 # and enable its interaction so the chef or others can pick it up again
@@ -63,3 +58,13 @@ func spawn_rat(wait_time: int):
 		rat.leave_timer.wait_time = wait_time
 	rat.leave_timer.start()
 	rat.exit_node = rat_exit
+
+
+func _on_event_manager_request_critter_spawn(number: int, _type: String, duration: int) -> void:
+	for i in range(number):
+		spawn_rat(duration)
+
+
+func _on_event_manager_request_restock(amount: int) -> void:
+	for i in range(amount):
+		fridge.spawn_beef()
