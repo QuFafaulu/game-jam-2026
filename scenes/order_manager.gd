@@ -71,6 +71,7 @@ func _on_start_timer_timeout(id):
 	start_next_order(id)
 
 func on_order_success(order):
+	%yum.play()
 	var order_number = order[G_Level.ORDER_NUM]
 	active_order_count -= 1
 	open_orders[order_number-1] = 0 # When checking open orders, first check if typeof(open_orders[i]) == TYPE_INT: skip

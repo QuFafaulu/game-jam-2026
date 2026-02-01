@@ -27,6 +27,7 @@ func take_ingredient(item: Ingredient): #Collects cookable item
 	cooking_food.global_position = self.global_position
 	cooking_food.start_cooking(cook_speed)
 	item.queue_free() # Destroy the ingredient
+	%sizzle.play()
 
 func take_uncooked_food(food: Food):
 	food.reparent(inventory) # Add the cooking food to the inventory

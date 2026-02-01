@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://gukl0umto2eh"]
+[gd_scene load_steps=22 format=3 uid="uid://gukl0umto2eh"]
 
 [ext_resource type="Script" uid="uid://dumm052r31p6y" path="res://scripts/scene_scripts/stage.gd" id="1_wy2hx"]
 [ext_resource type="PackedScene" uid="uid://bprm4p1rglv4h" path="res://scenes/chef.tscn" id="3_1llen"]
@@ -17,8 +17,10 @@
 [ext_resource type="Script" uid="uid://blffd1px3i4oh" path="res://scenes/speach_bubble.gd" id="13_xfx4c"]
 [ext_resource type="Texture2D" uid="uid://cinlf2s5bjano" path="res://Assets/concepts_v0_speech.png" id="14_5sts7"]
 [ext_resource type="AudioStream" uid="uid://cvghqffkx7f1w" path="res://Assets/sounds/bell_atten.wav" id="16_t30jk"]
+[ext_resource type="AudioStream" uid="uid://bhmvij6f5vicm" path="res://Assets/sounds/yum_game_jam_jan_26.wav" id="17_drh8o"]
 [ext_resource type="Script" uid="uid://btawwq8bxglte" path="res://scenes/order_failures.gd" id="17_t30jk"]
 [ext_resource type="AudioStream" uid="uid://tf84g6qwtyti" path="res://Assets/sounds/group hiss.wav" id="18_d4wp7"]
+[ext_resource type="AudioStream" uid="uid://bvi0ftylj71b3" path="res://Assets/sounds/sizzle.wav" id="18_uw5rs"]
 [ext_resource type="Script" uid="uid://c7wl5s2p86rwb" path="res://scenes/fade_rect.gd" id="20_nea6r"]
 
 [node name="stage" type="Node2D"]
@@ -138,7 +140,8 @@ stream = ExtResource("12_jl6nj")
 [node name="OrderIncoming" type="AudioStreamPlayer2D" parent="Sounds"]
 unique_name_in_owner = true
 stream = ExtResource("16_t30jk")
-volume_db = 10.0
+volume_db = 4.163
+pitch_scale = 0.88
 
 [node name="GrillSound" type="AudioStreamPlayer2D" parent="Sounds"]
 unique_name_in_owner = true
@@ -147,6 +150,16 @@ volume_db = -65.901
 [node name="Hiss" type="AudioStreamPlayer2D" parent="Sounds"]
 unique_name_in_owner = true
 stream = ExtResource("18_d4wp7")
+
+[node name="yum" type="AudioStreamPlayer2D" parent="Sounds"]
+unique_name_in_owner = true
+stream = ExtResource("17_drh8o")
+
+[node name="sizzle" type="AudioStreamPlayer2D" parent="Sounds"]
+unique_name_in_owner = true
+stream = ExtResource("18_uw5rs")
+volume_db = -10.082
+pitch_scale = 0.88
 
 [node name="SpeachBubble" type="RichTextLabel" parent="."]
 z_index = 2
