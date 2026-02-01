@@ -14,6 +14,7 @@ var current_order_num: int = 0 #In practice, indexes from 1 to match meal order 
 var order_slips: Array
 var order_slip_image = preload("uid://boldly13v1o0x")
 var cross_out_image = preload("uid://bqb83js1n1kda")
+var tick_image = preload("uid://c7bjagwdwatod")
 
 const ticket_height = 50
 
@@ -62,9 +63,10 @@ func on_order_success(order):
 	var order_number = order[G_Level.ORDER_NUM]
 	active_order_count -= 1
 	open_orders[order_number-1] = 0 # When checking open orders, first check if typeof(open_orders[i]) == TYPE_INT: skip
-	order_slips[order_number-1].set_texture(cross_out_image)
+	order_slips[order_number-1].set_texture(tick_image)
 	var tween = get_tree().create_tween()
-	tween.tween_property(order_slips[order_number-1], "modulate",Color(0.145, 0.592, 0.0, 1.0), 0.5)
+	tween.tween_property(order_slips[order_number-1], "modulate",Color(0.145, 0.592, 0.0, 1.0), 0.1)
+	tween.tween_property(order_slips[order_number-1], "position", order_slips[order_number-1].position + Vector2(-100,0), 0.4)
 	tween.tween_property(order_slips[order_number-1], "scale", Vector2(), 2)
 	for i in range(order_number,order_slips.size()):
 		if typeof(order_slips[i]) != TYPE_INT:
@@ -77,7 +79,8 @@ func _on_patience_timer_timeout(timer_name, order_number):
 	open_orders[order_number-1] = 0 # When checking open orders, first check if typeof(open_orders[i]) == TYPE_INT: skip
 	order_slips[order_number-1].set_texture(cross_out_image)
 	var tween = get_tree().create_tween()
-	tween.tween_property(order_slips[order_number-1], "modulate",Color(0.553, 0.102, 0.043, 1.0), 0.5)
+	tween.tween_property(order_slips[order_number-1], "modulate",Color(0.553, 0.102, 0.043, 1.0), 0.1)
+	tween.tween_property(order_slips[order_number-1], "position", order_slips[order_number-1].position + Vector2(-100,0), 0.4)
 	tween.tween_property(order_slips[order_number-1], "scale", Vector2(), 2)
 	for i in range(order_number,order_slips.size()):
 		if typeof(order_slips[i]) != TYPE_INT:
@@ -93,7 +96,7 @@ func display_order(order):
 	new_order_slip.set_expand_mode(3)
 	new_order_slip.set_texture(order_slip_image)
 	order_panel.add_child(new_order_slip)
-	new_order_slip.set_position(new_order_slip.position + Vector2(0,(85*(active_order_count-1))))
+	new_order_slip.set_position(new_order_slip.position + Vector2(70,(200 + 85*(active_order_count-1))))
 	#endregion --------------------------
 	var order_text = generate_order_text(order)
 	#region Order slip text Object creation / formatting

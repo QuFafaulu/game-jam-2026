@@ -1,8 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://28wqirw5nryp"]
+[gd_scene load_steps=6 format=3 uid="uid://28wqirw5nryp"]
 
 [ext_resource type="Script" uid="uid://drpggfg0bhr84" path="res://scenes/order_manager.gd" id="1_v500a"]
 [ext_resource type="Script" uid="uid://d22ou5c0lo7e2" path="res://scenes/timer_display.gd" id="2_ghy7m"]
 [ext_resource type="Script" uid="uid://dgqeblfkbbeg1" path="res://scenes/level_timer.gd" id="2_hrvr2"]
+[ext_resource type="Texture2D" uid="uid://dq2mj1cfiteed" path="res://Assets/order window.png" id="4_s7obs"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_er8k8"]
+texture = ExtResource("4_s7obs")
 
 [node name="OrderManager" type="Control"]
 layout_mode = 3
@@ -15,6 +19,7 @@ script = ExtResource("1_v500a")
 
 [node name="TimeDisplayPanel" type="PanelContainer" parent="."]
 unique_name_in_owner = true
+visible = false
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -37,14 +42,13 @@ script = ExtResource("2_hrvr2")
 [node name="OrderPanel" type="Panel" parent="."]
 unique_name_in_owner = true
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.95
-anchor_top = 0.119
+anchors_preset = 1
+anchor_left = 1.0
 anchor_right = 1.0
-anchor_bottom = 0.119
-offset_left = -214.0
-offset_bottom = 431.31195
+offset_left = -360.0
+offset_bottom = 796.0
 grow_horizontal = 0
+theme_override_styles/panel = SubResource("StyleBoxTexture_er8k8")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 0
