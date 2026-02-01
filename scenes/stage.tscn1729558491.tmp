@@ -1,0 +1,75 @@
+[gd_scene load_steps=9 format=3 uid="uid://gukl0umto2eh"]
+
+[ext_resource type="Script" uid="uid://dumm052r31p6y" path="res://scripts/scene_scripts/stage.gd" id="1_wy2hx"]
+[ext_resource type="PackedScene" uid="uid://bprm4p1rglv4h" path="res://scenes/chef.tscn" id="3_1llen"]
+[ext_resource type="PackedScene" uid="uid://djfj45rumfdue" path="res://scenes/fridge.tscn" id="4_l5bn0"]
+[ext_resource type="Texture2D" uid="uid://svfkxetaemvp" path="res://sprites/concepts_v0_truck.png" id="5_2so7o"]
+[ext_resource type="PackedScene" uid="uid://pn5618ft84ov" path="res://scenes/oven.tscn" id="5_vcsse"]
+[ext_resource type="PackedScene" uid="uid://28wqirw5nryp" path="res://scenes/order_manager.tscn" id="8_1hwpr"]
+[ext_resource type="PackedScene" uid="uid://dpjarvjc0yuci" path="res://scenes/delivery_window.tscn" id="9_dexii"]
+[ext_resource type="PackedScene" uid="uid://bwo7qpkc4hliq" path="res://scenes/station.tscn" id="10_yd2gm"]
+
+[node name="stage" type="Node2D"]
+script = ExtResource("1_wy2hx")
+
+[node name="Chef" parent="." instance=ExtResource("3_1llen")]
+position = Vector2(664, 500)
+scale = Vector2(2, 2)
+
+[node name="Interactable_objects" type="Node2D" parent="."]
+
+[node name="Fridge" parent="Interactable_objects" instance=ExtResource("4_l5bn0")]
+position = Vector2(950, 325)
+scale = Vector2(4, 4)
+
+[node name="Oven" parent="Interactable_objects" instance=ExtResource("5_vcsse")]
+position = Vector2(356, 564)
+scale = Vector2(4, 4)
+cook_speed = 10
+
+[node name="DroppedItems" type="Node2D" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 9
+collision_mask = 9
+
+[node name="ConceptsV0Truck" type="Sprite2D" parent="StaticBody2D"]
+z_index = -1
+position = Vector2(600, 400)
+texture = ExtResource("5_2so7o")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+position = Vector2(-2, 0)
+build_mode = 1
+polygon = PackedVector2Array(409, 367, 409, 648, 999, 652, 992, 545, 1069, 545, 1060, 353)
+
+[node name="OrderManager" parent="." instance=ExtResource("8_1hwpr")]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_bottom = 0.0
+offset_left = 1452.0
+offset_top = 1.0
+offset_right = 1452.0
+offset_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 1
+
+[node name="DeliveryWindow" parent="." instance=ExtResource("9_dexii")]
+position = Vector2(614, 291)
+scale = Vector2(4, 4)
+
+[node name="Frier" parent="." instance=ExtResource("10_yd2gm")]
+position = Vector2(358, 443)
+scale = Vector2(4, 4)
+type = 1
+cook_speed = 20
+
+[node name="RatSpawn" type="Node2D" parent="."]
+position = Vector2(976, 464)
+
+[node name="RatExit" type="Node2D" parent="."]
+position = Vector2(455, 629)
+
+[connection signal="drop" from="Chef" to="." method="_on_chef_drop"]
+[connection signal="return_item" from="OrderManager" to="." method="_on_order_manager_return_item"]
+[connection signal="deliver_item" from="DeliveryWindow" to="." method="_on_delivery_window_deliver_item"]

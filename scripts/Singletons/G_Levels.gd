@@ -57,22 +57,10 @@ const ORDER_ITEM_DELIVERED = "items_delivered"
 
 
 #TODO
-
-#Flash orders green when getting a delivery
-
-# change order display to: 2x burgers, 1x corndog ##NOTE check ln 87 in order handler
-	# 1) change display
-	# 2) change delivery: counting, redisplay, crossout
 # Fix order fail anim being hidden behind bumped up orders
 	# move failed/passed orders left?
 		# Widen panel to allow this movement?
 # Consolodate time and order panels to have just one panel the scales with itself
-# Watch YT video about UI Scaling
-	# Esp. for scaling text and/or ticket image so they dont clip off screen
-# Make Event Handler object
-	# Chance to code a handler object corretly
-# make spreadsheet template for populating levels
-	# learn how to save spreadsheets as Templates
 	
 	#TODO trash
 	# add item delivered field: myDict.get_or_add(G_Level.ORDER_ITEM_DELIVERED, 0)
