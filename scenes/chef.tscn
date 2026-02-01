@@ -1,21 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://bprm4p1rglv4h"]
+[gd_scene load_steps=4 format=3 uid="uid://bprm4p1rglv4h"]
 
 [ext_resource type="Script" uid="uid://dw1krbor7reou" path="res://scripts/scene_scripts/chef.gd" id="1_mivr5"]
-[ext_resource type="Texture2D" uid="uid://oqi5b0mrw35j" path="res://sprites/Cheff.png" id="2_mivr5"]
+[ext_resource type="Texture2D" uid="uid://pfbfri3e6a67" path="res://Assets/sounds/chefblob.png" id="2_gmsil"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5cx38"]
 size = Vector2(32, 32)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_v0wnx"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("2_mivr5")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
 
 [node name="Chef" type="CharacterBody2D"]
 motion_mode = 1
@@ -24,8 +13,8 @@ script = ExtResource("1_mivr5")
 [node name="PhysicsShape" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_5cx38")
 
-[node name="Sprite" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_v0wnx")
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_gmsil")
 
 [node name="InteractionArea" type="Area2D" parent="."]
 

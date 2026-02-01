@@ -60,7 +60,6 @@ const ORDER_ITEM_DELIVERED = "items_delivered"
 
 #TODO
 
-# Consolodate time and order panels to have just one panel the scales with itself
 
 #Sounds needed:
 	#bgm
@@ -68,6 +67,8 @@ const ORDER_ITEM_DELIVERED = "items_delivered"
 		#fryer
 		#grill
 	#sale
+	#fail
+	
 
 	
 	#TODO trash

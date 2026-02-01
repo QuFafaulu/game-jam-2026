@@ -29,6 +29,7 @@ func start_next_order(_id): # _id counts as such: "Timer", "Timer2", etc.
 	var patience_timer = make_patience_timer(this_order)
 	self.display_order(this_order, patience_timer)
 	open_orders.append(this_order)
+	%OrderIncoming.play()
 
 func create_order_timeline(orders) -> Array:
 	var timer_array: Array
@@ -108,8 +109,12 @@ func display_order(order, patience_timer):
 	var new_patience_bar = ProgressBar.new()
 	new_patience_bar.name = "Patience Bar"
 	new_order_slip.add_child(new_patience_bar)
-	new_patience_bar.size = Vector2(100,100)
-	
+	new_patience_bar.size = Vector2(25,70)
+	new_patience_bar.fill_mode = ProgressBar.FILL_BOTTOM_TO_TOP
+	new_patience_bar.get_theme_stylebox("fill").bg_color = Color(0.145, 0.592, 0.0, 1.0)
+	new_patience_bar.position = Vector2(-13,15)
+	new_patience_bar.show_percentage = false
+	#new_patience_bar.get("theme_override_styles/background").bg_color = Color.GREEN
 	#new_order_slip.add_child(new_patience_bar)
 	#endregion -----------------------------------------------------------------
 	var order_text = generate_order_text(order)
@@ -240,7 +245,7 @@ func generate_order_text(order):
 	
 func _ready() -> void:
 	orders = get_orders()
-	order_success.connect(on_order_success)
+	order_success.connect(on_order_success) 
 	start_timers = create_order_timeline(orders)
 	start_order_timers()
 
@@ -253,5 +258,5 @@ func _process(delta: float) -> void:
 				if child is ProgressBar:
 					var patience_bar = child
 					var patience_timer = patience_timers[i]
-					patience_bar.value = patience_timer.time_left/patience_timer.wait_time
+					patience_bar.value = patience_timer.time_left/patience_timer.wait_time * 100
 	
