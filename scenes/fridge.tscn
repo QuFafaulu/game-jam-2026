@@ -1,11 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://djfj45rumfdue"]
+[gd_scene load_steps=10 format=3 uid="uid://djfj45rumfdue"]
 
 [ext_resource type="Script" uid="uid://b0kh67nali4jj" path="res://scripts/scene_scripts/fridge.gd" id="1_e6sfw"]
 [ext_resource type="Texture2D" uid="uid://e5l41pca0c0e" path="res://sprites/Fridge.png" id="2_e6sfw"]
 [ext_resource type="Script" uid="uid://jce4xhs2kv5e" path="res://scenes/fridge_inventory.gd" id="3_npr5r"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_gk71u"]
-size = Vector2(20, 8)
+[ext_resource type="Script" uid="uid://i1bimrbbsan2" path="res://scenes/left_side.gd" id="4_c4248"]
+[ext_resource type="Script" uid="uid://dl8ii33s0wa58" path="res://scenes/right_side.gd" id="5_i0i1l"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gk71u"]
 atlas = ExtResource("2_e6sfw")
@@ -29,12 +28,11 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Fridge" type="Area2D"]
-script = ExtResource("1_e6sfw")
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gk71u"]
+size = Vector2(20, 8)
 
-[node name="InteractArea" type="CollisionShape2D" parent="."]
-position = Vector2(5, 14)
-shape = SubResource("RectangleShape2D_gk71u")
+[node name="Fridge" type="Node2D"]
+script = ExtResource("1_e6sfw")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_x7sr2")
@@ -42,4 +40,20 @@ sprite_frames = SubResource("SpriteFrames_x7sr2")
 [node name="Inventory" type="Node2D" parent="."]
 script = ExtResource("3_npr5r")
 
-[connection signal="body_exited" from="." to="." method="_on_fridge_interact_body_exited"]
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="LeftSide" type="Area2D" parent="."]
+script = ExtResource("4_c4248")
+metadata/_custom_type_script = "uid://c672w24kn7bpt"
+
+[node name="LeftInteract" type="CollisionShape2D" parent="LeftSide"]
+position = Vector2(-7, 14)
+shape = SubResource("RectangleShape2D_gk71u")
+
+[node name="RightSide" type="Area2D" parent="."]
+script = ExtResource("5_i0i1l")
+metadata/_custom_type_script = "uid://c672w24kn7bpt"
+
+[node name="RightInteract" type="CollisionShape2D" parent="RightSide"]
+position = Vector2(13, 14)
+shape = SubResource("RectangleShape2D_gk71u")
