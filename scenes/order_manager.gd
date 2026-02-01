@@ -108,7 +108,7 @@ func display_order(order, patience_timer):
 	var new_patience_bar = ProgressBar.new()
 	new_patience_bar.name = "Patience Bar"
 	new_order_slip.add_child(new_patience_bar)
-	
+	new_patience_bar.size = Vector2(100,100)
 	
 	#new_order_slip.add_child(new_patience_bar)
 	#endregion -----------------------------------------------------------------
@@ -247,7 +247,7 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	for i in range(open_orders.size()):
-		if not typeof(open_orders[i]) != TYPE_INT:
+		if typeof(open_orders[i]) != TYPE_INT:
 			var slip = order_slips[i]
 			for child in slip.get_children():
 				if child is ProgressBar:

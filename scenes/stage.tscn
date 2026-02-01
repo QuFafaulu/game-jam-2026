@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://vegqp614oxx1" path="res://scenes/grill.tscn" id="4_0hg5s"]
 [ext_resource type="PackedScene" uid="uid://djfj45rumfdue" path="res://scenes/fridge.tscn" id="4_l5bn0"]
 [ext_resource type="Script" path="res://scenes/grill.gd" id="5_jl6nj"]
-[ext_resource type="PackedScene" path="res://scenes/fryer.tscn" id="5_yd2gm"]
+[ext_resource type="PackedScene" uid="uid://tg67ykblfv6n" path="res://scenes/fryer.tscn" id="5_yd2gm"]
 [ext_resource type="PackedScene" uid="uid://28wqirw5nryp" path="res://scenes/order_manager.tscn" id="8_1hwpr"]
 [ext_resource type="PackedScene" uid="uid://dpjarvjc0yuci" path="res://scenes/delivery_window.tscn" id="9_dexii"]
 [ext_resource type="Texture2D" uid="uid://dww7h8mydltnm" path="res://Assets/bg1500x800.png" id="9_e38vs"]
