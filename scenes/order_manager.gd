@@ -26,15 +26,8 @@ func start_next_order(_id): # _id counts as such: "Timer", "Timer2", etc.
 	current_order_num += 1
 	active_order_count += 1
 	var this_order = orders[current_order_num-1]
-	var new_pateince_timer = Timer.new()
-	self.add_child(new_pateince_timer)
-	new_pateince_timer.name = "PatienceTimer" + str(current_order_num)
-	new_pateince_timer.wait_time = this_order[G_Level.ORDER_PATIENCE]
-	new_pateince_timer.timeout.connect(_on_patience_timer_timeout.bind(new_pateince_timer.name,current_order_num))
-	new_pateince_timer.one_shot = true
-	new_pateince_timer.start()
-	patience_timers.append(new_pateince_timer)
-	self.display_order(this_order)
+	var patience_timer = make_patience_timer(this_order)
+	self.display_order(this_order, patience_timer)
 	open_orders.append(this_order)
 
 func create_order_timeline(orders) -> Array:
@@ -46,6 +39,20 @@ func create_order_timeline(orders) -> Array:
 		new_timer.wait_time = start_time
 		timer_array.append(new_timer)
 	return timer_array
+
+func make_patience_timer(order):
+	var new_pateince_timer = Timer.new()
+	self.add_child(new_pateince_timer)
+	new_pateince_timer.name = "PatienceTimer" + str(current_order_num)
+	new_pateince_timer.wait_time = order[G_Level.ORDER_PATIENCE]
+	new_pateince_timer.timeout.connect(_on_patience_timer_timeout.bind(new_pateince_timer.name,current_order_num))
+	new_pateince_timer.one_shot = true
+	new_pateince_timer.start()
+	patience_timers.append(new_pateince_timer)
+	return new_pateince_timer
+	
+func make_patience_bar(timer):
+	pass
 
 func start_order_timers():
 	for timer in start_timers:
@@ -87,7 +94,7 @@ func _on_patience_timer_timeout(timer_name, order_number):
 			order_slips[i].set_position(order_slips[i].position + Vector2(0,-85)) 
 	order_fail.emit(orders[order_number-1])
 
-func display_order(order):
+func display_order(order, patience_timer):
 	#region Create and display order slip
 	var new_order_slip = TextureRect.new()
 	new_order_slip.set_size(Vector2(0,85)) #only y-value of vector2 matters here. object is scales proportionally
@@ -97,6 +104,14 @@ func display_order(order):
 	order_panel.add_child(new_order_slip)
 	new_order_slip.set_position(new_order_slip.position + Vector2(70,(200 + 85*(active_order_count-1))))
 	#endregion --------------------------
+	#region Create patience_timer_bar-------------------------------------------
+	var new_patience_bar = ProgressBar.new()
+	new_patience_bar.name = "Patience Bar"
+	new_order_slip.add_child(new_patience_bar)
+	
+	
+	#new_order_slip.add_child(new_patience_bar)
+	#endregion -----------------------------------------------------------------
 	var order_text = generate_order_text(order)
 	#region Order slip text Object creation / formatting
 	var new_order = RichTextLabel.new()
@@ -170,7 +185,9 @@ func deliver_item(item: Food): #item_type means "burger" or "corndog" is_rat is 
 				if full:
 					order_success.emit(ticket)
 					patience_timers[int(ticket[G_Level.ORDER_NUM])-1].queue_free() #complete order cean-up
-				order_slips[i].get_child(0).set_text("[color=black]" + order_text + "[/color]")
+				for child in order_slips[i].get_children():
+					if child is RichTextLabel:
+						child.set_text("[color=black]" + order_text + "[/color]")
 				
 	if filled:
 		item.queue_free() # Destroy the item if it was delivered
@@ -229,4 +246,12 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	for i in range(open_orders.size()):
+		if not typeof(open_orders[i]) != TYPE_INT:
+			var slip = order_slips[i]
+			for child in slip.get_children():
+				if child is ProgressBar:
+					var patience_bar = child
+					var patience_timer = patience_timers[i]
+					patience_bar.value = patience_timer.time_left/patience_timer.wait_time
+	

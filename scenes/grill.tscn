@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://vegqp614oxx1"]
+
+[ext_resource type="PackedScene" uid="uid://bwo7qpkc4hliq" path="res://scenes/station.tscn" id="1_b7lk3"]
+
+[node name="Fryer" instance=ExtResource("1_b7lk3")]

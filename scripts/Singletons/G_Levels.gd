@@ -61,8 +61,13 @@ const ORDER_ITEM_DELIVERED = "items_delivered"
 #TODO
 
 # Consolodate time and order panels to have just one panel the scales with itself
-# import truck and background
-# paint in customer crowd
+
+#Sounds needed:
+	#bgm
+	#sizzle:
+		#fryer
+		#grill
+	#sale
 
 	
 	#TODO trash
