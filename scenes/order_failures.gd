@@ -1,6 +1,6 @@
 extends ProgressBar
 
-@export var refill_speed: float = 1
+@export var refill_speed: float = .5
 signal orders_failed
 
 func _ready():

@@ -71,7 +71,7 @@ func spawn_rat(wait_time: int):
 	rat.position = rat_spawn.position
 	rat.die.connect(_on_rat_die)
 	if wait_time == 0:
-		rat.leave_timer.wait_time = randi_range(15,30);
+		rat.leave_timer.wait_time = randi_range(10,25);
 	else:
 		rat.leave_timer.wait_time = wait_time
 	rat.leave_timer.start()

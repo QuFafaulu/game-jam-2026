@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://vegqp614oxx1" path="res://scenes/grill.tscn" id="4_0hg5s"]
 [ext_resource type="PackedScene" uid="uid://djfj45rumfdue" path="res://scenes/fridge.tscn" id="4_l5bn0"]
 [ext_resource type="Script" uid="uid://b1mtgmblqblqn" path="res://scenes/grill.gd" id="5_jl6nj"]
-[ext_resource type="PackedScene" path="res://scenes/fryer.tscn" id="5_yd2gm"]
+[ext_resource type="PackedScene" uid="uid://tg67ykblfv6n" path="res://scenes/fryer.tscn" id="5_yd2gm"]
 [ext_resource type="PackedScene" uid="uid://28wqirw5nryp" path="res://scenes/order_manager.tscn" id="8_1hwpr"]
 [ext_resource type="PackedScene" uid="uid://dpjarvjc0yuci" path="res://scenes/delivery_window.tscn" id="9_dexii"]
 [ext_resource type="PackedScene" uid="uid://csq0bpo20q62j" path="res://scenes/trash.tscn" id="9_yd2gm"]
@@ -38,6 +38,7 @@ scale = Vector2(4, 4)
 position = Vector2(361, 576)
 scale = Vector2(4, 4)
 script = ExtResource("5_jl6nj")
+cook_speed = 14
 
 [node name="Fryer" parent="Interactable_objects" instance=ExtResource("5_yd2gm")]
 position = Vector2(358, 443)
@@ -172,7 +173,9 @@ offset_left = 376.0
 offset_top = 262.0
 offset_right = 529.0
 offset_bottom = 289.0
+step = 0.0
 script = ExtResource("17_t30jk")
+refill_speed = 0.3
 
 [node name="FadeRect" type="ColorRect" parent="."]
 modulate = Color(1, 1, 1, 0)
