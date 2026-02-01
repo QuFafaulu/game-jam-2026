@@ -9,9 +9,18 @@ extends Node2D
 @onready var fridge: Fridge = $Interactable_objects/Fridge
 @onready var rat_death_sound: AudioStreamPlayer2D = $Sounds/RatDeathSound
 @onready var rat_spawn_sound: AudioStreamPlayer2D = $Sounds/RatSpawnSound
+@onready var speach_bubble: RichTextLabel = $SpeachBubble
+@onready var speach_bubble_sprite: Sprite2D = $SpeachBubbleSprite
+
+var speach_bubble_buffer: Array[String]
 
 const SUS_INGREDIENT_SCENE: PackedScene = preload("res://scenes/sus_ingredient.tscn")
 const RAT_SCENE: PackedScene = preload("res://scenes/rat.tscn")
+
+func _ready():
+	speach_bubble_sprite.visible = false
+	speach_bubble.add_theme_color_override("default_color",Color("black"))
+	speach_bubble.add_theme_font_size_override("normal_font_size",24)
 
 # When the chef drops an item, reparent that item to self (the stage)
 # and enable its interaction so the chef or others can pick it up again
@@ -70,3 +79,21 @@ func _on_event_manager_request_critter_spawn(number: int, _type: String, duratio
 func _on_event_manager_request_restock(amount: int) -> void:
 	for i in range(amount):
 		fridge.spawn_beef()
+
+func _on_order_manager_display_speach_bubble(text: String) -> void:
+	if not speach_bubble.is_displaying_text:
+		start_speach_bubble(text)
+	else:
+		speach_bubble_buffer.push_back(text)
+	
+func start_speach_bubble(text: String):
+	speach_bubble.visible = true
+	speach_bubble_sprite.visible = true
+	speach_bubble.display_text(text)
+
+func _on_speach_bubble_text_done() -> void:
+	if not speach_bubble_buffer.size() == 0:
+		start_speach_bubble(speach_bubble_buffer.pop_back())
+	else:
+		speach_bubble_sprite.visible = false
+		speach_bubble.visible = false

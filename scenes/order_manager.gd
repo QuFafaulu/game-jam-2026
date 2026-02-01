@@ -5,6 +5,7 @@ extends Control
 signal order_success # passes the order object -> Array[Dict]
 signal order_fail # passes the order object -> Array[Dict]
 signal return_item(item: Item)
+signal display_speach_bubble(text: String)
 var orders: Array #Will always contains full order list for the level. 
 var open_orders: Array = []
 var active_order_count = 0
@@ -118,6 +119,7 @@ func display_order(order, patience_timer):
 	#new_order_slip.add_child(new_patience_bar)
 	#endregion -----------------------------------------------------------------
 	var order_text = generate_order_text(order)
+	display_speach_bubble.emit(order[G_Level.ORDER_TEXT])
 	#region Order slip text Object creation / formatting
 	var new_order = RichTextLabel.new()
 	new_order.size = Vector2(210+25,50+14)

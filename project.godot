@@ -29,6 +29,10 @@ window/stretch/mode="viewport"
 window/stretch/aspect="ignore"
 window/stretch/scale_mode="integer"
 
+[gui]
+
+theme/default_font_antialiasing=0
+
 [input]
 
 move_left={

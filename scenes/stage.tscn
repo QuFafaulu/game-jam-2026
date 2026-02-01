@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://gukl0umto2eh"]
+[gd_scene load_steps=19 format=3 uid="uid://gukl0umto2eh"]
 
 [ext_resource type="Script" uid="uid://dumm052r31p6y" path="res://scripts/scene_scripts/stage.gd" id="1_wy2hx"]
 [ext_resource type="PackedScene" uid="uid://bprm4p1rglv4h" path="res://scenes/chef.tscn" id="3_1llen"]
@@ -17,6 +17,8 @@
 [ext_resource type="AudioStream" uid="uid://bg8p10nbyghkt" path="res://Assets/Mouseappear.wav" id="12_jl6nj"]
 [ext_resource type="AudioStream" uid="uid://cvghqffkx7f1w" path="res://Assets/sounds/bell_atten.wav" id="16_t30jk"]
 [ext_resource type="AudioStream" uid="uid://bvi0ftylj71b3" path="res://Assets/sounds/sizzle.wav" id="17_t30jk"]
+[ext_resource type="Script" uid="uid://blffd1px3i4oh" path="res://scenes/speach_bubble.gd" id="13_xfx4c"]
+[ext_resource type="Texture2D" uid="uid://cinlf2s5bjano" path="res://Assets/concepts_v0_speech.png" id="14_5sts7"]
 
 [node name="stage" type="Node2D"]
 script = ExtResource("1_wy2hx")
@@ -146,9 +148,30 @@ volume_db = 10.0
 unique_name_in_owner = true
 stream = ExtResource("17_t30jk")
 volume_db = -65.901
+[node name="SpeachBubble" type="RichTextLabel" parent="."]
+z_index = 2
+offset_left = 455.0
+offset_top = 55.0
+offset_right = 766.0
+offset_bottom = 182.0
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("13_xfx4c")
+fill_speed = 15.0
+
+[node name="SpeachBubbleSprite" type="Sprite2D" parent="."]
+position = Vector2(614, 124)
+scale = Vector2(1.2643145, 1.477604)
+texture = ExtResource("14_5sts7")
 
 [connection signal="drop" from="Chef" to="." method="_on_chef_drop"]
 [connection signal="deliver_item" from="Interactable_objects/DeliveryWindow" to="." method="_on_delivery_window_deliver_item"]
+[connection signal="display_speach_bubble" from="OrderManager" to="." method="_on_order_manager_display_speach_bubble"]
+[connection signal="order_fail" from="OrderManager" to="." method="_on_order_manager_order_fail"]
 [connection signal="return_item" from="OrderManager" to="." method="_on_order_manager_return_item"]
 [connection signal="request_critter_spawn" from="EventManager" to="." method="_on_event_manager_request_critter_spawn"]
 [connection signal="request_restock" from="EventManager" to="." method="_on_event_manager_request_restock"]
+[connection signal="text_done" from="SpeachBubble" to="." method="_on_speach_bubble_text_done"]
