@@ -1,6 +1,6 @@
 extends Control
 
-#NOTE SEND SIGNALS TO func deliver_items(item_type: String,is_rat: bool): #item_type means "burger" or "corndog" is_rat is bool
+#NOTE SEND SIGNALS TO func deliver_items(item_type: String,is_rat: bool): #item_type means "burger" or "corn dog" is_rat is bool
 
 signal order_success # passes the order object -> Array[Dict]
 signal order_fail # passes the order object -> Array[Dict]
@@ -34,7 +34,6 @@ func start_next_order(_id): # _id counts as such: "Timer", "Timer2", etc.
 	new_pateince_timer.start()
 	patience_timers.append(new_pateince_timer)
 	self.display_order(this_order)
-	print(this_order[G_Level.ORDER_TEXT])
 	open_orders.append(this_order)
 
 	
