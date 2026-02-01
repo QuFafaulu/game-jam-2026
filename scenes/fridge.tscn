@@ -1,41 +1,15 @@
-[gd_scene load_steps=10 format=3 uid="uid://djfj45rumfdue"]
+[gd_scene load_steps=6 format=3 uid="uid://djfj45rumfdue"]
 
 [ext_resource type="Script" uid="uid://b0kh67nali4jj" path="res://scripts/scene_scripts/fridge.gd" id="1_e6sfw"]
-[ext_resource type="Texture2D" uid="uid://e5l41pca0c0e" path="res://sprites/Fridge.png" id="2_e6sfw"]
 [ext_resource type="Script" uid="uid://jce4xhs2kv5e" path="res://scenes/fridge_inventory.gd" id="3_npr5r"]
 [ext_resource type="Script" uid="uid://i1bimrbbsan2" path="res://scenes/left_side.gd" id="4_c4248"]
 [ext_resource type="Script" uid="uid://dl8ii33s0wa58" path="res://scenes/right_side.gd" id="5_i0i1l"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_gk71u"]
-atlas = ExtResource("2_e6sfw")
-region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_6ofhc"]
-atlas = ExtResource("2_e6sfw")
-region = Rect2(32, 0, 32, 32)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_x7sr2"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_gk71u")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_6ofhc")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gk71u"]
 size = Vector2(20, 8)
 
 [node name="Fridge" type="Node2D"]
 script = ExtResource("1_e6sfw")
-
-[node name="Sprite" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_x7sr2")
 
 [node name="Inventory" type="Node2D" parent="."]
 script = ExtResource("3_npr5r")
@@ -47,7 +21,7 @@ script = ExtResource("4_c4248")
 metadata/_custom_type_script = "uid://c672w24kn7bpt"
 
 [node name="LeftInteract" type="CollisionShape2D" parent="LeftSide"]
-position = Vector2(-7, 14)
+position = Vector2(-2, 14)
 shape = SubResource("RectangleShape2D_gk71u")
 
 [node name="RightSide" type="Area2D" parent="."]
@@ -55,5 +29,5 @@ script = ExtResource("5_i0i1l")
 metadata/_custom_type_script = "uid://c672w24kn7bpt"
 
 [node name="RightInteract" type="CollisionShape2D" parent="RightSide"]
-position = Vector2(13, 14)
+position = Vector2(18, 14)
 shape = SubResource("RectangleShape2D_gk71u")

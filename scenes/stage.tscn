@@ -32,6 +32,7 @@ cook_speed = 13
 [node name="Fryer" parent="Interactable_objects" instance=ExtResource("5_yd2gm")]
 position = Vector2(358, 443)
 scale = Vector2(4, 4)
+type = 1
 cook_speed = 20
 
 [node name="DeliveryWindow" parent="Interactable_objects" instance=ExtResource("9_dexii")]

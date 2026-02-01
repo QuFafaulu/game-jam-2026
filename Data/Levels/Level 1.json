@@ -47,13 +47,13 @@
 	  },
 	  {
 		"event type": "order",
-		"start time": 15,
+		"start time": 20,
 		"restock": 0,
 		"rats": 0,
 		"burgers": 1,
 		"corn dogs": 0,
 		"order text": "I am dying for a burger .",
-		"order patience": 12,
+		"order patience": 16,
 		"rat leave": 0
 	  },
 	  {
@@ -75,7 +75,7 @@
 		"burgers": 1,
 		"corn dogs": 0,
 		"order text": "My boss wants a burger and my boss don't like waitin'.",
-		"order patience": 12,
+		"order patience": 15,
 		"rat leave": 0
 	  },
 	  {
@@ -123,9 +123,9 @@
 		"rat leave": 15
 	  },
 	  {
-		"event type": "",
-		"start time": "",
-		"restock": 0,
+		"event type": "restock",
+		"start time": 100,
+		"restock": 6,
 		"rats": 0,
 		"burgers": 0,
 		"corn dogs": 0,
@@ -134,9 +134,75 @@
 		"rat leave": 0
 	  },
 	  {
-		"event type": "",
-		"start time": "",
+		"event type": "order",
+		"start time": 105,
 		"restock": 0,
+		"rats": 0,
+		"burgers": 1,
+		"corn dogs": 0,
+		"order text": "Whacchu got on the grill?",
+		"order patience": 20,
+		"rat leave": 0
+	  },
+	  {
+		"event type": "order",
+		"start time": 115,
+		"restock": 0,
+		"rats": 0,
+		"burgers": 4,
+		"corn dogs": 0,
+		"order text": "Burgers for the whole family please!",
+		"order patience": 50,
+		"rat leave": 0
+	  },
+	  {
+		"event type": "critter spawn",
+		"start time": 120,
+		"restock": 0,
+		"rats": 2,
+		"burgers": 0,
+		"corn dogs": 0,
+		"order text": "",
+		"order patience": 0,
+		"rat leave": 0
+	  },
+	  {
+		"event type": "order",
+		"start time": 130,
+		"restock": 0,
+		"rats": 0,
+		"burgers": 0,
+		"corn dogs": 0,
+		"order text": "Corn dog. Now!",
+		"order patience": 13,
+		"rat leave": 0
+	  },
+	  {
+		"event type": "critter spawn",
+		"start time": 137,
+		"restock": 0,
+		"rats": 2,
+		"burgers": 0,
+		"corn dogs": 0,
+		"order text": "",
+		"order patience": 0,
+		"rat leave": 0
+	  },
+	  {
+		"event type": "order",
+		"start time": 150,
+		"restock": 0,
+		"rats": 0,
+		"burgers": 0,
+		"corn dogs": 0,
+		"order text": "Yo boy needs a corn dog!",
+		"order patience": 12,
+		"rat leave": 0
+	  },
+	  {
+		"event type": "restock",
+		"start time": 165,
+		"restock": 6,
 		"rats": 0,
 		"burgers": 0,
 		"corn dogs": 0,
@@ -145,10 +211,10 @@
 		"rat leave": 0
 	  },
 	  {
-		"event type": "",
-		"start time": "",
+		"event type": "critter spawn",
+		"start time": 166,
 		"restock": 0,
-		"rats": 0,
+		"rats": 1,
 		"burgers": 0,
 		"corn dogs": 0,
 		"order text": "",
@@ -156,10 +222,32 @@
 		"rat leave": 0
 	  },
 	  {
-		"event type": "",
-		"start time": "",
+		"event type": "order",
+		"start time": 170,
 		"restock": 0,
 		"rats": 0,
+		"burgers": 0,
+		"corn dogs": 2,
+		"order text": "I'll have a... Uh... Umm… two Corn dogs!",
+		"order patience": 22,
+		"rat leave": 0
+	  },
+	  {
+		"event type": "order",
+		"start time": 185,
+		"restock": 0,
+		"rats": 0,
+		"burgers": 0,
+		"corn dogs": 3,
+		"order text": "Billy's mom let him have two corn dogs. I want three!",
+		"order patience": 25,
+		"rat leave": 0
+	  },
+	  {
+		"event type": "critter spawn",
+		"start time": 188,
+		"restock": 0,
+		"rats": 2,
 		"burgers": 0,
 		"corn dogs": 0,
 		"order text": "",
@@ -167,256 +255,14 @@
 		"rat leave": 0
 	  },
 	  {
-		"event type": "",
-		"start time": "",
+		"event type": "order",
+		"start time": 190,
 		"restock": 0,
 		"rats": 0,
-		"burgers": 0,
+		"burgers": 1,
 		"corn dogs": 0,
-		"order text": "",
-		"order patience": 0,
-		"rat leave": 0
-	  },
-	  {
-		"event type": "",
-		"start time": "",
-		"restock": 0,
-		"rats": 0,
-		"burgers": 0,
-		"corn dogs": 0,
-		"order text": "",
-		"order patience": 0,
-		"rat leave": 0
-	  },
-	  {
-		"event type": "",
-		"start time": "",
-		"restock": 0,
-		"rats": 0,
-		"burgers": 0,
-		"corn dogs": 0,
-		"order text": "",
-		"order patience": 0,
-		"rat leave": 0
-	  },
-	  {
-		"event type": "",
-		"start time": "",
-		"restock": 0,
-		"rats": 0,
-		"burgers": 0,
-		"corn dogs": 0,
-		"order text": "",
-		"order patience": 0,
-		"rat leave": 0
-	  },
-	  {
-		"event type": "",
-		"start time": "",
-		"restock": 0,
-		"rats": 0,
-		"burgers": 0,
-		"corn dogs": 0,
-		"order text": "",
-		"order patience": 0,
-		"rat leave": 0
-	  },
-	  {
-		"event type": "",
-		"start time": "",
-		"restock": 0,
-		"rats": 0,
-		"burgers": 0,
-		"corn dogs": 0,
-		"order text": "",
-		"order patience": 0,
-		"rat leave": 0
-	  },
-	  {
-		"event type": "",
-		"start time": "",
-		"restock": 0,
-		"rats": 0,
-		"burgers": 0,
-		"corn dogs": 0,
-		"order text": "",
-		"order patience": 0,
-		"rat leave": 0
-	  },
-	  {
-		"event type": "",
-		"start time": "",
-		"restock": 0,
-		"rats": 0,
-		"burgers": 0,
-		"corn dogs": 0,
-		"order text": "",
-		"order patience": 0,
-		"rat leave": 0
-	  },
-	  {
-		"event type": "",
-		"start time": "",
-		"restock": 0,
-		"rats": 0,
-		"burgers": 0,
-		"corn dogs": 0,
-		"order text": "",
-		"order patience": 0,
-		"rat leave": 0
-	  },
-	  {
-		"event type": "",
-		"start time": "",
-		"restock": 0,
-		"rats": 0,
-		"burgers": 0,
-		"corn dogs": 0,
-		"order text": "",
-		"order patience": 0,
-		"rat leave": 0
-	  },
-	  {
-		"event type": "",
-		"start time": "",
-		"restock": 0,
-		"rats": 0,
-		"burgers": 0,
-		"corn dogs": 0,
-		"order text": "",
-		"order patience": 0,
-		"rat leave": 0
-	  },
-	  {
-		"event type": "",
-		"start time": "",
-		"restock": 0,
-		"rats": 0,
-		"burgers": 0,
-		"corn dogs": 0,
-		"order text": "",
-		"order patience": 0,
-		"rat leave": 0
-	  },
-	  {
-		"event type": "",
-		"start time": "",
-		"restock": 0,
-		"rats": 0,
-		"burgers": 0,
-		"corn dogs": 0,
-		"order text": "",
-		"order patience": 0,
-		"rat leave": 0
-	  },
-	  {
-		"event type": "",
-		"start time": "",
-		"restock": 0,
-		"rats": 0,
-		"burgers": 0,
-		"corn dogs": 0,
-		"order text": "",
-		"order patience": 0,
-		"rat leave": 0
-	  },
-	  {
-		"event type": "",
-		"start time": "",
-		"restock": 0,
-		"rats": 0,
-		"burgers": 0,
-		"corn dogs": 0,
-		"order text": "",
-		"order patience": 0,
-		"rat leave": 0
-	  },
-	  {
-		"event type": "",
-		"start time": "",
-		"restock": 0,
-		"rats": 0,
-		"burgers": 0,
-		"corn dogs": 0,
-		"order text": "",
-		"order patience": 0,
-		"rat leave": 0
-	  },
-	  {
-		"event type": "",
-		"start time": "",
-		"restock": 0,
-		"rats": 0,
-		"burgers": 0,
-		"corn dogs": 0,
-		"order text": "",
-		"order patience": 0,
-		"rat leave": 0
-	  },
-	  {
-		"event type": "",
-		"start time": "",
-		"restock": 0,
-		"rats": 0,
-		"burgers": 0,
-		"corn dogs": 0,
-		"order text": "",
-		"order patience": 0,
-		"rat leave": 0
-	  },
-	  {
-		"event type": "",
-		"start time": "",
-		"restock": 0,
-		"rats": 0,
-		"burgers": 0,
-		"corn dogs": 0,
-		"order text": "",
-		"order patience": 0,
-		"rat leave": 0
-	  },
-	  {
-		"event type": "",
-		"start time": "",
-		"restock": 0,
-		"rats": 0,
-		"burgers": 0,
-		"corn dogs": 0,
-		"order text": "",
-		"order patience": 0,
-		"rat leave": 0
-	  },
-	  {
-		"event type": "",
-		"start time": "",
-		"restock": 0,
-		"rats": 0,
-		"burgers": 0,
-		"corn dogs": 0,
-		"order text": "",
-		"order patience": 0,
-		"rat leave": 0
-	  },
-	  {
-		"event type": "",
-		"start time": "",
-		"restock": 0,
-		"rats": 0,
-		"burgers": 0,
-		"corn dogs": 0,
-		"order text": "",
-		"order patience": 0,
-		"rat leave": 0
-	  },
-	  {
-		"event type": "",
-		"start time": "",
-		"restock": 0,
-		"rats": 0,
-		"burgers": 0,
-		"corn dogs": 0,
-		"order text": "",
-		"order patience": 0,
+		"order text": "What does it take to get some food around here!? Burger!",
+		"order patience": 15,
 		"rat leave": 0
 	  }
 	]

@@ -11,10 +11,8 @@ func interact(offered_item: Item) -> Item:
 			if offering_item is SusIngredient:
 				offering_item.start_rotting()
 			return offering_item
-		else:
-			return null
-	else:
+	elif offered_item is Ingredient:
 		if offered_item is SusIngredient:
 			offered_item.stop_rotting()
 		inventory.give_item_left(offered_item)
-		return null
+	return null

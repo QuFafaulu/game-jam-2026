@@ -4,8 +4,8 @@ extends Node2D
 
 var inventory_items_right: Array[Item]
 var inventory_items_left: Array[Item]
-var base_position_right: Vector2 = Vector2(15,0)
-var base_position_left: Vector2 = Vector2(-10,0)
+var base_position_right: Vector2 = Vector2(20,0)
+var base_position_left: Vector2 = Vector2(-5,0)
 var offset: Vector2 = Vector2(0,-5)
 
 func give_item_left(item: Item):
