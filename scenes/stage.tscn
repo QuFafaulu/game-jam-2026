@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://gukl0umto2eh"]
+[gd_scene load_steps=10 format=3 uid="uid://gukl0umto2eh"]
 
 [ext_resource type="Script" uid="uid://dumm052r31p6y" path="res://scripts/scene_scripts/stage.gd" id="1_wy2hx"]
 [ext_resource type="PackedScene" uid="uid://bprm4p1rglv4h" path="res://scenes/chef.tscn" id="3_1llen"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://pn5618ft84ov" path="res://scenes/oven.tscn" id="5_vcsse"]
 [ext_resource type="PackedScene" uid="uid://28wqirw5nryp" path="res://scenes/order_manager.tscn" id="8_1hwpr"]
 [ext_resource type="PackedScene" uid="uid://dpjarvjc0yuci" path="res://scenes/delivery_window.tscn" id="9_dexii"]
+[ext_resource type="PackedScene" uid="uid://csq0bpo20q62j" path="res://trash.tscn" id="9_yd2gm"]
 [ext_resource type="PackedScene" uid="uid://bwo7qpkc4hliq" path="res://scenes/station.tscn" id="10_yd2gm"]
 
 [node name="stage" type="Node2D"]
@@ -54,10 +55,6 @@ offset_bottom = 1.0
 grow_horizontal = 0
 grow_vertical = 1
 
-[node name="DeliveryWindow" parent="." instance=ExtResource("9_dexii")]
-position = Vector2(614, 291)
-scale = Vector2(4, 4)
-
 [node name="Frier" parent="." instance=ExtResource("10_yd2gm")]
 position = Vector2(358, 443)
 scale = Vector2(4, 4)
@@ -69,6 +66,14 @@ position = Vector2(976, 464)
 
 [node name="RatExit" type="Node2D" parent="."]
 position = Vector2(455, 629)
+
+[node name="DeliveryWindow" parent="." instance=ExtResource("9_dexii")]
+position = Vector2(598, 314)
+scale = Vector2(4, 4)
+
+[node name="Trash" parent="." instance=ExtResource("9_yd2gm")]
+position = Vector2(997, 598)
+scale = Vector2(4, 4)
 
 [connection signal="drop" from="Chef" to="." method="_on_chef_drop"]
 [connection signal="return_item" from="OrderManager" to="." method="_on_order_manager_return_item"]

@@ -135,7 +135,6 @@ func deliver_item(item: Food): #item_type means "burger" or "corndog" is_rat is 
 		Global.Meals.RAT_DOG:
 			item_type = G_Level.CORN_DOGS
 			is_rat = true
-	
 
 	for i in range(open_orders.size()):
 		if filled:

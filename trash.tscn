@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://csq0bpo20q62j"]
+
+[ext_resource type="Script" uid="uid://0jv3uxcla1ru" path="res://trash.gd" id="1_avkd5"]
+
+[node name="Trash" type="Area2D"]
+script = ExtResource("1_avkd5")
+metadata/_custom_type_script = "uid://c672w24kn7bpt"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-8, -21, 23, -21, 23, -13, 0, -13, 0, 21, -8, 21)
