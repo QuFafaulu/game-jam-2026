@@ -26,10 +26,8 @@ func _on_chef_drop(item: Item) -> void:
 	# (this should leave the item unmoved)
 	item.position = chef.position
 
-
 func _on_delivery_window_deliver_item(item: Food) -> void:
 	order_manager.deliver_item(item)
-
 
 func _on_order_manager_return_item(item: Item) -> void:
 	# Claim the dropped item, and put it under the dropped_items node
@@ -38,7 +36,6 @@ func _on_order_manager_return_item(item: Item) -> void:
 	item.enable_interaction()
 	# Set the item's position to just under the delivery window
 	item.position = delivery_window.position + Vector2(0, 50)
-
 
 func _on_rat_die(rat: Rat) -> void:
 	var dead_rat: SusIngredient = SUS_INGREDIENT_SCENE.instantiate()
@@ -51,7 +48,7 @@ func _on_rat_die(rat: Rat) -> void:
 	dead_rat.start_rotting()
 	dead_rat.enable_interaction()
 	rat.queue_free()
-	
+
 func spawn_rat():
 	var rat: Rat = RAT_SCENE.instantiate()
 	print("rat spawned")

@@ -5,15 +5,9 @@
 [ext_resource type="PackedScene" uid="uid://djfj45rumfdue" path="res://scenes/fridge.tscn" id="4_l5bn0"]
 [ext_resource type="Texture2D" uid="uid://svfkxetaemvp" path="res://sprites/concepts_v0_truck.png" id="5_2so7o"]
 [ext_resource type="PackedScene" uid="uid://pn5618ft84ov" path="res://scenes/oven.tscn" id="5_vcsse"]
-<<<<<<< Updated upstream
 [ext_resource type="PackedScene" uid="uid://28wqirw5nryp" path="res://scenes/order_manager.tscn" id="8_1hwpr"]
 [ext_resource type="PackedScene" uid="uid://dpjarvjc0yuci" path="res://scenes/delivery_window.tscn" id="9_dexii"]
 [ext_resource type="PackedScene" uid="uid://bwo7qpkc4hliq" path="res://scenes/station.tscn" id="10_yd2gm"]
-=======
-[ext_resource type="Texture2D" uid="uid://dbox6hwt7rq8j" path="res://Assets/Dead rat3.png" id="6_1hwpr"]
-[ext_resource type="PackedScene" uid="uid://28wqirw5nryp" path="res://scenes/order_manager.tscn" id="8_1hwpr"]
-[ext_resource type="PackedScene" uid="uid://dc1c6qkujx1m5" path="res://scenes/EventManager.tscn" id="9_dexii"]
->>>>>>> Stashed changes
 
 [node name="stage" type="Node2D"]
 script = ExtResource("1_wy2hx")
@@ -60,7 +54,6 @@ offset_bottom = 2.0
 grow_horizontal = 0
 grow_vertical = 1
 
-<<<<<<< Updated upstream
 [node name="DeliveryWindow" parent="." instance=ExtResource("9_dexii")]
 position = Vector2(614, 291)
 scale = Vector2(4, 4)
@@ -73,10 +66,6 @@ cook_speed = 20
 
 [node name="RatHole" type="Node2D" parent="."]
 position = Vector2(800, 516)
-=======
-[node name="EventManager" parent="." instance=ExtResource("9_dexii")]
-unique_name_in_owner = true
->>>>>>> Stashed changes
 
 [connection signal="drop" from="Chef" to="." method="_on_chef_drop"]
 [connection signal="return_item" from="OrderManager" to="." method="_on_order_manager_return_item"]
