@@ -1,11 +1,11 @@
-[gd_scene load_steps=20 format=3 uid="uid://gukl0umto2eh"]
+[gd_scene load_steps=21 format=3 uid="uid://gukl0umto2eh"]
 
 [ext_resource type="Script" uid="uid://dumm052r31p6y" path="res://scripts/scene_scripts/stage.gd" id="1_wy2hx"]
 [ext_resource type="PackedScene" uid="uid://bprm4p1rglv4h" path="res://scenes/chef.tscn" id="3_1llen"]
 [ext_resource type="PackedScene" uid="uid://vegqp614oxx1" path="res://scenes/grill.tscn" id="4_0hg5s"]
 [ext_resource type="PackedScene" uid="uid://djfj45rumfdue" path="res://scenes/fridge.tscn" id="4_l5bn0"]
-[ext_resource type="Script" path="res://scenes/grill.gd" id="5_jl6nj"]
-[ext_resource type="PackedScene" uid="uid://tg67ykblfv6n" path="res://scenes/fryer.tscn" id="5_yd2gm"]
+[ext_resource type="Script" uid="uid://b1mtgmblqblqn" path="res://scenes/grill.gd" id="5_jl6nj"]
+[ext_resource type="PackedScene" path="res://scenes/fryer.tscn" id="5_yd2gm"]
 [ext_resource type="PackedScene" uid="uid://28wqirw5nryp" path="res://scenes/order_manager.tscn" id="8_1hwpr"]
 [ext_resource type="PackedScene" uid="uid://dpjarvjc0yuci" path="res://scenes/delivery_window.tscn" id="9_dexii"]
 [ext_resource type="PackedScene" uid="uid://csq0bpo20q62j" path="res://scenes/trash.tscn" id="9_yd2gm"]
@@ -167,6 +167,7 @@ scale = Vector2(1.2643145, 1.477604)
 texture = ExtResource("14_5sts7")
 
 [node name="OrderFailures" type="ProgressBar" parent="."]
+visible = false
 offset_left = 376.0
 offset_top = 262.0
 offset_right = 529.0
