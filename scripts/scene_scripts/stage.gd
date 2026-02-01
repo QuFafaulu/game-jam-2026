@@ -11,11 +11,17 @@ extends Node2D
 @onready var rat_spawn_sound: AudioStreamPlayer2D = $Sounds/RatSpawnSound
 @onready var speach_bubble: RichTextLabel = $SpeachBubble
 @onready var speach_bubble_sprite: Sprite2D = $SpeachBubbleSprite
+@onready var order_failures: ProgressBar = $OrderFailures
+@onready var fade_rect: ColorRect = $FadeRect
+@onready var fade_timer: Timer = $FadeRect/FadeTimer
 
 var speach_bubble_buffer: Array[String]
 
 const SUS_INGREDIENT_SCENE: PackedScene = preload("res://scenes/sus_ingredient.tscn")
 const RAT_SCENE: PackedScene = preload("res://scenes/rat.tscn")
+
+signal victory_screen
+signal failure_screen
 
 func _ready():
 	speach_bubble_sprite.visible = false
@@ -97,3 +103,20 @@ func _on_speach_bubble_text_done() -> void:
 	else:
 		speach_bubble_sprite.visible = false
 		speach_bubble.visible = false
+
+func _on_order_manager_level_over() -> void:
+	fade_rect.is_fading_victory = true
+	fade_timer.start()
+
+func _on_order_manager_punish_player() -> void:
+	order_failures.value -= 40
+	
+func _on_order_failures_orders_failed() -> void:
+	fade_rect.is_fading_failure = true
+	fade_timer.start()
+
+func _on_fade_timer_timeout() -> void:
+	if fade_rect.is_fading_failure:
+		failure_screen.emit()
+	else:
+		victory_screen.emit()

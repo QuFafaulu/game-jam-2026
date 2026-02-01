@@ -36,7 +36,7 @@ script = ExtResource("2_ghy7m")
 
 [node name="LevelTimer" type="Timer" parent="."]
 unique_name_in_owner = true
-wait_time = 15.867
+wait_time = 232.0
 autostart = true
 script = ExtResource("2_hrvr2")
 
@@ -60,3 +60,5 @@ offset_bottom = 40.0
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
+
+[connection signal="timeout" from="LevelTimer" to="." method="_on_level_timer_timeout"]

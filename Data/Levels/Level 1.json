@@ -52,7 +52,7 @@
 		"rats": 0,
 		"burgers": 1,
 		"corn dogs": 0,
-		"order text": "I am dying for a burger .",
+		"order text": "I'm dying for a burger.",
 		"order patience": 16,
 		"rat leave": 0
 	  },
@@ -69,7 +69,7 @@
 	  },
 	  {
 		"event type": "order",
-		"start time": 35,
+		"start time": 28,
 		"restock": 0,
 		"rats": 0,
 		"burgers": 1,
@@ -108,14 +108,14 @@
 		"burgers": 3,
 		"corn dogs": 0,
 		"order text": "I haven't eaten in 3 days. I'm okay but gimmie 3 burgers just in case.",
-		"order patience": 33,
+		"order patience": 40,
 		"rat leave": 0
 	  },
 	  {
 		"event type": "critter spawn",
 		"start time": 85,
 		"restock": 0,
-		"rats": 1,
+		"rats": 2,
 		"burgers": 0,
 		"corn dogs": 0,
 		"order text": "",
@@ -124,8 +124,8 @@
 	  },
 	  {
 		"event type": "restock",
-		"start time": 100,
-		"restock": 6,
+		"start time": 110,
+		"restock": 4,
 		"rats": 0,
 		"burgers": 0,
 		"corn dogs": 0,
@@ -172,14 +172,14 @@
 		"restock": 0,
 		"rats": 0,
 		"burgers": 0,
-		"corn dogs": 0,
+		"corn dogs": 1,
 		"order text": "Corn dog. Now!",
 		"order patience": 13,
 		"rat leave": 0
 	  },
 	  {
 		"event type": "critter spawn",
-		"start time": 137,
+		"start time": 133,
 		"restock": 0,
 		"rats": 2,
 		"burgers": 0,
@@ -194,7 +194,7 @@
 		"restock": 0,
 		"rats": 0,
 		"burgers": 0,
-		"corn dogs": 0,
+		"corn dogs": 1,
 		"order text": "Yo boy needs a corn dog!",
 		"order patience": 12,
 		"rat leave": 0
@@ -202,7 +202,7 @@
 	  {
 		"event type": "restock",
 		"start time": 165,
-		"restock": 6,
+		"restock": 5,
 		"rats": 0,
 		"burgers": 0,
 		"corn dogs": 0,
@@ -228,7 +228,7 @@
 		"rats": 0,
 		"burgers": 0,
 		"corn dogs": 2,
-		"order text": "I'll have a... Uh... Umm… two Corn dogs!",
+		"order text": "I'll have a... Uh... Umm…",
 		"order patience": 22,
 		"rat leave": 0
 	  },
@@ -238,8 +238,8 @@
 		"restock": 0,
 		"rats": 0,
 		"burgers": 0,
-		"corn dogs": 3,
-		"order text": "Billy's mom let him have two corn dogs. I want three!",
+		"corn dogs": 2,
+		"order text": "Billy's mom let him have two corn dogs.",
 		"order patience": 25,
 		"rat leave": 0
 	  },
@@ -261,8 +261,129 @@
 		"rats": 0,
 		"burgers": 1,
 		"corn dogs": 0,
-		"order text": "What does it take to get some food around here!? Burger!",
+		"order text": "What does it take to get some food around here!?",
 		"order patience": 15,
+		"rat leave": 0
+	  },
+	  {
+		"event type": "critter spawn",
+		"start time": 195,
+		"restock": 0,
+		"rats": 3,
+		"burgers": 0,
+		"corn dogs": 0,
+		"order text": "",
+		"order patience": 0,
+		"rat leave": 0
+	  },
+	  {
+		"event type": "order",
+		"start time": 200,
+		"restock": 0,
+		"rats": 0,
+		"burgers": 1,
+		"corn dogs": 1,
+		"order text": "You know that feeling when you'd just eat anything given to you? That's me.",
+		"order patience": 20,
+		"rat leave": 0
+	  },
+	  {
+		"event type": "order",
+		"start time": 210,
+		"restock": 0,
+		"rats": 0,
+		"burgers": 0,
+		"corn dogs": 1,
+		"order text": "Mommy said she wanted to \"chew out daddy.\" Do you have anything for that?",
+		"order patience": 18,
+		"rat leave": 0
+	  },
+	  {
+		"event type": "order",
+		"start time": 220,
+		"restock": 0,
+		"rats": 0,
+		"burgers": 3,
+		"corn dogs": 3,
+		"order text": "I need to practice for an eating contest!",
+		"order patience": 60,
+		"rat leave": 0
+	  },
+	  {
+		"event type": "restock",
+		"start time": 225,
+		"restock": 6,
+		"rats": 0,
+		"burgers": 0,
+		"corn dogs": 0,
+		"order text": "",
+		"order patience": 0,
+		"rat leave": 0
+	  },
+	  {
+		"event type": "order",
+		"start time": 235,
+		"restock": 0,
+		"rats": 0,
+		"burgers": 0,
+		"corn dogs": 1,
+		"order text": "I'm on break. Can I have a corn dog?",
+		"order patience": 30,
+		"rat leave": 0
+	  },
+	  {
+		"event type": "order",
+		"start time": 242,
+		"restock": 0,
+		"rats": 0,
+		"burgers": 1,
+		"corn dogs": 0,
+		"order text": "I just want some meat and buns.",
+		"order patience": 20,
+		"rat leave": 0
+	  },
+	  {
+		"event type": "critter spawn",
+		"start time": 0,
+		"restock": 0,
+		"rats": 2,
+		"burgers": 0,
+		"corn dogs": 0,
+		"order text": "",
+		"order patience": 0,
+		"rat leave": 30
+	  },
+	  {
+		"event type": "order",
+		"start time": 250,
+		"restock": 0,
+		"rats": 0,
+		"burgers": 2,
+		"corn dogs": 0,
+		"order text": "Can you give me and my brother a burger?",
+		"order patience": 30,
+		"rat leave": 0
+	  },
+	  {
+		"event type": "order",
+		"start time": 275,
+		"restock": 0,
+		"rats": 0,
+		"burgers": 0,
+		"corn dogs": 0,
+		"order text": "I'm looking for a new scoop. Your finest burger and corn dog if you may.",
+		"order patience": 30,
+		"rat leave": 0
+	  },
+	  {
+		"event type": "critter spawn",
+		"start time": 285,
+		"restock": 0,
+		"rats": 2,
+		"burgers": 0,
+		"corn dogs": 0,
+		"order text": "",
+		"order patience": 0,
 		"rat leave": 0
 	  }
 	]

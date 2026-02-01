@@ -1,7 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://cwpnalnnwbtpl"]
+[gd_scene load_steps=4 format=3 uid="uid://cwpnalnnwbtpl"]
 
 [ext_resource type="PackedScene" uid="uid://cesub6r60e3a" path="res://scenes/item.tscn" id="1_af40f"]
 [ext_resource type="Script" uid="uid://gvagpygh4u7e" path="res://scripts/scene_scripts/food.gd" id="2_370ap"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_af40f"]
+bg_color = Color(0.56330055, 0, 0.04946263, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
 
 [node name="Food" instance=ExtResource("1_af40f")]
 script = ExtResource("2_370ap")
@@ -13,4 +20,5 @@ offset_left = -50.0
 offset_top = -30.0
 offset_right = 50.0
 offset_bottom = -20.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_af40f")
 show_percentage = false

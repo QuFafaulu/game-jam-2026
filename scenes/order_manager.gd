@@ -6,6 +6,8 @@ signal order_success # passes the order object -> Array[Dict]
 signal order_fail # passes the order object -> Array[Dict]
 signal return_item(item: Item)
 signal display_speach_bubble(text: String)
+signal level_over
+signal punish_player
 var orders: Array #Will always contains full order list for the level. 
 var open_orders: Array = []
 var active_order_count = 0
@@ -95,6 +97,7 @@ func _on_patience_timer_timeout(timer_name, order_number):
 			print("poping #" + str(i))
 			order_slips[i].set_position(order_slips[i].position + Vector2(0,-85)) 
 	order_fail.emit(orders[order_number-1])
+	punish_player.emit()
 
 func display_order(order, patience_timer):
 	#region Create and display order slip
@@ -261,4 +264,6 @@ func _process(delta: float) -> void:
 					var patience_bar = child
 					var patience_timer = patience_timers[i]
 					patience_bar.value = patience_timer.time_left/patience_timer.wait_time * 100
-	
+
+func _on_level_timer_timeout() -> void:
+	level_over.emit()

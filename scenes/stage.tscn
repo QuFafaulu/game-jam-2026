@@ -1,15 +1,12 @@
-<<<<<<< HEAD
-[gd_scene load_steps=19 format=3 uid="uid://gukl0umto2eh"]
-=======
-[gd_scene load_steps=16 format=3 uid="uid://gukl0umto2eh"]
->>>>>>> 2bcadd9 (Add opening screen)
+
+[gd_scene load_steps=20 format=3 uid="uid://gukl0umto2eh"]
 
 [ext_resource type="Script" uid="uid://dumm052r31p6y" path="res://scripts/scene_scripts/stage.gd" id="1_wy2hx"]
 [ext_resource type="PackedScene" uid="uid://bprm4p1rglv4h" path="res://scenes/chef.tscn" id="3_1llen"]
 [ext_resource type="PackedScene" uid="uid://vegqp614oxx1" path="res://scenes/grill.tscn" id="4_0hg5s"]
 [ext_resource type="PackedScene" uid="uid://djfj45rumfdue" path="res://scenes/fridge.tscn" id="4_l5bn0"]
-[ext_resource type="Script" path="res://scenes/grill.gd" id="5_jl6nj"]
-[ext_resource type="PackedScene" uid="uid://tg67ykblfv6n" path="res://scenes/fryer.tscn" id="5_yd2gm"]
+[ext_resource type="Script" uid="uid://b1mtgmblqblqn" path="res://scenes/grill.gd" id="5_jl6nj"]
+[ext_resource type="PackedScene" path="res://scenes/fryer.tscn" id="5_yd2gm"]
 [ext_resource type="PackedScene" uid="uid://28wqirw5nryp" path="res://scenes/order_manager.tscn" id="8_1hwpr"]
 [ext_resource type="PackedScene" uid="uid://dpjarvjc0yuci" path="res://scenes/delivery_window.tscn" id="9_dexii"]
 [ext_resource type="PackedScene" uid="uid://csq0bpo20q62j" path="res://scenes/trash.tscn" id="9_yd2gm"]
@@ -22,6 +19,8 @@
 [ext_resource type="AudioStream" uid="uid://bvi0ftylj71b3" path="res://Assets/sounds/sizzle.wav" id="17_t30jk"]
 [ext_resource type="Script" uid="uid://blffd1px3i4oh" path="res://scenes/speach_bubble.gd" id="13_xfx4c"]
 [ext_resource type="Texture2D" uid="uid://cinlf2s5bjano" path="res://Assets/concepts_v0_speech.png" id="14_5sts7"]
+[ext_resource type="Script" uid="uid://btawwq8bxglte" path="res://scenes/order_failures.gd" id="17_t30jk"]
+[ext_resource type="Script" uid="uid://c7wl5s2p86rwb" path="res://scenes/fade_rect.gd" id="18_d4wp7"]
 
 [node name="stage" type="Node2D"]
 script = ExtResource("1_wy2hx")
@@ -164,11 +163,33 @@ position = Vector2(614, 124)
 scale = Vector2(1.2643145, 1.477604)
 texture = ExtResource("14_5sts7")
 
+[node name="OrderFailures" type="ProgressBar" parent="."]
+offset_left = 376.0
+offset_top = 262.0
+offset_right = 529.0
+offset_bottom = 289.0
+script = ExtResource("17_t30jk")
+
+[node name="FadeRect" type="ColorRect" parent="."]
+modulate = Color(1, 1, 1, 0)
+z_index = 3
+offset_right = 1500.0
+offset_bottom = 800.0
+color = Color(0, 0, 0, 1)
+script = ExtResource("18_d4wp7")
+
+[node name="FadeTimer" type="Timer" parent="FadeRect"]
+wait_time = 0.5
+
 [connection signal="drop" from="Chef" to="." method="_on_chef_drop"]
 [connection signal="deliver_item" from="Interactable_objects/DeliveryWindow" to="." method="_on_delivery_window_deliver_item"]
 [connection signal="display_speach_bubble" from="OrderManager" to="." method="_on_order_manager_display_speach_bubble"]
+[connection signal="level_over" from="OrderManager" to="." method="_on_order_manager_level_over"]
 [connection signal="order_fail" from="OrderManager" to="." method="_on_order_manager_order_fail"]
+[connection signal="punish_player" from="OrderManager" to="." method="_on_order_manager_punish_player"]
 [connection signal="return_item" from="OrderManager" to="." method="_on_order_manager_return_item"]
 [connection signal="request_critter_spawn" from="EventManager" to="." method="_on_event_manager_request_critter_spawn"]
 [connection signal="request_restock" from="EventManager" to="." method="_on_event_manager_request_restock"]
 [connection signal="text_done" from="SpeachBubble" to="." method="_on_speach_bubble_text_done"]
+[connection signal="orders_failed" from="OrderFailures" to="." method="_on_order_failures_orders_failed"]
+[connection signal="timeout" from="FadeRect/FadeTimer" to="." method="_on_fade_timer_timeout"]

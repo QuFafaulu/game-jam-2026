@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://cy6yv2imv04dq"]
+
+[ext_resource type="Texture2D" uid="uid://blvocaa3er7bf" path="res://Assets/lizzies2.png" id="1_rbj82"]
+
+[node name="VictoryScreen" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_rbj82")
+offset = Vector2(750, 400)

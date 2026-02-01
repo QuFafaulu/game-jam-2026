@@ -26,19 +26,19 @@ const INGREDIENT_SPRITES: Dictionary = {
 
 const MEAL_SPRITES: Dictionary = {
 	Meals.BURGER: {
-		"cooking": "res://Assets/Raw beef.png",
+		"cooking": "res://Assets/Cookingburgermeat.png",
 		"done":	   "res://Assets/Borgir.png"
 	},
 	Meals.CORN_DOG: {
-		"cooking": "res://Assets/Raw beef.png",
+		"cooking": "res://Assets/Corn_dogcooking.png",
 		"done":	   "res://Assets/Corn dog(1).png"
 	},
 	Meals.RAT_BURGER: {
-		"cooking": "res://Assets/Dead rat3.png",
+		"cooking": "res://Assets/Cookingratmeat.png",
 		"done":	   "res://Assets/Rat Borgir.png"
 	},
 	Meals.RAT_DOG: {
-		"cooking": "res://Assets/Dead rat3.png",
+		"cooking": "res://Assets/Rat_dogcooking.png",
 		"done":	   "res://Assets/Rat dog.png"
 	}
 }

@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://b3us8s76yo8j"]
+
+[ext_resource type="Texture2D" uid="uid://bkw7b0k5foocu" path="res://Assets/game_over.png" id="1_nmxn5"]
+
+[node name="FailureScreen" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(750, 400)
+texture = ExtResource("1_nmxn5")
