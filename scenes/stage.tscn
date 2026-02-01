@@ -1,4 +1,3 @@
-
 [gd_scene load_steps=20 format=3 uid="uid://gukl0umto2eh"]
 
 [ext_resource type="Script" uid="uid://dumm052r31p6y" path="res://scripts/scene_scripts/stage.gd" id="1_wy2hx"]
@@ -15,10 +14,9 @@
 [ext_resource type="AudioStream" uid="uid://b3t7n4nm7u5rw" path="res://Assets/Mouseleave.wav" id="11_0hg5s"]
 [ext_resource type="Texture2D" uid="uid://unwsg0vgqxnv" path="res://Assets/ppl-sprite1.png" id="11_5sts7"]
 [ext_resource type="AudioStream" uid="uid://bg8p10nbyghkt" path="res://Assets/Mouseappear.wav" id="12_jl6nj"]
-[ext_resource type="AudioStream" uid="uid://cvghqffkx7f1w" path="res://Assets/sounds/bell_atten.wav" id="16_t30jk"]
-[ext_resource type="AudioStream" uid="uid://bvi0ftylj71b3" path="res://Assets/sounds/sizzle.wav" id="17_t30jk"]
 [ext_resource type="Script" uid="uid://blffd1px3i4oh" path="res://scenes/speach_bubble.gd" id="13_xfx4c"]
 [ext_resource type="Texture2D" uid="uid://cinlf2s5bjano" path="res://Assets/concepts_v0_speech.png" id="14_5sts7"]
+[ext_resource type="AudioStream" uid="uid://cvghqffkx7f1w" path="res://Assets/sounds/bell_atten.wav" id="16_t30jk"]
 [ext_resource type="Script" uid="uid://btawwq8bxglte" path="res://scenes/order_failures.gd" id="17_t30jk"]
 [ext_resource type="Script" uid="uid://c7wl5s2p86rwb" path="res://scenes/fade_rect.gd" id="18_d4wp7"]
 [ext_resource type="AudioStream" uid="uid://tf84g6qwtyti" path="res://Assets/sounds/group hiss.wav" id="18_d4wp7"]
@@ -143,8 +141,8 @@ volume_db = 10.0
 
 [node name="GrillSound" type="AudioStreamPlayer2D" parent="Sounds"]
 unique_name_in_owner = true
-stream = ExtResource("17_t30jk")
 volume_db = -65.901
+
 [node name="SpeachBubble" type="RichTextLabel" parent="."]
 z_index = 2
 offset_left = 455.0

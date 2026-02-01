@@ -344,7 +344,7 @@
 	  },
 	  {
 		"event type": "critter spawn",
-		"start time": 0,
+		"start time": 245,
 		"restock": 0,
 		"rats": 2,
 		"burgers": 0,
