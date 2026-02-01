@@ -16,6 +16,8 @@ script = ExtResource("1_wy2hx")
 [node name="Chef" parent="." instance=ExtResource("3_1llen")]
 position = Vector2(664, 500)
 scale = Vector2(2, 2)
+max_speed = 300
+inventory_slot_y_offset = -20
 
 [node name="Interactable_objects" type="Node2D" parent="."]
 
@@ -27,6 +29,20 @@ scale = Vector2(4, 4)
 position = Vector2(356, 564)
 scale = Vector2(4, 4)
 cook_speed = 10
+
+[node name="Frier" parent="Interactable_objects" instance=ExtResource("10_yd2gm")]
+position = Vector2(358, 443)
+scale = Vector2(4, 4)
+type = 1
+cook_speed = 20
+
+[node name="DeliveryWindow" parent="Interactable_objects" instance=ExtResource("9_dexii")]
+position = Vector2(598, 314)
+scale = Vector2(4, 4)
+
+[node name="Trash" parent="Interactable_objects" instance=ExtResource("9_yd2gm")]
+position = Vector2(997, 598)
+scale = Vector2(4, 4)
 
 [node name="DroppedItems" type="Node2D" parent="."]
 
@@ -55,26 +71,12 @@ offset_bottom = 1.0
 grow_horizontal = 0
 grow_vertical = 1
 
-[node name="Frier" parent="." instance=ExtResource("10_yd2gm")]
-position = Vector2(358, 443)
-scale = Vector2(4, 4)
-type = 1
-cook_speed = 20
-
 [node name="RatSpawn" type="Node2D" parent="."]
 position = Vector2(976, 464)
 
 [node name="RatExit" type="Node2D" parent="."]
-position = Vector2(455, 629)
-
-[node name="DeliveryWindow" parent="." instance=ExtResource("9_dexii")]
-position = Vector2(598, 314)
-scale = Vector2(4, 4)
-
-[node name="Trash" parent="." instance=ExtResource("9_yd2gm")]
-position = Vector2(997, 598)
-scale = Vector2(4, 4)
+position = Vector2(1025, 526)
 
 [connection signal="drop" from="Chef" to="." method="_on_chef_drop"]
+[connection signal="deliver_item" from="Interactable_objects/DeliveryWindow" to="." method="_on_delivery_window_deliver_item"]
 [connection signal="return_item" from="OrderManager" to="." method="_on_order_manager_return_item"]
-[connection signal="deliver_item" from="DeliveryWindow" to="." method="_on_delivery_window_deliver_item"]

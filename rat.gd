@@ -1,5 +1,5 @@
 class_name Rat
-extends RigidBody2D
+extends CharacterBody2D
 
 var direction_vector: Vector2 = Vector2.UP
 signal die(rat: Rat)
@@ -27,13 +27,16 @@ func _physics_process(delta: float) -> void:
 	match state:
 		RatStates.EXPLORING:
 			direction_vector = direction_vector.rotated(randf_range(-rat_turn_speed,rat_turn_speed))
+			movement_vector = delta*direction_vector*rat_speed
+			move_and_collide(movement_vector)
 		RatStates.LEAVING:
 			direction_vector = self.global_transform.origin.direction_to(exit_node.global_transform.origin)
 			if self.global_transform.origin.distance_to(exit_node.global_transform.origin) < 20:
 				self.queue_free()
+			velocity = direction_vector*rat_speed
+			move_and_slide()
 
-	movement_vector = delta*direction_vector*rat_speed
-	move_and_collide(movement_vector)
+	
 
 func _on_rat_interaction_zone_die() -> void:
 	die.emit(self)
