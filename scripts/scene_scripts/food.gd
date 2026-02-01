@@ -28,6 +28,7 @@ func start_cooking(station_speed: float):
 	is_cooking = true
 	cooking_speed = station_speed
 	cook_progress.visible = true
+	
 
 func stop_cooking():
 	is_cooking = false
