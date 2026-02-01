@@ -37,7 +37,6 @@ func start_next_order(_id): # _id counts as such: "Timer", "Timer2", etc.
 	self.display_order(this_order)
 	open_orders.append(this_order)
 
-	
 func create_order_timeline(orders) -> Array:
 	var timer_array: Array
 	for order in orders:

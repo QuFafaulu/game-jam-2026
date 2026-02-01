@@ -2,6 +2,7 @@ class_name Food
 extends Item
 
 var type: Global.Meals
+var station: Global.Stations
 var is_cooking: bool = false
 var cooking_speed: float = 0
 var cooked: bool = false
@@ -14,6 +15,7 @@ const MY_SCENE: PackedScene = preload("res://scenes/food.tscn")
 static func new_food(ingredient: Ingredient, station: Station) -> Food:
 	var food: Food = MY_SCENE.instantiate()
 	food.type = Global.MEAL_TYPES[Vector2(ingredient.type,station.type)]
+	food.station = station.type
 	return food
 
 func _ready():

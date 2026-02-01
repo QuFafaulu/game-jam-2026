@@ -15,8 +15,9 @@ func interact(offered_item: Item) -> Item:
 	offering_item = inventory.get_child(0) # can be null
 	if offered_item is Ingredient:
 		take_ingredient(offered_item)
-	elif offered_item is Food and not offered_item.cooked:
-		take_uncooked_food(offered_item)
+	elif not offered_item == null:
+		if offered_item.station == type and not offered_item.cooked:
+			take_uncooked_food(offered_item)
 	return offering_item
 
 func take_ingredient(item: Ingredient): #Collects cookable item
