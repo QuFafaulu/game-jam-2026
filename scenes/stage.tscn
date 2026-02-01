@@ -5,11 +5,11 @@
 [ext_resource type="PackedScene" uid="uid://djfj45rumfdue" path="res://scenes/fridge.tscn" id="4_l5bn0"]
 [ext_resource type="Texture2D" uid="uid://svfkxetaemvp" path="res://sprites/concepts_v0_truck.png" id="5_2so7o"]
 [ext_resource type="PackedScene" uid="uid://pn5618ft84ov" path="res://scenes/oven.tscn" id="5_vcsse"]
+[ext_resource type="PackedScene" uid="uid://tg67ykblfv6n" path="res://scenes/fryer.tscn" id="5_yd2gm"]
 [ext_resource type="PackedScene" uid="uid://28wqirw5nryp" path="res://scenes/order_manager.tscn" id="8_1hwpr"]
 [ext_resource type="PackedScene" uid="uid://dpjarvjc0yuci" path="res://scenes/delivery_window.tscn" id="9_dexii"]
 [ext_resource type="PackedScene" uid="uid://csq0bpo20q62j" path="res://trash.tscn" id="9_yd2gm"]
 [ext_resource type="Script" uid="uid://ditv5eluw7up4" path="res://scripts/scene_scripts/event_manager.gd" id="10_0hg5s"]
-[ext_resource type="PackedScene" uid="uid://bwo7qpkc4hliq" path="res://scenes/station.tscn" id="10_yd2gm"]
 
 [node name="stage" type="Node2D"]
 script = ExtResource("1_wy2hx")
@@ -29,11 +29,9 @@ position = Vector2(356, 564)
 scale = Vector2(4, 4)
 cook_speed = 13
 
-[node name="Frier" parent="Interactable_objects" instance=ExtResource("10_yd2gm")]
+[node name="Fryer" parent="Interactable_objects" instance=ExtResource("5_yd2gm")]
 position = Vector2(358, 443)
 scale = Vector2(4, 4)
-type = 1
-cook_speed = 20
 
 [node name="DeliveryWindow" parent="Interactable_objects" instance=ExtResource("9_dexii")]
 position = Vector2(598, 314)
