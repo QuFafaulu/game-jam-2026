@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://dpjarvjc0yuci"]
+[gd_scene load_steps=4 format=3 uid="uid://dpjarvjc0yuci"]
 
 [ext_resource type="Script" uid="uid://bi72f6sa26lgd" path="res://scenes/delivery_window.gd" id="1_2w84x"]
+[ext_resource type="AudioStream" uid="uid://b3t7n4nm7u5rw" path="res://Assets/Mouseleave.wav" id="2_2w84x"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2w84x"]
 size = Vector2(65, 11.21875)
@@ -12,3 +13,6 @@ metadata/_custom_type_script = "uid://c672w24kn7bpt"
 [node name="InteractArea" type="CollisionShape2D" parent="."]
 position = Vector2(6, 19)
 shape = SubResource("RectangleShape2D_2w84x")
+
+[node name="DeathSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_2w84x")

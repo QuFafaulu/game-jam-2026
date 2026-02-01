@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://gukl0umto2eh"]
+[gd_scene load_steps=13 format=3 uid="uid://gukl0umto2eh"]
 
 [ext_resource type="Script" uid="uid://dumm052r31p6y" path="res://scripts/scene_scripts/stage.gd" id="1_wy2hx"]
 [ext_resource type="PackedScene" uid="uid://bprm4p1rglv4h" path="res://scenes/chef.tscn" id="3_1llen"]
@@ -10,6 +10,8 @@
 [ext_resource type="PackedScene" uid="uid://dpjarvjc0yuci" path="res://scenes/delivery_window.tscn" id="9_dexii"]
 [ext_resource type="PackedScene" uid="uid://csq0bpo20q62j" path="res://trash.tscn" id="9_yd2gm"]
 [ext_resource type="Script" uid="uid://ditv5eluw7up4" path="res://scripts/scene_scripts/event_manager.gd" id="10_0hg5s"]
+[ext_resource type="AudioStream" uid="uid://b3t7n4nm7u5rw" path="res://Assets/Mouseleave.wav" id="11_0hg5s"]
+[ext_resource type="AudioStream" uid="uid://bg8p10nbyghkt" path="res://Assets/Mouseappear.wav" id="12_jl6nj"]
 
 [node name="stage" type="Node2D"]
 script = ExtResource("1_wy2hx")
@@ -81,6 +83,14 @@ offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("10_0hg5s")
 metadata/_custom_type_script = "uid://ditv5eluw7up4"
+
+[node name="Sounds" type="Node2D" parent="."]
+
+[node name="RatDeathSound" type="AudioStreamPlayer2D" parent="Sounds"]
+stream = ExtResource("11_0hg5s")
+
+[node name="RatSpawnSound" type="AudioStreamPlayer2D" parent="Sounds"]
+stream = ExtResource("12_jl6nj")
 
 [connection signal="drop" from="Chef" to="." method="_on_chef_drop"]
 [connection signal="deliver_item" from="Interactable_objects/DeliveryWindow" to="." method="_on_delivery_window_deliver_item"]

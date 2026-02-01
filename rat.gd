@@ -36,11 +36,8 @@ func _physics_process(delta: float) -> void:
 			velocity = direction_vector*rat_speed
 			move_and_slide()
 
-	
-
 func _on_rat_interaction_zone_die() -> void:
 	die.emit(self)
-
 
 func _on_leave_timer_timeout() -> void:
 	rat_speed = rat_speed*5

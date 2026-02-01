@@ -7,6 +7,8 @@ extends Node2D
 @onready var rat_spawn = $RatSpawn
 @onready var rat_exit = $RatExit
 @onready var fridge: Fridge = $Interactable_objects/Fridge
+@onready var rat_death_sound: AudioStreamPlayer2D = $Sounds/RatDeathSound
+@onready var rat_spawn_sound: AudioStreamPlayer2D = $Sounds/RatSpawnSound
 
 const SUS_INGREDIENT_SCENE: PackedScene = preload("res://scenes/sus_ingredient.tscn")
 const RAT_SCENE: PackedScene = preload("res://scenes/rat.tscn")
@@ -44,6 +46,7 @@ func _on_rat_die(rat: Rat) -> void:
 	dead_rat.start_rotting()
 	dead_rat.enable_interaction()
 	rat.queue_free()
+	rat_death_sound.play()
 
 func spawn_rat(wait_time: int):
 	var rat: Rat = RAT_SCENE.instantiate()
@@ -58,12 +61,11 @@ func spawn_rat(wait_time: int):
 		rat.leave_timer.wait_time = wait_time
 	rat.leave_timer.start()
 	rat.exit_node = rat_exit
-
+	rat_spawn_sound.play()
 
 func _on_event_manager_request_critter_spawn(number: int, _type: String, duration: int) -> void:
 	for i in range(number):
 		spawn_rat(duration)
-
 
 func _on_event_manager_request_restock(amount: int) -> void:
 	for i in range(amount):
