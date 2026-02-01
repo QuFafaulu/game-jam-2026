@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://b2l275mpt35ge"]
+
+[ext_resource type="Script" uid="uid://d2d04jdohhrwv" path="res://scripts/scene_scripts/opening_screen.gd" id="1_fon4n"]
+[ext_resource type="Texture2D" uid="uid://wv1pksgw0x8v" path="res://Assets/opening_splash.png" id="2_mtkx8"]
+
+[node name="OpeningScreen" type="Node2D"]
+script = ExtResource("1_fon4n")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(750, 400)
+texture = ExtResource("2_mtkx8")

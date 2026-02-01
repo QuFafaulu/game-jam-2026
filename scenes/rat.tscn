@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://dcn3rt3o7hno3"]
 
-[ext_resource type="Script" uid="uid://dx83mtd4x3ms0" path="res://rat.gd" id="1_acf8p"]
+[ext_resource type="Script" uid="uid://dx83mtd4x3ms0" path="res://scripts/scene_scripts/rat.gd" id="1_acf8p"]
 [ext_resource type="Texture2D" uid="uid://bq7rvojf2jx0q" path="res://Assets/Live rat.png" id="2_3csnj"]
 [ext_resource type="Texture2D" uid="uid://bn4qjpuc7hrcv" path="res://Assets/Live rat2.png" id="3_6s34g"]
 [ext_resource type="Script" uid="uid://gjcgxlrhmbov" path="res://scenes/rat_interaction_zone.gd" id="4_3csnj"]

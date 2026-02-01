@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 [gd_scene load_steps=19 format=3 uid="uid://gukl0umto2eh"]
+=======
+[gd_scene load_steps=16 format=3 uid="uid://gukl0umto2eh"]
+>>>>>>> 2bcadd9 (Add opening screen)
 
 [ext_resource type="Script" uid="uid://dumm052r31p6y" path="res://scripts/scene_scripts/stage.gd" id="1_wy2hx"]
 [ext_resource type="PackedScene" uid="uid://bprm4p1rglv4h" path="res://scenes/chef.tscn" id="3_1llen"]
@@ -8,8 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://tg67ykblfv6n" path="res://scenes/fryer.tscn" id="5_yd2gm"]
 [ext_resource type="PackedScene" uid="uid://28wqirw5nryp" path="res://scenes/order_manager.tscn" id="8_1hwpr"]
 [ext_resource type="PackedScene" uid="uid://dpjarvjc0yuci" path="res://scenes/delivery_window.tscn" id="9_dexii"]
-[ext_resource type="Texture2D" uid="uid://dww7h8mydltnm" path="res://Assets/bg1500x800.png" id="9_e38vs"]
-[ext_resource type="PackedScene" uid="uid://csq0bpo20q62j" path="res://trash.tscn" id="9_yd2gm"]
+[ext_resource type="PackedScene" uid="uid://csq0bpo20q62j" path="res://scenes/trash.tscn" id="9_yd2gm"]
 [ext_resource type="Script" uid="uid://ditv5eluw7up4" path="res://scripts/scene_scripts/event_manager.gd" id="10_0hg5s"]
 [ext_resource type="Texture2D" uid="uid://bfe06e6dhssp2" path="res://Assets/truck_transparency.png" id="10_xfx4c"]
 [ext_resource type="AudioStream" uid="uid://b3t7n4nm7u5rw" path="res://Assets/Mouseleave.wav" id="11_0hg5s"]
