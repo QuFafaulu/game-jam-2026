@@ -18,6 +18,7 @@ var order_slips: Array
 var order_slip_image = preload("uid://boldly13v1o0x")
 var cross_out_image = preload("uid://bqb83js1n1kda")
 var tick_image = preload("uid://c7bjagwdwatod")
+var orders_completed = 0
 
 const ticket_height = 50
 
@@ -80,8 +81,9 @@ func on_order_success(order):
 	tween.tween_property(order_slips[order_number-1], "scale", Vector2(), 2)
 	for i in range(order_number,order_slips.size()):
 		if typeof(order_slips[i]) != TYPE_INT:
-			print("poping #" + str(i))
 			order_slips[i].set_position(order_slips[i].position + Vector2(0,-85)) 
+	orders_completed += 1
+	check_level_over()
 			
 			
 func _on_patience_timer_timeout(timer_name, order_number):
@@ -98,6 +100,9 @@ func _on_patience_timer_timeout(timer_name, order_number):
 			order_slips[i].set_position(order_slips[i].position + Vector2(0,-85)) 
 	order_fail.emit(orders[order_number-1])
 	punish_player.emit()
+	%Hiss.play() #Sound
+	orders_completed += 1
+	check_level_over()
 
 func display_order(order, patience_timer):
 	#region Create and display order slip
@@ -137,7 +142,7 @@ func display_order(order, patience_timer):
 	#endregion ----------------------------------------
 	order_labels.append(new_order)
 	order_slips.append(new_order_slip)
-	%Hiss.play() #Sound
+	
 	
 	
 	
@@ -266,5 +271,6 @@ func _process(delta: float) -> void:
 					var patience_timer = patience_timers[i]
 					patience_bar.value = patience_timer.time_left/patience_timer.wait_time * 100
 
-func _on_level_timer_timeout() -> void:
-	level_over.emit()
+func check_level_over():
+	if orders_completed >= orders.size():
+		level_over.emit()
