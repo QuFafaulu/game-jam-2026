@@ -61,6 +61,9 @@ const ORDER_ITEM_DELIVERED = "items_delivered"
 	# move failed/passed orders left?
 		# Widen panel to allow this movement?
 # Consolodate time and order panels to have just one panel the scales with itself
+# import truck and background
+# paint in customer crowd
+
 	
 	#TODO trash
 	# add item delivered field: myDict.get_or_add(G_Level.ORDER_ITEM_DELIVERED, 0)
