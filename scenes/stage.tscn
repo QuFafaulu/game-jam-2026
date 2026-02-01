@@ -24,7 +24,7 @@ scale = Vector2(2, 2)
 position = Vector2(950, 325)
 scale = Vector2(4, 4)
 
-[node name="Oven" parent="Interactable_objects" instance=ExtResource("5_vcsse")]
+[node name="Grill" parent="Interactable_objects" instance=ExtResource("5_vcsse")]
 position = Vector2(356, 564)
 scale = Vector2(4, 4)
 cook_speed = 13
