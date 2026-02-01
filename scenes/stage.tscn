@@ -1,33 +1,20 @@
-<<<<<<< Updated upstream
-[gd_scene load_steps=13 format=3 uid="uid://gukl0umto2eh"]
-=======
-[gd_scene load_steps=14 format=3 uid="uid://gukl0umto2eh"]
->>>>>>> Stashed changes
+[gd_scene load_steps=16 format=3 uid="uid://gukl0umto2eh"]
 
 [ext_resource type="Script" uid="uid://dumm052r31p6y" path="res://scripts/scene_scripts/stage.gd" id="1_wy2hx"]
 [ext_resource type="PackedScene" uid="uid://bprm4p1rglv4h" path="res://scenes/chef.tscn" id="3_1llen"]
 [ext_resource type="PackedScene" uid="uid://vegqp614oxx1" path="res://scenes/grill.tscn" id="4_0hg5s"]
 [ext_resource type="PackedScene" uid="uid://djfj45rumfdue" path="res://scenes/fridge.tscn" id="4_l5bn0"]
-<<<<<<< Updated upstream
-[ext_resource type="Texture2D" uid="uid://svfkxetaemvp" path="res://sprites/concepts_v0_truck.png" id="5_2so7o"]
-[ext_resource type="PackedScene" uid="uid://pn5618ft84ov" path="res://scenes/oven.tscn" id="5_vcsse"]
+[ext_resource type="Script" path="res://scenes/grill.gd" id="5_jl6nj"]
 [ext_resource type="PackedScene" path="res://scenes/fryer.tscn" id="5_yd2gm"]
-=======
-[ext_resource type="Script" uid="uid://b1mtgmblqblqn" path="res://scenes/grill.gd" id="5_jl6nj"]
-[ext_resource type="PackedScene" uid="uid://tg67ykblfv6n" path="res://scenes/fryer.tscn" id="5_yd2gm"]
->>>>>>> Stashed changes
 [ext_resource type="PackedScene" uid="uid://28wqirw5nryp" path="res://scenes/order_manager.tscn" id="8_1hwpr"]
 [ext_resource type="PackedScene" uid="uid://dpjarvjc0yuci" path="res://scenes/delivery_window.tscn" id="9_dexii"]
 [ext_resource type="Texture2D" uid="uid://dww7h8mydltnm" path="res://Assets/bg1500x800.png" id="9_e38vs"]
 [ext_resource type="PackedScene" uid="uid://csq0bpo20q62j" path="res://trash.tscn" id="9_yd2gm"]
 [ext_resource type="Script" uid="uid://ditv5eluw7up4" path="res://scripts/scene_scripts/event_manager.gd" id="10_0hg5s"]
-<<<<<<< Updated upstream
-[ext_resource type="AudioStream" uid="uid://b3t7n4nm7u5rw" path="res://Assets/Mouseleave.wav" id="11_0hg5s"]
-[ext_resource type="AudioStream" uid="uid://bg8p10nbyghkt" path="res://Assets/Mouseappear.wav" id="12_jl6nj"]
-=======
 [ext_resource type="Texture2D" uid="uid://bfe06e6dhssp2" path="res://Assets/truck_transparency.png" id="10_xfx4c"]
+[ext_resource type="AudioStream" uid="uid://b3t7n4nm7u5rw" path="res://Assets/Mouseleave.wav" id="11_0hg5s"]
 [ext_resource type="Texture2D" uid="uid://unwsg0vgqxnv" path="res://Assets/ppl-sprite1.png" id="11_5sts7"]
->>>>>>> Stashed changes
+[ext_resource type="AudioStream" uid="uid://bg8p10nbyghkt" path="res://Assets/Mouseappear.wav" id="12_jl6nj"]
 
 [node name="stage" type="Node2D"]
 script = ExtResource("1_wy2hx")
@@ -42,25 +29,16 @@ scale = Vector2(2, 2)
 position = Vector2(950, 325)
 scale = Vector2(4, 4)
 
-<<<<<<< Updated upstream
-[node name="Grill" parent="Interactable_objects" instance=ExtResource("5_vcsse")]
-position = Vector2(356, 564)
-=======
 [node name="grill" parent="Interactable_objects" instance=ExtResource("4_0hg5s")]
 position = Vector2(361, 576)
->>>>>>> Stashed changes
 scale = Vector2(4, 4)
 script = ExtResource("5_jl6nj")
-cook_speed = 10
 
 [node name="Fryer" parent="Interactable_objects" instance=ExtResource("5_yd2gm")]
 position = Vector2(358, 443)
 scale = Vector2(4, 4)
 type = 1
-<<<<<<< Updated upstream
 cook_speed = 20
-=======
->>>>>>> Stashed changes
 
 [node name="DeliveryWindow" parent="Interactable_objects" instance=ExtResource("9_dexii")]
 position = Vector2(598, 314)
