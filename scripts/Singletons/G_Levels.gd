@@ -58,6 +58,8 @@ const ORDER_ITEM_DELIVERED = "items_delivered"
 
 #TODO
 
+#Flash orders green when getting a delivery
+
 # change order display to: 2x burgers, 1x corndog ##NOTE check ln 87 in order handler
 	# 1) change display
 	# 2) change delivery: counting, redisplay, crossout
